@@ -9,8 +9,12 @@
 </head>
 <body>
 <div align="center">
+
 	<div><h1>Wellcome to My Home this Hi, sthere</h1></div>
 	<div><a href="borderList.do">공지사항 목록</a></div>
+
+	<div><h1>Wellcome to My Home this Hi, there!</h1></div>
+
 </div>
 </body>
 </html>

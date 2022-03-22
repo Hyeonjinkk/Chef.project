@@ -28,10 +28,12 @@
 		VALUES(#{borderId},#{borderWriter},#{borderDate},#{borderTitle},#{borderContents},0)
 	</insert>
 	
-	<update id="borderUpdate">
+	<update id="borderUpdate" >
 	
 	</update>
-	<delete id="borderDelete">
+	<delete id="borderDelete" parameterType="co.micol.prj.border.service.BorderVO">
+		DELETE FROM BORDER WHERE BORDER_ID = #{borderId}
+	
 	
 	</delete>
 	

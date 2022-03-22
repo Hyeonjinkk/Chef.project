@@ -69,9 +69,7 @@
 			<br>
 			<div>
 				<button type="button" onclick="location.href='home.do'">메인</button>
-				<c:if test="${sessionScope.loginId eq 'admin' }">
 					<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
-				</c:if>
 			</div>
 			<input type="hidden" id="borderId" name="borderId">
 		</form>

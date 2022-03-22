@@ -17,7 +17,7 @@
 	
 	<servlet>
 		<servlet-name>Action</servlet-name>
-		<servlet-class>com.micol.prj.web.FrontController</servlet-class>
+		<servlet-class>co.micol.prj.web.FrontController</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>

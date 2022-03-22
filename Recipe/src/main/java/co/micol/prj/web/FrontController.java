@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import co.micol.prj.border.command.BorderList;
 import co.micol.prj.comm.Command;
 import co.micol.prj.main.command.HomeCommand;
+import co.micol.prj.user.command.AjaxUserIdCheck;
+import co.micol.prj.user.command.UserJoin;
+import co.micol.prj.user.command.UserJoinForm;
 
 
 
@@ -32,7 +35,10 @@ public class FrontController extends HttpServlet {
 		
 		
 		
-	}
+		map.put("/userJoinForm.do", new UserJoinForm()); //회원가입폼 호출
+		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); //아이디 중복체크
+		map.put("/userJoin.do", new UserJoin());    //회원가입 처리
+	}  
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

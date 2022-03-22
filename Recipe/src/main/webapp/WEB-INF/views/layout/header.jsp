@@ -59,7 +59,7 @@
 							<ul class="dropdonw">
 								<li><a href="./#">재료</a>
 							</ul>
-						<li><a href="./#">공지사항</a>
+						<li><a href="./borderList.do">공지사항</a>
 					</ul>
 				</nav>
 			</div>

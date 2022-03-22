@@ -10,7 +10,7 @@
 <div align="center">
 	<div>
 		<hr>
-		<h1>푸터부분</h1>
+		<h1>푸터부분123123</h1>
 	</div>
 </div>
 </body>

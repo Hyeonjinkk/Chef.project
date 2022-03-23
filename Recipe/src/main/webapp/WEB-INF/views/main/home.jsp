@@ -9,7 +9,10 @@
 </head>
 <body>
 <div align="center">
-	<div><h1>Wellcome to My Home this Hi, there</h1></div>
+
+	<div><h1>This is Our Main Page of website.</h1></div>
+
+
 </div>
 </body>
 </html>

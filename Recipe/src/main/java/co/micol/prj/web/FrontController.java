@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.micol.prj.border.command.BorderList;
+import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
 import co.micol.prj.main.command.HomeCommand;
 import co.micol.prj.user.command.AjaxUserIdCheck;
@@ -32,7 +33,7 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new HomeCommand()); // 첫 페이지
 		map.put("/borderList.do", new BorderList()); //공지사항 목록
-		
+		map.put("/borderView.do", new BorderView()); //게시글 상세보기
 		
 		
 		map.put("/userJoinForm.do", new UserJoinForm()); //회원가입폼 호출

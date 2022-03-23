@@ -35,20 +35,30 @@ public class FrontController extends HttpServlet {
 	}
 
 	public void init(ServletConfig config) throws ServletException {
+//		Page 처리
 		map.put("/home.do", new HomeCommand()); // 처음 들어오는 페이지
 
 		map.put("/userJoinForm.do", new UserJoinForm()); // 회원가입폼 호출
-		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
-		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
-		map.put("/borderList.do", new BorderList()); // 공지사항목록
+		
 		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
-		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
+		map.put("/borderList.do", new BorderList()); // 공지사항목록
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
+		
+//		기능처리(user)
+		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
+		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
+
+//		기능처리(border)			
+		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
 		map.put("/borderDelete.do", new BorderDelete()); // 공지사항 삭제
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬
+		
 
 	}
+	
+	
+	
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

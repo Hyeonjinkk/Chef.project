@@ -63,8 +63,10 @@
 				type : "post",
 				data : {"str" : $("#userId").val()},
 				dataType : "text",
+			
+				console.log($("#userId").val());
+				
 				success : function(result) {
-					console.log($("#userId").val());
 					if(result == '1') {
 						alert("사용 가능한 아이디입니다.");
 						$("#checkId").val('Yes');

@@ -16,12 +16,12 @@ public class UserJoin implements Command {
 		
 		UserService userDAO = new UserServiceImpl();
 		UserVO vo = new UserVO();
-		vo.setUserId(request.getParameter("user_id"));
-		vo.setUserPassword(request.getParameter("user_password"));
-		vo.setUserName(request.getParameter("user_name"));
-		vo.setUserAlias(request.getParameter("user_alias"));
-		vo.setUserTel(request.getParameter("user_tel"));
-		vo.setUserAddress(request.getParameter("user_address"));
+		vo.setUserId(request.getParameter("userId"));
+		vo.setUserPassword(request.getParameter("userPassword"));
+		vo.setUserName(request.getParameter("userName"));
+		vo.setUserAlias(request.getParameter("userAlias"));
+		vo.setUserTel(request.getParameter("userTel"));
+		vo.setUserAddress(request.getParameter("userAddress"));
 		int n = userDAO.insertUser(vo);
 		if(n != 0) {
 			request.setAttribute("message", "냉장고를 부탁해의 회원이 되신 것을 환영합니다.");

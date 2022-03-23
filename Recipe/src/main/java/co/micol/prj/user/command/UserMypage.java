@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.micol.prj.comm.Command;
 
-public class UserJoinForm implements Command {
+public class UserMypage implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 회원가입 폼 호출
-		return "user/userJoinForm";
+		// 마이페이지 출력
+		return "user/mypage";
 	}
 
 }

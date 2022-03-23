@@ -8,27 +8,25 @@ import co.micol.prj.user.service.UserService;
 import co.micol.prj.user.service.UserVO;
 import co.micol.prj.user.serviceImpl.UserServiceImpl;
 
-public class UserJoin implements Command {
+public class UserLogin implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 회원가입 처리
-		
+		// 로그인 처리
 		UserService userDAO = new UserServiceImpl();
 		UserVO vo = new UserVO();
+		
 		vo.setUserId(request.getParameter("userId"));
 		vo.setUserPassword(request.getParameter("userPassword"));
-		vo.setUserName(request.getParameter("userName"));
-		vo.setUserAlias(request.getParameter("userAlias"));
-		vo.setUserTel(request.getParameter("userTel"));
-		vo.setUserAddress(request.getParameter("userAddress"));
-		int n = userDAO.insertUser(vo);
-		if(n != 0) {
-			request.setAttribute("message", "냉장고를 부탁해의 회원이 되신 것을 환영합니다.");
+		vo = userDAO.selectUser(vo);
+		
+		if(vo != null) {
+			request.setAttribute("message", vo.getUserAlias() + "님 환영합니다.");
 		} else {
-			request.setAttribute("message", "회원가입이 정상적으로 이루어지지 않았습니다.");
+			request.setAttribute("message", "아이디 또는 패스워드가 틀립니다.");
 		}
-		return "user/userJoin";
+		
+		return "user/userLogin";
 	}
 
 }

@@ -23,6 +23,9 @@ import co.micol.prj.main.command.HomeCommand;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
+import co.micol.prj.user.command.UserLogin;
+import co.micol.prj.user.command.UserLoginForm;
+import co.micol.prj.user.command.UserMypage;
 
 @WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
@@ -47,6 +50,10 @@ public class FrontController extends HttpServlet {
 //		기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
 		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
+		map.put("/userLoginForm.do", new UserLoginForm()); //로그인폼 호출
+		map.put("/userLogin.do", new UserLogin()); //로그인 처리
+		map.put("/userMypage.do", new UserMypage()); //마이페이지 출력
+		
 
 //		기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록

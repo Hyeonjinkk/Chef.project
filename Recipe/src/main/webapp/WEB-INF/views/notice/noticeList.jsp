@@ -30,7 +30,7 @@
 					<table border="1" id="contents">
 						<thead>
 							<tr>
-								<th width="70">글번호 
+								<th width="70">글번호 <br>
 									<span style="color: red" onclick="sortNotice('A')">A</span> 
 									<span style="color: red" onclick="sortNotice('B')">B</span>
 								</th>
@@ -47,17 +47,15 @@
 								</tr>
 							</c:if>
 							<c:if test="${not empty notices }">
-								<tr>
-									<c:forEach items="${notices }" var="n">
-										<tr onclick="noticeContent('${n.noticeNo}')">
-											<td>${n.noticeNo }</td>
-											<td>${n.noticeTtile}</td>
-											<td>${n.userAlias }</td>
-											<td>${n.noticeDate }</td>
-											<td>${n.noticeHit }</td>
+									<c:forEach items="${notices }" var="b">
+										<tr onclick="noticeContent('${b.noticeNo}')">
+											<td>${b.noticeNo }</td>
+											<td>${b.noticeTitle}</td>
+											<td>${b.userAlias }</td>
+											<td>${b.noticeDate }</td>
+											<td>${b.noticeHit }</td>
 										</tr>
 									</c:forEach>
-								</tr>
 							</c:if>
 						</tbody>
 					</table>

@@ -32,9 +32,8 @@
 				<table border="1">
 					<thead>
 						<tr>
-							<th width="150"><span style="color: red"
-								onclick="sortBorder('A')">A </span>글번호 <span style="color: red"
-								onclick="sortBorder('D')"> D </span></th>
+							<th width="150"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
+											<span style="color:red" onclick="sortBorder('D')"> D </span></th>
 							<th width="150">작성자</th>
 							<th width="300">제목</th>
 							<th width="150">작성일자</th>
@@ -68,8 +67,10 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" onclick="location.href='home.do'">메인</button>
+			<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+				<c:if test="${b.borderWriter == 'admin'}">
 					<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+				</c:if>
 			</div>
 			<input type="hidden" id="borderId" name="borderId">
 		</form>
@@ -77,7 +78,10 @@
 	</div>
 	<script type="text/javascript">
 	function borderContents(n){
+		
+		console.log(n);
 		frm.borderId.value = n;
+		console.log('frm.borderId.value');
 		frm.action = "borderView.do";
 		frm.submit();
 	}

@@ -21,5 +21,8 @@
   <mappers>
     <mapper resource="co/micol/prj/border/service/border-map.xml"/>
     <mapper resource="co/micol/prj/notice/service/notice-map.xml"/>
+    <mapper resource="co/micol/prj/user/service/user-map.xml" />
   </mappers>
 </configuration>
+
+

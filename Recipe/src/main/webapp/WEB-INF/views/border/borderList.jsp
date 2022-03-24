@@ -67,7 +67,8 @@
 			</div>
 			<br>
 			<div>
-				<c:if test="${b.borderId == 'admin'}">
+			<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+				<c:if test="${b.borderWriter == 'admin'}">
 					<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
 				</c:if>
 			</div>
@@ -77,7 +78,10 @@
 	</div>
 	<script type="text/javascript">
 	function borderContents(n){
+		
+		console.log(n);
 		frm.borderId.value = n;
+		console.log('frm.borderId.value');
 		frm.action = "borderView.do";
 		frm.submit();
 	}

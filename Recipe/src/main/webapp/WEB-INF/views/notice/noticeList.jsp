@@ -23,7 +23,7 @@
 						<option value="4">내용</option>
 					</select> <span> <input type="text" id="searchVal"><input
 						type="button" onclick="searchList()" value="검색">
-					</span>
+					</span><br>
 				</div>
 
 				<div>
@@ -47,13 +47,15 @@
 								</tr>
 							</c:if>
 							<c:if test="${not empty notices }">
-									<c:forEach items="${notices }" var="b">
-										<tr onclick="noticeContent('${b.noticeNo}')">
-											<td>${b.noticeNo }</td>
-											<td>${b.noticeTitle}</td>
-											<td>${b.userAlias }</td>
-											<td>${b.noticeDate }</td>
-											<td>${b.noticeHit }</td>
+									<c:forEach items="${notices }" var="n">
+										<tr onmouseover='this.style.background="#fcecae";'
+											onmouseleave='this.style.background="#FFFFFF";' 
+											onclick="noticeContent('${n.noticeNo}')">
+											<td>${n.noticeNo }</td>
+											<td>${n.noticeTitle}</td>
+											<td>${n.userAlias }</td>
+											<td>${n.noticeDate }</td>
+											<td>${n.noticeHit }</td>
 										</tr>
 									</c:forEach>
 							</c:if>
@@ -69,17 +71,17 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-			function noticeContent(n){
-				frm.noticeNo.value = n;
-				frm.action = "noticeView.do";
-				frm.submit();
-			}
+		function noticeContent(n){
+			frm.noticeNo.value = n;
+			frm.action = "noticeView.do";
+			frm.submit();
+		}
 			
 			function searchList(data){
 				$.ajax({
 					url : "ajaxNoticeSearch.do",
 					type : "post",
-					data : {"key" : $("#searchKey").val(), "val" : $("searchVal").val()},
+					data : {"key" : $("#searchKey").val(), "val" : $("#searchVal").val()},
 					dataType : "json",
 					success : function(result){
 						if(result.length > 0){
@@ -94,10 +96,12 @@
 			function searchResult(data){
 				var tb = $("#noticeBody");
 				
-				$("noticeBody").empty();
+				$("#noticeBody").empty();
 				
 				$.each(data, function(index, item){
 					var html = $("<tr />").attr({
+						'onmouseover':'this.style.background="#fcecae";',
+						'onmouseleave':'this.style.background="#FFFFFF";',
 						'onclick' : 'noticeContent('+item.noticeNo+')'
 					}).append(
 							$("<td />").text(item.noticeNo),
@@ -108,7 +112,7 @@
 					);
 					tb.append(html);
 				});
-				$("#content").append(tb);
+				$("#contents").append(tb);
 			}
 			
 			function sortNotice(key){

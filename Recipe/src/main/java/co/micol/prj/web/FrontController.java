@@ -78,7 +78,7 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeInsert.do", new NoticeInsert()); // 게시물 등록
 		map.put("/noticeView.do", new NoticeView()); // 게시물 보기
 		map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch()); // 검색
-		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
+		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬/.
 		
 		
 

@@ -20,11 +20,8 @@
 	  </environments>
   <mappers>
     <mapper resource="co/micol/prj/border/service/border-map.xml"/>
-<<<<<<< HEAD
     <mapper resource="co/micol/prj/notice/service/notice-map.xml"/>
-=======
     <mapper resource="co/micol/prj/user/service/user-map.xml" />
->>>>>>> branch 'main' of https://github.com/Hyeonjinkk/Chef.project.git
   </mappers>
 </configuration>
 

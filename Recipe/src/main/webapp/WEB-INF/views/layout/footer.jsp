@@ -10,6 +10,7 @@
 <div align="center">
 	<div>
 		<hr>
+		<a href="qnaList.do">자주듣는 질문</a>
 		<h1>푸터부분123123</h1>
 	</div>
 </div>

@@ -26,6 +26,7 @@ import co.micol.prj.notice.command.AjaxSortNotice;
 import co.micol.prj.notice.command.NoticeInsert;
 import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
+import co.micol.prj.qna.command.QnaList;
 
 import co.micol.prj.recipe.command.RecipeList;
 
@@ -51,9 +52,10 @@ public class FrontController extends HttpServlet {
 		map.put("/userJoinForm.do", new UserJoinForm()); // 회원가입폼 호출
 		
 		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
-		map.put("/borderList.do", new BorderList()); // 공지사항목록
+		map.put("/borderList.do", new BorderList()); // 공지사항목록 보기
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		
+		map.put("/qnaList.do", new QnaList()); //자주듣는 질문 페이지 호출
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		
 		

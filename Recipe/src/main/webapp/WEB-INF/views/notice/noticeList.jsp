@@ -14,7 +14,7 @@
 			<h1>자유게시판</h1>
 		</div>
 		<div>
-			<form id="frm" method="post">
+			<form id="notice" method="post" >
 				<div>
 					<select id="searchKey" name="searchKey">
 						<option value="1">전체</option>
@@ -66,19 +66,16 @@
 				<div>
 					<button type="button" onclick="location.href='noticeInsertForm.do'">글쓰기</button>
 				</div>
-				<input type="hidden" id="noticeNo" name="noticeNo">
+				<input type="hidden" id="noticeNo" name="noticeNo" value="">
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
 		function noticeContent(n){
-			console.log(n);
 			
-			frm.noticeNo.value = n;
-			console.log(frm.noticeNo.value);
-			
-			frm.action = "noticeView.do";
-			frm.submit();
+			notice.noticeNo.value= n;
+			notice.action = "noticeView.do";
+			notice.submit();
 		}
 			
 			function searchList(data){

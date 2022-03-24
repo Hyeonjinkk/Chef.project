@@ -17,6 +17,7 @@ import co.micol.prj.border.command.BorderDelete;
 import co.micol.prj.border.command.BorderInsert;
 import co.micol.prj.border.command.BorderInsertForm;
 import co.micol.prj.border.command.BorderList;
+import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
 import co.micol.prj.main.command.HomeCommand;
@@ -50,6 +51,7 @@ public class FrontController extends HttpServlet {
 
 //		기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
+		map.put("/borderUpdate.do", new BorderUpdate()); // 공지사항 수정
 		map.put("/borderDelete.do", new BorderDelete()); // 공지사항 삭제
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬

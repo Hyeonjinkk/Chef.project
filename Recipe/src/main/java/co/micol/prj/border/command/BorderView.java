@@ -14,9 +14,10 @@ public class BorderView implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		BorderService borderDao = new BorderServiceImpl();
 		BorderVO vo = new BorderVO();
-		vo.setBorderId(Integer.parseInt(request.getParameter("borderId")));
-		request.setAttribute("border", borderDao.borderSelect(vo)); 
-		borderDao.borderUpdateHit(vo.getBorderId()); //조회수 증가
+		String borderId = request.getParameter("borderId").trim();
+		vo.setBorderId(Integer.parseInt(borderId));
+		request.setAttribute("border", borderDao.borderSelect(vo));
+		borderDao.borderUpdateHit(vo.getBorderId()); // 조회수 증가
 		return "border/borderView";
 	}
 

@@ -22,6 +22,7 @@ import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
 import co.micol.prj.main.command.HomeCommand;
 import co.micol.prj.notice.command.NoticeList;
+import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
@@ -43,8 +44,10 @@ public class FrontController extends HttpServlet {
 		map.put("/userJoinForm.do", new UserJoinForm()); // 회원가입폼 호출
 		
 		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
-		map.put("/borderList.do", new BorderList()); // 공지사항목록
+		map.put("/borderList.do", new BorderList()); // 공지사항목록 보기
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
+		
+		map.put("/qnaList.do", new QnaList()); //자주듣는 질문 페이지 호출
 		
 //		기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리

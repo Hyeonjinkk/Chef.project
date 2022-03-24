@@ -64,6 +64,7 @@ public class FrontController extends HttpServlet {
 		
 		
 //		기능처리(notice) - 자유게시판
+		// 게시물보기랑 이미지넣기 미구현
 		map.put("/noticeList.do", new NoticeList()); // 목록
 		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
 		map.put("/noticeInsert.do", new NoticeInsert()); // 게시물 등록

@@ -72,8 +72,12 @@
 	</div>
 	<script type="text/javascript">
 		function noticeContent(n){
+			console.log(n);
 			frm.noticeNo.value = n;
+			
+			console.log(frm.noticeNo.value);
 			frm.action = "noticeView.do";
+			
 			frm.submit();
 		}
 			

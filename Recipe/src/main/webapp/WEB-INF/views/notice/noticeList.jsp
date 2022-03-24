@@ -14,7 +14,7 @@
 			<h1>자유게시판</h1>
 		</div>
 		<div>
-			<form id="frm" method="post">
+			<form id="frm1" name="frm1" method="post" >
 				<div>
 					<select id="searchKey" name="searchKey">
 						<option value="1">전체</option>
@@ -23,14 +23,14 @@
 						<option value="4">내용</option>
 					</select> <span> <input type="text" id="searchVal"><input
 						type="button" onclick="searchList()" value="검색">
-					</span>
+					</span><br>
 				</div>
 
 				<div>
 					<table border="1" id="contents">
 						<thead>
 							<tr>
-								<th width="70">글번호 
+								<th width="70">글번호 <br>
 									<span style="color: red" onclick="sortNotice('A')">A</span> 
 									<span style="color: red" onclick="sortNotice('B')">B</span>
 								</th>
@@ -47,17 +47,17 @@
 								</tr>
 							</c:if>
 							<c:if test="${not empty notices }">
-								<tr>
 									<c:forEach items="${notices }" var="n">
-										<tr onclick="noticeContent('${n.noticeNo}')">
+										<tr onmouseover='this.style.background="#fcecae";'
+											onmouseleave='this.style.background="#FFFFFF";' 
+											onclick="noticeContent('${n.noticeNo}')">
 											<td>${n.noticeNo }</td>
-											<td>${n.noticeTtile}</td>
+											<td>${n.noticeTitle}</td>
 											<td>${n.userAlias }</td>
 											<td>${n.noticeDate }</td>
 											<td>${n.noticeHit }</td>
 										</tr>
 									</c:forEach>
-								</tr>
 							</c:if>
 						</tbody>
 					</table>
@@ -66,22 +66,23 @@
 				<div>
 					<button type="button" onclick="location.href='noticeInsertForm.do'">글쓰기</button>
 				</div>
-				<input type="hidden" id="noticeNo" name="noticeNo">
+				<input type="hidden" id="noticeNo" name="noticeNo" value="">
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-			function noticeContent(n){
-				frm.noticeNo.value = n;
-				frm.action = "noticeView.do";
-				frm.submit();
-			}
+		function noticeContent(n){
+			
+			document.getElementById('noticeNo').value = n;
+			frm1.action = "noticeView.do";
+			document.getElementById('frm1').submit();
+		}
 			
 			function searchList(data){
 				$.ajax({
 					url : "ajaxNoticeSearch.do",
 					type : "post",
-					data : {"key" : $("#searchKey").val(), "val" : $("searchVal").val()},
+					data : {"key" : $("#searchKey").val(), "val" : $("#searchVal").val()},
 					dataType : "json",
 					success : function(result){
 						if(result.length > 0){
@@ -96,10 +97,12 @@
 			function searchResult(data){
 				var tb = $("#noticeBody");
 				
-				$("noticeBody").empty();
+				$("#noticeBody").empty();
 				
 				$.each(data, function(index, item){
 					var html = $("<tr />").attr({
+						'onmouseover':'this.style.background="#fcecae";',
+						'onmouseleave':'this.style.background="#FFFFFF";',
 						'onclick' : 'noticeContent('+item.noticeNo+')'
 					}).append(
 							$("<td />").text(item.noticeNo),
@@ -110,7 +113,7 @@
 					);
 					tb.append(html);
 				});
-				$("#content").append(tb);
+				$("#contents").append(tb);
 			}
 			
 			function sortNotice(key){

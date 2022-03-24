@@ -56,7 +56,7 @@
 						<div class="col-lg-3 col-md-3">
 							<nav class="head_menu">
 								<ul>
-									<li><a href="./#">레시피</a>
+									<li><a href="recipeList.do">레시피</a>
 									<li><a href="./#">커뮤니티</a>
 										<ul class="dropdown">
 											<li><a href="noticeList.do">자유게시판</a>

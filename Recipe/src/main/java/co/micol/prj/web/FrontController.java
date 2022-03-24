@@ -21,8 +21,16 @@ import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
 import co.micol.prj.main.command.HomeCommand;
+import co.micol.prj.notice.command.AjaxNoticeSearch;
+import co.micol.prj.notice.command.AjaxSortNotice;
+import co.micol.prj.notice.command.NoticeInsert;
+import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.qna.command.QnaList;
+
+import co.micol.prj.recipe.command.RecipeList;
+
+import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
@@ -48,6 +56,9 @@ public class FrontController extends HttpServlet {
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		
 		map.put("/qnaList.do", new QnaList()); //자주듣는 질문 페이지 호출
+		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
+		
+		
 		
 //		기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
@@ -63,10 +74,11 @@ public class FrontController extends HttpServlet {
 		
 //		기능처리(notice) - 자유게시판
 		map.put("/noticeList.do", new NoticeList()); // 목록
-//		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
-//		map.put("/noticeView.do", new NoticeView()); // 게시물 보기
-//		map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch()); // 검색
-//		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
+		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
+		map.put("/noticeInsert.do", new NoticeInsert()); // 게시물 등록
+		map.put("/noticeView.do", new NoticeView()); // 게시물 보기
+		map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch()); // 검색
+		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
 		
 		
 

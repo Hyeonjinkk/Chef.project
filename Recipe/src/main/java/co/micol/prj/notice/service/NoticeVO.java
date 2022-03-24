@@ -11,15 +11,14 @@ import lombok.Setter;
 @Getter
 public class NoticeVO {
 	
-	private int noticeId;
-	private String noticeWriter;
+	private int noticeNo;
+	private String userAlias;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date noticeDate;
 	private String noticeTitle;
-	private String noticeContents;
+	private String noticeContent;
 	private int noticeHit;
-	private String noticeCategory;
 	
 	private String ntImage1;
 	private String ntImage2;

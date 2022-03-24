@@ -5,14 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
-<div align="center">
-
-	<div><h1>This is Our Main Page of website!!!!!</h1></div>
-
-
-</div>
+<h1>${message }</h1>
+<a href="home.do">홈 화면으로 돌아가기</a>
 </body>
 </html>

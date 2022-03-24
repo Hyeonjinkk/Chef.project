@@ -20,5 +20,6 @@
 	  </environments>
   <mappers>
     <mapper resource="co/micol/prj/border/service/border-map.xml"/>
+    <mapper resource="co/micol/prj/notice/service/notice-map.xml"/>
   </mappers>
 </configuration>

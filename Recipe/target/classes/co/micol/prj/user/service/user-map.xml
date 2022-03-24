@@ -14,7 +14,7 @@
 
 	<insert id="insertUser" parameterType="co.micol.prj.user.service.UserVO">
 		INSERT INTO USERS
-		VALUES(userno_seq, #{userId}, #{userPassword}, #{userName}, #{userAlias}, #{userAddress}, #{userTel}, #{userSubs}, 'USER')
+		VALUES(USERNO_SEQ, #{userId}, #{userPassword}, #{userName}, #{userAlias}, #{userAddress}, #{userTel}, '0', 'USER')
 	</insert>
 
 	<update id="updateUser" parameterType="co.micol.prj.user.service.UserVO">

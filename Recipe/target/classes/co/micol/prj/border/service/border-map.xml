@@ -28,8 +28,9 @@
 		VALUES(#{borderId},#{borderWriter},#{borderDate},#{borderTitle},#{borderContents},0)
 	</insert>
 	
-	<update id="borderUpdate" >
-	
+	<update id="borderUpdate" parameterType="co.micol.prj.border.service.BorderVO" >
+		UPDATE BORDER SET BORDER_WRITER = #{borderWriter} ,BORDER_DATE =#{borderDate} , BORDER_TITLE =#{borderTitle} ,
+		BORDER_CONTENTS = #{borderContents} WHERE BORDER_ID = #{borderId}
 	</update>
 	<delete id="borderDelete" parameterType="co.micol.prj.border.service.BorderVO">
 		DELETE FROM BORDER WHERE BORDER_ID = #{borderId}

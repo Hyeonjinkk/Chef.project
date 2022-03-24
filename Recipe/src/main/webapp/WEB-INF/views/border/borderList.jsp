@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 			<h1>게시글 목록</h1>
 		</div>
 
-		<form id="frm" method="post">
+		<form id="fmm" method="post">
 
 			<div>
 				<select id="searchKey" name="searchKey">
@@ -68,7 +68,7 @@
 			<br>
 			<div>
 			<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
-				<c:if test="${b.borderWriter == 'admin'}">
+				<c:if test="${user_no == 1}">
 					<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
 				</c:if>
 			</div>
@@ -80,10 +80,10 @@
 	function borderContents(n){
 		
 		console.log(n);
-		frm.borderId.value = n;
-		console.log('frm.borderId.value');
-		frm.action = "borderView.do";
-		frm.submit();
+		fmm.borderId.value = n;
+		console.log(fmm.borderId.value);
+		fmm.action = "borderView.do";
+		fmm.submit();
 	}
 	
 	function searchList() {

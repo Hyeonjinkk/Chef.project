@@ -26,7 +26,11 @@ import co.micol.prj.notice.command.AjaxSortNotice;
 import co.micol.prj.notice.command.NoticeInsert;
 import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
+<<<<<<< HEAD
+import co.micol.prj.recipe.command.RecipeList;
+=======
 import co.micol.prj.notice.command.NoticeView;
+>>>>>>> branch 'main' of https://github.com/Hyeonjinkk/Chef.project.git
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
@@ -50,6 +54,10 @@ public class FrontController extends HttpServlet {
 		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
 		map.put("/borderList.do", new BorderList()); // 공지사항목록
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
+		
+		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
+		
+		
 		
 //		기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리

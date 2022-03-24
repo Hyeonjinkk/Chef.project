@@ -26,11 +26,10 @@ import co.micol.prj.notice.command.AjaxSortNotice;
 import co.micol.prj.notice.command.NoticeInsert;
 import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
-<<<<<<< HEAD
+
 import co.micol.prj.recipe.command.RecipeList;
-=======
+
 import co.micol.prj.notice.command.NoticeView;
->>>>>>> branch 'main' of https://github.com/Hyeonjinkk/Chef.project.git
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;

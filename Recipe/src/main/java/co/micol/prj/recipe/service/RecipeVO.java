@@ -2,9 +2,11 @@ package co.micol.prj.recipe.service;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class RecipeVO {
 	private int rSeq;			// 일련번호		
 	private String rName;		// 메뉴이름

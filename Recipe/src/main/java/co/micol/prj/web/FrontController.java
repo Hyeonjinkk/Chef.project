@@ -26,6 +26,7 @@ import co.micol.prj.notice.command.AjaxSortNotice;
 import co.micol.prj.notice.command.NoticeInsert;
 import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
+import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
@@ -51,6 +52,10 @@ public class FrontController extends HttpServlet {
 		map.put("/borderList.do", new BorderList()); // 공지사항목록
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		
+		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
+		
+		
+		
 //		기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
 		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
@@ -64,7 +69,7 @@ public class FrontController extends HttpServlet {
 		
 		
 //		기능처리(notice) - 자유게시판
-		// 게시물보기랑 이미지넣기 미구현
+		// 게시물보기랑 이미지넣기,수정 미구현
 		map.put("/noticeList.do", new NoticeList()); // 목록
 		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
 		map.put("/noticeInsert.do", new NoticeInsert()); // 게시물 등록

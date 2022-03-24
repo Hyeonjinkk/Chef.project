@@ -14,7 +14,6 @@
 			<form id="frm" action="userJoinForm.do">
 				<button>회원가입</button>
 			</form>
-			<hr>
 
 
 
@@ -33,8 +32,7 @@
 
 
 										<c:if test="${empty id }">
-											<li><a href=""
-												class="button alt">SIGN IN</a></li>
+											<li><a href="" class="button alt">SIGN IN</a></li>
 										</c:if>
 										<c:if test="${not empty id }">
 											<li><a href="<%=request.getContextPath()%>/#"
@@ -61,7 +59,7 @@
 									<li><a href="./#">레시피</a>
 									<li><a href="./#">커뮤니티</a>
 										<ul class="dropdown">
-											<li><a href="./#">자유게시판</a>
+											<li><a href="noticeList.do">자유게시판</a>
 											<li><a href="./#">레시피/재료 문의</a>
 											<li><a href="./#">후기게시판</a>
 										</ul>
@@ -75,4 +73,7 @@
 						</div>
 					</div>
 				</div>
+				<hr>
 			</header>
+		</div>
+	</div>

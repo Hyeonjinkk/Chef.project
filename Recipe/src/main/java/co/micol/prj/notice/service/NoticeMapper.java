@@ -11,6 +11,6 @@ public interface NoticeMapper {
 	int noticeUpdate(NoticeVO vo);
 	int noticeDelete(NoticeVO vo);
 	int noticeUpdateHit(int id);
-	List<NoticeVO> noticeSelectSearchList(@Param("key") String key, @Param("val")String val);
+	List<NoticeVO> noticeSelectSearchList(@Param("key")String key, @Param("val")String val);
 	List<NoticeVO> noticeSortList(String key);
 }

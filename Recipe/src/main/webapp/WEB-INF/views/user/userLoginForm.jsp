@@ -17,7 +17,7 @@
 			아이디 <input type="email" id="userId" name="userId" required="required" placeholder="abc@abc.com">
 			비밀번호 <input type="password" id="userPassword" name="userPassword" required="required">
 
-			<input type="submit" value="로그인하기">
+			<button type="submit">로그인하기</button>
 			<p>
 			<input type="button" value="홈 가기" onclick="">&nbsp;&nbsp;
 			<input type="button" value="회원가입하기" onclick="">

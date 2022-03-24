@@ -1,6 +1,7 @@
 package co.micol.prj.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -25,7 +26,9 @@ import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
 import co.micol.prj.user.command.UserLogin;
 import co.micol.prj.user.command.UserLoginForm;
+import co.micol.prj.user.command.UserLogout;
 import co.micol.prj.user.command.UserMypage;
+import co.micol.prj.user.command.UserUpdateForm;
 
 @WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
@@ -52,7 +55,11 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
 		map.put("/userLoginForm.do", new UserLoginForm()); //로그인폼 호출
 		map.put("/userLogin.do", new UserLogin()); //로그인 처리
+		map.put("/userLogout.do", new UserLogout()); //로그아웃 처리
 		map.put("/userMypage.do", new UserMypage()); //마이페이지 출력
+		map.put("/userUpdateForm.do", new UserUpdateForm()); //회원정보수정폼 출력
+		
+		
 		
 
 //		기능처리(border)			

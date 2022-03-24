@@ -19,6 +19,12 @@
 	    </environment>
 	  </environments>
   <mappers>
+  	<mapper resource="co/micol/prj/recipe/service/recipe-map.xml"/>
     <mapper resource="co/micol/prj/border/service/border-map.xml"/>
+    <mapper resource="co/micol/prj/notice/service/notice-map.xml"/>
+    <mapper resource="co/micol/prj/user/service/user-map.xml" />
+    <mapper resource="co/micol/prj/qna/service/qna-map.xml" />
   </mappers>
 </configuration>
+
+

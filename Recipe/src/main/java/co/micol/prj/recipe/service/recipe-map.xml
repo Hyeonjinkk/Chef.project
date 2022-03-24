@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.recipe.service.RecipeMapper">
+	<resultMap type="co.micol.prj.recipe.service.RecipeVO"
+		id="recipeMap">
+		
+		<id property="rSeq" column="r_seq" />
+		<result property="rName" column="r_name" />
+		<result property="rWay" column="r_way" />
+		<result property="rKind" column="r_kind" />
+		<result property="rWgt" column="r_wgt" />
+		<result property="rEng" column="r_eng" />
+		<result property="rCar" column="r_car" />
+		<result property="rPro" column="r_pro" />
+		<result property="rFat" column="r_fat" />
+		<result property="rNa" column="r_na" />
+		<result property="rTag" column="r_tag" />
+		<result property="rImageSm" column="r_image_sm" />
+		<result property="rImageLg" column="r_image_lg" />
+		<result property="rParts" column="r_parts" />
+		<result property="userNo" column="user_no" />
+		
+		<!-- 요리과정  -->
+		<result property="manual01" column="manual01" />
+		<result property="manualImage01" column="manual_Img01" />
+		<result property="manual02" column="manual02" />
+		<result property="manualImage02" column="manual_Img02" />
+		<result property="manual03" column="manual03" />
+		<result property="manualImage03" column="manual_Img03" />
+		<result property="manual04" column="manual04" />
+		<result property="manualImage04" column="manual_Img04" />
+		<result property="manual05" column="manual05" />
+		<result property="manualImage05" column="manual_Img05" />
+		<result property="manual06" column="manual06" />
+		<result property="manualImage06" column="manual_Img06" />
+		<result property="manual07" column="manual07" />
+		<result property="manualImage07" column="manual_Img07" />
+		<result property="manual08" column="manual08" />
+		<result property="manualImage08" column="manual_Img08" />
+		<result property="manual09" column="manual09" />
+		<result property="manualImage09" column="manual_Img09" />
+		<result property="manual10" column="manual10" />
+		<result property="manualImage10" column="manual_Img10" />
+		<result property="manual11" column="manual11" />
+		<result property="manualImage11" column="manual_Img11" />
+		<result property="manual12" column="manual12" />
+		<result property="manualImage12" column="manual_Img12" />
+		<result property="manual13" column="manual13" />
+		<result property="manualImage13" column="manual_Img13" />
+		<result property="manual14" column="manual14" />
+		<result property="manualImage14" column="manual_Img14" />
+		<result property="manual15" column="manual15" />
+		<result property="manualImage15" column="manual_Img15" />
+		<result property="manual16" column="manual16" />
+		<result property="manualImage16" column="manual_Img16" />
+		<result property="manual17" column="manual17" />
+		<result property="manualImage17" column="manual_Img17" />
+		<result property="manual18" column="manual18" />
+		<result property="manualImage18" column="manual_Img18" />
+		<result property="manual19" column="manual19" />
+		<result property="manualImage19" column="manual_Img19" />
+		<result property="manual20" column="manual20" />
+		<result property="manualImage20" column="manual_Img20" />
+		
+
+
+
+
+
+
+	</resultMap>
+	
+	<!-- 레시피 전체 조회 -->
+	<select id="selectRecipeList" resultMap="recipeMap">
+		SELECT * FROM RECIPE ORDER BY R_SEQ DESC
+	</select>
+
+
+
+
+
+</mapper>

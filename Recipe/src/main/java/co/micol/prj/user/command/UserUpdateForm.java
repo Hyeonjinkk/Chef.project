@@ -2,6 +2,7 @@ package co.micol.prj.user.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.micol.prj.comm.Command;
 import co.micol.prj.user.service.UserService;
@@ -15,12 +16,21 @@ public class UserUpdateForm implements Command {
 		// 회원정보수정폼 출력
 		UserService userDAO = new UserServiceImpl();
 		UserVO vo = new UserVO();
-		vo.setUserId(request.getParameter("userId"));
-		request.setAttribute("mypage", userDAO.selectUser(vo));
+		HttpSession session = request.getSession();
+		vo.setUserId((String) session.getAttribute("userId"));
+		vo = userDAO.selectUser(vo);
 		
-		System.out.println(request.getParameter("userId"));
-		System.out.println(vo);
-		
+		if (vo != null) {
+			session.setAttribute("userPassword", vo.getUserPassword());
+			session.setAttribute("userName", vo.getUserName());
+			session.setAttribute("userAlias", vo.getUserAlias());
+			session.setAttribute("userAddress", vo.getUserAddress());
+			session.setAttribute("userTel", vo.getUserTel());
+			request.setAttribute("message", "회원정보수정");
+		} else {
+			request.setAttribute("message", "회원정보수정 화면을 불러오지 못하였습니다. 다시 시도해 주세요.");
+		}
+
 		return "user/userUpdateForm";
 	}
 

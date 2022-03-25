@@ -36,14 +36,14 @@
 
 
                                  <c:if test="${empty userId }">
-                           ${userId }
+                          
                               <li><a href="userLoginForm.do" class="button alt">로그인</a></li>
                                     <li><a href="userJoinForm.do" class="button alt">회원가입</a></li>
-                                    <li><a href="userMypage.do" class="button alt">마이페이지</a></li>
                                  </c:if>
                                  <c:if test="${not empty userId }">
-                                    <li><a href="#" class="button alt">LOG OUT</a></li>
+                                    <li><a href="userLogout.do" class="button alt">LOG OUT</a></li>
                                  </c:if>
+                                    <a href="userMypage.do" class="button alt">마이페이지</a>
                               </div>
                            </div>
                            <div class="col-lg-3 col-md-3">

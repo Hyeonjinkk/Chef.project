@@ -19,7 +19,6 @@ public class UserMypage implements Command {
 		HttpSession session = request.getSession();
 		vo.setUserId((String)session.getAttribute("userId"));
 		vo = userDAO.selectUser(vo);
-		System.out.println(request.getParameter("userId"));
 		
 		if(vo != null) {
 			session.setAttribute("userId", session.getAttribute("userId"));

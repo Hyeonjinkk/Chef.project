@@ -3,43 +3,43 @@
 <mapper namespace="co.micol.prj.recipe.service.RecipeMapper">
 	<resultMap type="co.micol.prj.recipe.service.RecipeVO"
 		id="recipeMap">
-		
-		<id property="rSeq" column="r_seq" />
-		<result property="rName" column="r_name" />
-		<result property="rWay" column="r_way" />
-		<result property="rKind" column="r_kind" />
-		<result property="rWgt" column="r_wgt" />
-		<result property="rEng" column="r_eng" />
-		<result property="rCar" column="r_car" />
-		<result property="rPro" column="r_pro" />
-		<result property="rFat" column="r_fat" />
-		<result property="rNa" column="r_na" />
-		<result property="rTag" column="r_tag" />
-		<result property="rImageSm" column="r_image_sm" />
-		<result property="rImageLg" column="r_image_lg" />
-		<result property="rParts" column="r_parts" />
+
+		<id property="recipeSeq" column="r_seq" />
+		<result property="recipeName" column="r_name" />
+		<result property="recipeWay" column="r_way" />
+		<result property="recipeKind" column="r_kind" />
+		<result property="recipeWgt" column="r_wgt" />
+		<result property="recipeEng" column="r_eng" />
+		<result property="recipeCar" column="r_car" />
+		<result property="recipePro" column="r_pro" />
+		<result property="recipeFat" column="r_fat" />
+		<result property="recipeNa" column="r_na" />
+		<result property="recipeTag" column="r_tag" />
+		<result property="recipeImageSm" column="r_image_sm" />
+		<result property="recipeImageLg" column="r_image_lg" />
+		<result property="recipeParts" column="r_parts" />
 		<result property="userNo" column="user_no" />
-		<result property="rDate" column="rdate"/>
-		
-		<!-- 요리과정  -->
-		<result property="manual01" column="manual01" />
-		<result property="manualImage01" column="manual_Img01" />
-		<result property="manual02" column="manual02" />
-		<result property="manualImage02" column="manual_Img02" />
-		<result property="manual03" column="manual03" />
-		<result property="manualImage03" column="manual_Img03" />
-		<result property="manual04" column="manual04" />
-		<result property="manualImage04" column="manual_Img04" />
-		<result property="manual05" column="manual05" />
-		<result property="manualImage05" column="manual_Img05" />
-		<result property="manual06" column="manual06" />
-		<result property="manualImage06" column="manual_Img06" />
-		<result property="manual07" column="manual07" />
-		<result property="manualImage07" column="manual_Img07" />
-		<result property="manual08" column="manual08" />
-		<result property="manualImage08" column="manual_Img08" />
-		<result property="manual09" column="manual09" />
-		<result property="manualImage09" column="manual_Img09" />
+		<result property="recipeDate" column="rdate" />
+
+		<!-- 요리과정 -->
+		<result property="manual1" column="manual01" />
+		<result property="manualImage1" column="manual_Img01" />
+		<result property="manual2" column="manual02" />
+		<result property="manualImage2" column="manual_Img02" />
+		<result property="manual3" column="manual03" />
+		<result property="manualImage3" column="manual_Img03" />
+		<result property="manual4" column="manual04" />
+		<result property="manualImage4" column="manual_Img04" />
+		<result property="manual5" column="manual05" />
+		<result property="manualImage5" column="manual_Img05" />
+		<result property="manual6" column="manual06" />
+		<result property="manualImage6" column="manual_Img06" />
+		<result property="manual7" column="manual07" />
+		<result property="manualImage7" column="manual_Img07" />
+		<result property="manual8" column="manual08" />
+		<result property="manualImage8" column="manual_Img08" />
+		<result property="manual9" column="manual09" />
+		<result property="manualImage9" column="manual_Img09" />
 		<result property="manual10" column="manual10" />
 		<result property="manualImage10" column="manual_Img10" />
 		<result property="manual11" column="manual11" />
@@ -62,7 +62,7 @@
 		<result property="manualImage19" column="manual_Img19" />
 		<result property="manual20" column="manual20" />
 		<result property="manualImage20" column="manual_Img20" />
-		
+
 
 
 
@@ -70,10 +70,17 @@
 
 
 	</resultMap>
-	
+
 	<!-- 레시피 전체 조회 -->
 	<select id="selectRecipeList" resultMap="recipeMap">
-		SELECT * FROM RECIPE ORDER BY R_SEQ DESC
+		SELECT * FROM RECIPE
+		ORDER BY R_SEQ DESC
+	</select>
+
+	<!-- 레시피 상세 과정 조회 -->
+	<select id="selectRecipe" resultMap="recipeMap"
+		parameterType="co.micol.prj.recipe.service.RecipeVO">
+		SELECT * FROM RECIPE WHERE R_SEQ = #{recipeSeq}
 	</select>
 
 

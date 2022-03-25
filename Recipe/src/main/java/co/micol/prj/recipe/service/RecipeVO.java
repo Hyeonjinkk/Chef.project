@@ -1,6 +1,5 @@
 package co.micol.prj.recipe.service;
 
-
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,45 +12,45 @@ import lombok.ToString;
 @Setter
 @ToString
 public class RecipeVO {
-	private int rSeq;			// 일련번호		
-	private String rName;		// 메뉴이름
-	private String rWay;		// 조리방식
-	private String rKind;		// 메뉴종류
-	private String rWgt;		// 중량
-	private int rEng;			// 열량
-	private int rCar;			// 탄수화물
-	private int rPro;			// 단백질
-	private int rFat;			// 지방
-	private int rNa;			// 나트륨
-	private String rTag;		// 해쉬태그
-	private String rImageSm;	// 메인이미지(소)
-	private String rImageLg;	// 메인이미지(대)
-	private String rParts;		// 재료
-	private int userNo;			// 유저NO
-	
+	private int recipeSeq; // 일련번호
+	private String recipeName; // 메뉴이름
+	private String recipeWay; // 조리방식
+	private String recipeKind; // 메뉴종류
+	private String recipeWgt; // 중량
+	private int recipeEng; // 열량
+	private int recipeCar; // 탄수화물
+	private int recipePro; // 단백질
+	private int recipeFat; // 지방
+	private int recipeNa; // 나트륨
+	private String recipeTag; // 해쉬태그
+	private String recipeImageSm; // 메인이미지(소)
+	private String recipeImageLg; // 메인이미지(대)
+	private String recipeParts; // 재료
+	private int userNo; // 유저NO
+
 	@JsonFormat(pattern = "yy-MM-dd", timezone = "Asia/Seoul")
-	private Date rDate;			// 등록일자
-	
+	private Date recipeDate; // 등록일자
+
 //	레시피 요리과정
-	
-	private String manual01;	
-	private String manualImage01;
-	private String manual02;
-	private String manualImage02;
-	private String manual03;
-	private String manualImage03;
-	private String manual04;
-	private String manualImage04;
-	private String manual05;
-	private String manualImage05;
-	private String manual06;
-	private String manualImage06;
-	private String manual07;
-	private String manualImage07;
-	private String manual08;
-	private String manualImage08;
-	private String manual09;
-	private String manualImage09;
+
+	private String manual1;
+	private String manualImage1;
+	private String manual2;
+	private String manualImage2;
+	private String manual3;
+	private String manualImage3;
+	private String manual4;
+	private String manualImage4;
+	private String manual5;
+	private String manualImage5;
+	private String manual6;
+	private String manualImage6;
+	private String manual7;
+	private String manualImage7;
+	private String manual8;
+	private String manualImage8;
+	private String manual9;
+	private String manualImage9;
 	private String manual10;
 	private String manualImage10;
 	private String manual11;
@@ -74,21 +73,5 @@ public class RecipeVO {
 	private String manualImage19;
 	private String manual20;
 	private String manualImage20;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

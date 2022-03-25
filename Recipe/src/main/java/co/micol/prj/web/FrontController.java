@@ -30,7 +30,7 @@ import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.qna.command.QnaList;
 
 import co.micol.prj.recipe.command.RecipeList;
-
+import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
@@ -93,7 +93,10 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeView.do", new NoticeView()); // 게시물 보기
 		map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch()); // 검색
 		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬/.
+
 		
+//		기능처리(recipe) - 레시피
+		map.put("/recipeView.do", new RecipeView());	// 레시피 상세 과정 보기
 		
 
 	}

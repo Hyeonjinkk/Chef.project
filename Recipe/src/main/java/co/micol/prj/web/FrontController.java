@@ -1,7 +1,6 @@
 package co.micol.prj.web;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -27,9 +26,12 @@ import co.micol.prj.notice.command.AjaxSortNotice;
 import co.micol.prj.notice.command.NoticeInsert;
 import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
+import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.QnaList;
-
+import co.micol.prj.qna.command.qnaInsert;
+import co.micol.prj.qna.command.qnaInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
+
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.user.command.AjaxUserIdCheck;
@@ -98,7 +100,10 @@ public class FrontController extends HttpServlet {
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		map.put("/recipeView.do", new RecipeView());	// 레시피 상세 과정 보기
 		
-
+		
+//		기능처리(QnA)
+		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
+		map.put("/qnaInsert.do", new qnaInsert()); //QnA 등록
 	}
 	
 	

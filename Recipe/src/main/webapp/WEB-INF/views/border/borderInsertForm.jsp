@@ -32,7 +32,7 @@
 					<tr>
 						<th>내용</th>
 						<td colspan="3">
-							<textarea rows="10" cols="80" name="borderContents" ></textarea>
+							<textarea rows="10" cols="80" name="borderContents" required="required"></textarea>
 						</td>
 					</tr>
 				</table>

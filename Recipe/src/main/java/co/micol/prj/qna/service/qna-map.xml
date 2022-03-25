@@ -11,7 +11,7 @@
 	
 	
 	<select id="qnaSelectList" resultMap="qnaMap">
-		SELECT*FROM BORDER ORDER BY BORDER_ID DESC
+		SELECT*FROM QNA ORDER BY QNA_NO DESC
 	</select>
 	<select id="qnaSelect" parameterType="co.micol.prj.qna.service.QnaVO"
 			resultMap="qnaMap">

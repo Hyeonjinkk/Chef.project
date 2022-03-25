@@ -6,16 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+<link rel="stylesheet"
+	href="../css/header.css" type="text/css">
 </head>
 <body>
 	<div align="center">
-		<div>
-			<h1>메뉴부분</h1>
-		</div>
-
-
-		<hr>
-
 		<div class="col-lg-6 col-md-5">
 			<div class="header_top_right">
 				<div class="header_top_links">

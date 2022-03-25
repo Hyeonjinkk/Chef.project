@@ -30,10 +30,9 @@ import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
+import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
-
 import co.micol.prj.recipe.command.RecipeView;
-import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
@@ -99,6 +98,7 @@ public class FrontController extends HttpServlet {
 //		기능처리(recipe) - 레시피
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		map.put("/recipeView.do", new RecipeView());	// 레시피 상세 과정 보기
+		map.put("/recipeInsertForm.do", new RecipeInsertForm());	// 레시피 등록 페이지
 		
 		
 //		기능처리(QnA)

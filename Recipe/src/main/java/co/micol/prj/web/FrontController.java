@@ -62,7 +62,6 @@ public class FrontController extends HttpServlet {
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		
 		map.put("/qnaList.do", new QnaList()); //자주듣는 질문 페이지 호출
-		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		
 		
 		
@@ -96,6 +95,7 @@ public class FrontController extends HttpServlet {
 
 		
 //		기능처리(recipe) - 레시피
+		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		map.put("/recipeView.do", new RecipeView());	// 레시피 상세 과정 보기
 		
 

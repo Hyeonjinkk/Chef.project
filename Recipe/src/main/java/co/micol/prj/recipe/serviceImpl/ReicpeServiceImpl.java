@@ -24,7 +24,7 @@ public class ReicpeServiceImpl implements RecipeService {
 	@Override
 	public RecipeVO selectRecipe(RecipeVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return map.selectRecipe(vo);
 	}
 
 	@Override

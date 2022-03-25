@@ -13,7 +13,6 @@
 		<div>
 			<form id="mypage" name="mypage"  method="GET">
 				<div><h3>${message }</h3></div>
-
 				<div>
 					<c:if test="${empty userId }">
 						<a href="userLoginForm.do" class="button alt">로그인하기</a>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.qna.service.QnaMapper">
+
+	<resultMap type="co.micol.prj.qna.service.QnaVO" id="qnaMap">
+		<id property="qnaNo" column="qna_no"/>
+		<result property="qnaTitle" column="qna_title"/>
+		<result property="qnaContents" column="qna_contents"/>
+		
+	</resultMap>
+	
+	
+	<select id="qnaSelectList" resultMap="qnaMap">
+		SELECT*FROM QNA ORDER BY QNA_NO DESC
+	</select>
+	<select id="qnaSelect" parameterType="co.micol.prj.qna.service.QnaVO"
+			resultMap="qnaMap">
+		SELECT*FROM BORDER WHERE BORDER_ID = #{qnaId}
+	</select>
+	
+	<insert id="qnaInsert" parameterType="co.micol.prj.qna.service.QnaVO">
+		<selectKey keyProperty="qnaNo" resultType="int" order="BEFORE">
+			SELECT CASE WHEN MAX(QNA_NO) IS NULL THEN 1 ELSE MAX(QNA_NO) + 1 END AS ID FROM QNA
+		</selectKey>
+		INSERT INTO QNA 
+		VALUES(#{qnaNo}, #{qnaTitle}, #{qnaContents})
+	</insert>
+	
+	<update id="qnaUpdate" parameterType="co.micol.prj.qna.service.QnaVO" >
+		UPDATE BORDER SET BORDER_WRITER = #{qnaWriter} ,BORDER_DATE =#{qnaDate} , BORDER_TITLE =#{qnaTitle} ,
+		BORDER_CONTENTS = #{qnaContents} WHERE BORDER_ID = #{qnaId}
+	</update>
+	<delete id="qnaDelete" parameterType="co.micol.prj.qna.service.QnaVO">
+		DELETE FROM BORDER WHERE BORDER_ID = #{qnaId}
+	
+	
+	</delete>
+	
+	<select id="qnaSelectSearchList" resultMap="qnaMap">
+		SELECT*FROM BORDER
+		WHERE 
+		<if test='key == "전체"'>1 = 1</if>
+		<if test='key == "작성자"'>BORDER_WRITER LIKE '%'||#{val}||'%'</if>
+		<if test='key == "제목"'>BORDER_TITLE LIKE '%'||#{val}||'%'</if>
+		<if test='key == "내용"'>BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>
+		ORDER BY BORDER_ID DESC
+	</select>
+	
+	<select id="qnaSortList" parameterType="String"
+			resultMap="qnaMap">
+	SELECT*FROM BORDER ORDER BY BORDER_ID
+		<if test='key == "A"'>ASC</if> 		
+		<if test='key == "D"'>DESC</if>
+	</select>
+	
+	<update id="qnaUpdateHit" parameterType="int">
+		UPDATE BORDER SET BORDER_HIT = BORDER_HIT + 1 WHERE BORDER_ID = #{id}
+	</update>
+</mapper>

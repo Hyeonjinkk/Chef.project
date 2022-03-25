@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
-	<div>
-		<hr>
-		<a href="qnaList.do">QnA</a>
-		<h1>푸터부분123123</h1>
+	<div align="center">
+		<h3>${message }</h3>
 	</div>
-</div>
 </body>
 </html>

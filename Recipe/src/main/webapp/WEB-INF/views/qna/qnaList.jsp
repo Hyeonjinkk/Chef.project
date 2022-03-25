@@ -1,23 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery.min.js"></script>
+<style>
+.menu a {
+	cursor: pointer;
+}
+
+.menu .hide {
+	display: none;
+}
+</style>
+
 </head>
 <body>
 	<div align="center">
 
 		<div>
-			<h1>게시글 목록</h1>
+			<h1>자주듣는 질문 목록</h1>
 		</div>
-
-		<form id="fmm" method="post">
-
+		<form id="fmr" method="post">
+			<div>
+				<div>
+					<ul>
+						<li id="borderBody"><c:if test="${empty qnaQ }">
+								<li>
+									<p>게시글이 존재하지 않습니다.</p>
+								</li>
+							</c:if> <c:if test="${not empty qnaQ }">
+								<c:forEach items="${qnaQ }" var="q">
+									<div>
+										<ul>
+											<li class="menu"><a>질문${q.qnaNo} : ${q.qnaTitle}</a>
+												<ul class="hide">
+													<li>답변:${q.qnaContents}</li>
+												</ul></li>
+										</ul>
+									</div>
+								</c:forEach>
+							</c:if>
+					</ul>
+				</div>
+			</div>
 			<div>
 				<select id="searchKey" name="searchKey">
 					<option value="전체">전체</option>
@@ -30,46 +60,14 @@
 			</div>
 			<div>
 				<table border="1">
-					<thead>
-						<tr>
-							<th width="150"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
-											<span style="color:red" onclick="sortBorder('D')"> D </span></th>
-							<th width="150">작성자</th>
-							<th width="300">제목</th>
-							<th width="150">작성일자</th>
-							<th width="70">조회수</th>
-						</tr>
-					</thead>
-					<tbody id="borderBody">
-						<c:if test="${empty borders }">
-							<tr>
-								<td colspan="5">게시글이 존재하지 않습니다.</td>
-							</tr>
-						</c:if>
-						<c:if test="${not empty borders }">
-							<tr>
-								<c:forEach items="${borders }" var="b">
-									<tr onmouseover='this.style.background="#fcecae";'
-										onmouseleave='this.style.background="#FFFFFF";'
-										onclick="borderContents(${b.borderId})">
-										<td>${b.borderId}</td>
-										<td>${b.borderWriter}</td>
-										<td>${b.borderTitle}</td>
-										<td>${b.borderDate}</td>
-										<td>${b.borderHit}</td>
-									</tr>
-								</c:forEach>
-							</tr>
-						</c:if>
-					</tbody>
 
 				</table>
 			</div>
 			<br>
 			<div>
-			<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+				<button type="button" onclick="location.href='qnaInsertForm.do'">QnA 등록</button>
 				<c:if test="${user_no == 1}">
-					<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+					<button type="button" onclick="location.href='qnaInsertForm.do'">QnA 등록</button>
 				</c:if>
 			</div>
 			<input type="hidden" id="borderId" name="borderId">
@@ -77,13 +75,26 @@
 
 	</div>
 	<script type="text/javascript">
-	function borderContents(n){
+	
+	console.log(null);
+	 // html dom 이 다 로딩된 후 실행된다.
+    $(document).ready(function(){
+        // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+        $(".menu>a").click(function(){
+            // 현재 클릭한 태그가 a 이기 때문에
+            // a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
+            $(this).next("ul").toggleClass("hide");
+        });
+    });
+
+	
+function qnaContents(g){
 		
-		console.log(n);
-		fmm.borderId.value = n;
-		console.log(fmm.borderId.value);
-		fmm.action = "borderView.do";
-		fmm.submit();
+		console.log(g);
+		fmr.qnaNo.value = g;
+		console.log(fmr.qnaNo.value);
+		fmr.action = "borderView.do";
+		fmr.submit();
 	}
 	
 	function searchList() {

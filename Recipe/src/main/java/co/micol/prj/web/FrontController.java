@@ -31,7 +31,7 @@ import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
-import co.micol.prj.recipe.command.RecipeView;
+
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
@@ -96,7 +96,7 @@ public class FrontController extends HttpServlet {
 
 		
 //		기능처리(recipe) - 레시피
-		map.put("/recipeView.do", new RecipeView());	// 레시피 상세 과정 보기
+		
 		
 //		기능처리(QnA)
 		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출

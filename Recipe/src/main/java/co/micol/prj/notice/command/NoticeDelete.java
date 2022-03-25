@@ -8,7 +8,7 @@ import co.micol.prj.notice.service.NoticeService;
 import co.micol.prj.notice.service.NoticeVO;
 import co.micol.prj.notice.serviceImpl.NoticeServiceImpl;
 
-public class NoticeView implements Command {
+public class NoticeDelete implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -16,10 +16,15 @@ public class NoticeView implements Command {
 		NoticeVO vo = new NoticeVO();
 		
 		vo.setNoticeNo(Integer.parseInt(request.getParameter("noticeNo")));
-		request.setAttribute("nt", noticeDao.noticeSelect(vo));
 		
-		noticeDao.noticeUpdateHit(vo.getNoticeNo());
-		return "notice/noticeView";
+		int n = noticeDao.noticeDelete(vo);
+		
+		if(n != 0) {
+			return "noticeList.do";
+		}else {
+			request.setAttribute("message", "삭제가 정상적으로 이루어지지 않았습니다.");
+			return "notice/noticeList";
+		}
 	}
 
 }

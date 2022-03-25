@@ -34,7 +34,6 @@
 							${nt.ntImage3 }
 						</textarea>
 					</td>
-					
 				</tr>
 			</table>
 		</div>
@@ -42,9 +41,9 @@
 		<div>
 			<button type="button" onclick="location.href='noticeList.do'">목록가기</button>
 			&nbsp;&nbsp;
-			<button type="button" onclick="#">수 정</button>
+			<button type="button" onclick="location.href='noticeUpdateForm.do'">수 정</button>
 			&nbsp;&nbsp;
-			<button type="button" onclick="#">삭 제</button>
+			<button type="button" onclick="location.href='noticeDelete.do'">삭 제</button>
 			&nbsp;&nbsp;
 		</div>
 	</div>

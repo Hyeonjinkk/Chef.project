@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.inquiry.service.InquiryMapper">
+	<resultMap type = "co.micol.prj.inquiry.service.InquiryVO" id="inquiryMap">
+		<id property="inquiryNo" 			column="inquiry_no"/>
+		<result property="userAlias" 		column="user_alias"/>
+		<result property="inquiryDate" 		column="inquiry_date"/>
+		<result property="inquiryTitle" 	column="inquiry_title"/>
+		<result property="inquiryContent" 	column="inquiry_content"/>
+		<result property="inquiryImage1" 	column="inquiry_image1" />
+		<result property="inquiryImage2" 	column="inquiry_image2" />
+		<result property="inquiryImage3" 	column="inquiry_image3" />
+		<result property="inquiryCategory" 	column="inquiry_category"/>
+		<result property="inquiryHit" 		column="inquiry_hit"/>
+	</resultMap>
+	
+	<select id="inquirySelectList" resultMap="inquiryMap">
+		SELECT * FROM inquiry ORDER BY inquiry_no DESC
+	</select>
+	
+	<select id="inquirySelect" parameterType="co.micol.prj.inquiry.service.InquiryVO" resultMap="inquiryMap">
+		SELECT * FROM inquiry WHERE inquiry_no = #{inquiryNo}
+	</select>
+	<insert id="inquiryInsert" parameterType="co.micol.prj.inquiry.service.InquiryVO">
+	
+		<selectKey keyProperty="inquiryNo" resultType="int" order="BEFORE">
+			SELECT CASE WHEN MAX(inquiry_no) IS NULL THEN 1 ELSE MAX(inquiry_no) + 1 END AS ID FROM inquiry
+		</selectKey>
+		INSERT INTO inquiry
+		VALUES (#{inquiryNo}, #{userAlias}, #{inquiryDate}, #{inquiryTitle}, #{inquiryContent}, #{inquiryImage1}, #{inquiryImage2}, #{inquiryImage3}, #{inquiryCategory}, 0)
+	</insert>
+	
+	<update id="inquiryUpdate" parameterType="co.micol.prj.inquiry.service.InquiryVO">
+		UPDATE inquiry SET inquiry_title = #{inquiryTitle}, inquiry_content = #{inquiryContent}
+		WHERE inquiry_no = #{inquiryNo}
+	</update>
+	
+	<delete id="inquiryDelete" parameterType="co.micol.prj.inquiry.service.InquiryVO">
+		DELETE FROM inquiry WHERE inquiry_no = #{inquiryNo}
+	</delete>
+	
+	<select id="inquirySelectSearchList" resultMap="inquiryMap">
+		SELECT * FROM inquiry
+		WHERE
+			<if test='key == "1"'>1 =1</if>
+			<if test='key == "2"'>user_alias LIKE '%'|| #{val} ||'%'</if>
+			<if test='key == "3"'>inqiury_title '%'|| #{val} ||'%'</if>
+			<if test='key == "4"'>inquiry_content '%'|| #{val} ||'%'</if>
+		ORDER BY inquiry_no DESC
+	</select>
+
+	<select id="inquirySortList" parameterType="String" resultMap="inquiryMap">
+		SELECT * FROM inquiry ORDER BY inquiry_no
+		<if test='key == "A"'>ASC</if>
+		<if test='key == "B"'>DESC</if>
+	</select>
+	
+	<update id="inquiryUpdateHit" parameterType="int">
+		UPDATE inquiry SET inquiry_hit = inquiry_hit + 1 WHERE inquiry_no = #{id}
+	</update>
+</mapper>

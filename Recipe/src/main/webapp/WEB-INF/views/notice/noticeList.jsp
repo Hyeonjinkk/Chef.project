@@ -14,7 +14,7 @@
 			<h1>자유게시판</h1>
 		</div>
 		<div>
-			<form id="frm1" name="frm1" method="post" >
+			<form id="notice" method="post" >
 				<div>
 					<select id="searchKey" name="searchKey">
 						<option value="1">전체</option>
@@ -73,9 +73,9 @@
 	<script type="text/javascript">
 		function noticeContent(n){
 			
-			document.getElementById('noticeNo').value = n;
-			frm1.action = "noticeView.do";
-			document.getElementById('frm1').submit();
+			notice.noticeNo.value= n;
+			notice.action = "noticeView.do";
+			notice.submit();
 		}
 			
 			function searchList(data){

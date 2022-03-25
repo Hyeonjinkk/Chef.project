@@ -8,7 +8,7 @@ import co.micol.prj.notice.service.NoticeService;
 import co.micol.prj.notice.service.NoticeVO;
 import co.micol.prj.notice.serviceImpl.NoticeServiceImpl;
 
-public class NoticeView implements Command {
+public class NoticeUpdateForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -16,10 +16,8 @@ public class NoticeView implements Command {
 		NoticeVO vo = new NoticeVO();
 		
 		vo.setNoticeNo(Integer.parseInt(request.getParameter("noticeNo")));
-		request.setAttribute("nt", noticeDao.noticeSelect(vo));
-		
-		noticeDao.noticeUpdateHit(vo.getNoticeNo());
-		return "notice/noticeView";
-	}
+		request.setAttribute("nt", noticeDao.noticeUpdate(vo));
+		return "notice/noticeUpdateForm";
 
+	}
 }

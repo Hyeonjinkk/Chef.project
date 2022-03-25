@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 
 
-<link rel="stylesheet"
-	href="../css/header.css" type="text/css">
+<link rel="stylesheet" href="../css/header.css" type="text/css">
 </head>
 <body>
 	<div align="center">
@@ -19,11 +18,9 @@
 					<div class="header_top">
 						<div class="container">
 							<div class="row">
-								<div class="col-lg-6 col-md-7">
-									<div class="header_top_left">
-										<h1>
-											<p>냉장고를 부탁해</p>
-										</h1>
+								<div class="col-lg-3 col-md-3">
+									<div class="head_logo">
+										<a href="./home.do">냉장고를 부탁해</a>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-5">
@@ -49,7 +46,7 @@
 												<li><a href="./#">커뮤니티</a>
 													<ul class="dropdown">
 														<li><a href="noticeList.do">자유게시판</a>
-														<li><a href="./#">레시피/재료 문의</a>
+														<li><a href="inquiry.do">레시피/재료 문의</a>
 														<li><a href="./#">후기게시판</a>
 													</ul>
 												<li><a href="./#">나의 냉장고</a>

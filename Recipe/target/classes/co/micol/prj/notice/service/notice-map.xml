@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.micol.prj.notice.service.NoticeMapper">
-	
 	<resultMap type="co.micol.prj.notice.service.NoticeVO" id="noticeMap">
-		<id property="noticeId" column="notice_id"/>
+		<id property="noticeNo" column="notice_no"/>
+		<result property="userAlias" column="user_alias"/>
+		<result property="noticeDate" column="notice_date"/>
+		<result property="noticeTitle" column="notice_title"/>
+		<result property="noticeContent" column="notice_content"/>
+		<result property="ntImage1" column="notice_image1"/>
+		<result property="ntImage2" column="notice_image2"/>
+		<result property="ntImage3" column="notice_image3"/>
 	</resultMap>
+	
+	<select id="noticeSelectList" resultMap="noticeMap">
+		SELECT * FROM notice ORDER BY notice_no DESC
+	</select>
+	<select id="noticeSelect" parameterType="co.micol.prj.notice.service.NoticeVO" resultMap="noticeMap">
+		SELECT * FROM notice WHERE notice_no = #{noticeNo}
+	</select>
+	
+	<insert id="noticeInsert" parameterType="co.micol.prj.notice.service.NoticeVO">
+		<selectKey keyProperty="noticeNo" resultType="int" order="BEFORE">
+			SELECT CASE WHEN MAX(notice_no) IS NULL THEN 1 ELSE MAX(notice_no) + 1 END AS ID FROM notice
+		</selectKey>
+		INSERT INTO notice
+		VALUES(#{noticeNo}, #{userAlias}, #{noticeDate}, #{noticeTitle}, #{noticeContent}, #{ntImage1}, #{ntImage2}, #{ntImage3}, 0)
+	</insert>
+	
+	
+	<update id="noticeUpdate" parameterType="co.micol.prj.notice.service.NoticeVO">
+		UPDATE notice SET notice_title = #{val}, notice_content = #{val}, WHERE notice_no = #{id}
+	</update>
+	
+	<delete id="noticeDelete" parameterType="co.micol.prj.notice.service.NoticeVO">
+		DELETE FROM notice WHERE notice_no = #{noticeNo}
+	</delete>
+	
+	<select id="noticeSelectSearchList" resultMap="noticeMap">
+		SELECT * FROM notice
+		WHERE
+			<if test='key == "1"'>1 = 1</if>
+			<if test='key == "2"'>user_alias LIKE '%'|| #{val} ||'%'</if>
+			<if test='key == "3"'>notice_title LIKE '%'|| #{val} ||'%'</if>
+			<if test='key == "4"'>notice_content LIKE '%'|| #{val} ||'%'</if>
+		ORDER BY notice_no DESC
+	</select>
+	
+	<select id="noticeSortList" parameterType="String" resultMap="noticeMap">
+		SELECT * FROM notice ORDER BY notice_no
+		<if test = 'key == "A"'>ASC</if>
+		<if test = 'key == "B"'>DESC</if>
+		
+	</select>
+	
+	<update id="noticeUpdateHit" parameterType="int">
+		UPDATE notice SET notice_hit = notice_hit + 1 WHERE notice_no = #{id}
+	</update>
 
 </mapper>

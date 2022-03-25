@@ -10,6 +10,11 @@ BORDER_TITLE VARCHAR2(200),
 BORDER_CONTENT VARCHAR2(4000),
 BORDER_HIT NUMBER);
 
+--질문/답변(QnA) table
+create table qna (
+qna_No int not null,
+qna_Title varchar2(200) not null,
+qna_Contents varchar2(4000) not null);
 
 create table users (
 	user_no        number          primary key,

@@ -25,69 +25,31 @@
 		<div>
 			<h1>자주듣는 질문 목록</h1>
 		</div>
-
-		<form id="fmm" method="post">
+		<form id="fmr" method="post">
 			<div>
 				<div>
 					<ul>
-						<li class="menu"><a> 
-						<c:forEach items="${qnas }" var="q">
-									<tr onmouseover='this.style.background="#fcecae";'
-										onmouseleave='this.style.background="#FFFFFF";'
-										onclick="qnaContents(${q.qnaNo})">
-										<td>${q.qnaTitle}</td>
-										<td>${q.qnaContents}</td>
-									</tr>
+						<li id="borderBody"><c:if test="${empty qnaQ }">
+								<li>
+									<p>게시글이 존재하지 않습니다.</p>
+								</li>
+							</c:if> <c:if test="${not empty qnaQ }">
+								<c:forEach items="${qnaQ }" var="q">
+									<div>
+										<ul>
+											<li class="menu"><a>질문${q.qnaNo} : ${q.qnaTitle}</a>
+												<ul class="hide">
+													<li>답변:${q.qnaContents}</li>
+												</ul></li>
+										</ul>
+									</div>
 								</c:forEach>
-						</a>
-							<ul class="hide">
-								<li>메뉴1-1</li>
-								<li>메뉴1-2</li>
-								<li>메뉴1-3</li>
-								<li>메뉴1-4</li>
-								<li>메뉴1-5</li>
-								<li>메뉴1-6</li>
-							</ul></li>
+							</c:if>
 					</ul>
 				</div>
-				<div>
-						<table border="1">
-							<thead />
-							<tbody id="borderBody">
-								<c:if test="${empty qnas }">
-									<tr>
-										<td colspan="5">게시글이 존재하지 않습니다.</td>
-									</tr>
-								</c:if>
-								<c:if test="${not empty qnas }">
-									<tr>
-										<c:forEach items="${qnas }" var="q">
-											<tr onmouseover='this.style.background="#fcecae";'
-												onmouseleave='this.style.background="#FFFFFF";'
-												onclick="qnaContents(${q.qnaNo})">
-
-												<td>${q.qnaTitle}</td>
-												<td>${q.qnaContents}</td>
-											</tr>
-										</c:forEach>
-									</tr>
-								</c:if>
-							</tbody>
-
-						</table>
-					</div>
-				
 			</div>
-
-
-
 			<div>
 				<select id="searchKey" name="searchKey">
-					<option value="전체">전체</option>
-					<option value="작성자">작성자</option>
-					<option value="제목">제목</option>
-					<option value="내용">내용</option>
-				</select> <select id="searchKey" name="searchKey">
 					<option value="전체">전체</option>
 					<option value="작성자">작성자</option>
 					<option value="제목">제목</option>
@@ -103,9 +65,9 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+				<button type="button" onclick="location.href='qnaInsertForm.do'">QnA 등록</button>
 				<c:if test="${user_no == 1}">
-					<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+					<button type="button" onclick="location.href='qnaInsertForm.do'">QnA 등록</button>
 				</c:if>
 			</div>
 			<input type="hidden" id="borderId" name="borderId">
@@ -114,6 +76,7 @@
 	</div>
 	<script type="text/javascript">
 	
+	console.log(null);
 	 // html dom 이 다 로딩된 후 실행된다.
     $(document).ready(function(){
         // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
@@ -124,24 +87,14 @@
         });
     });
 
-
-	
-	function borderContents(n){
-		
-		console.log(n);
-		fmm.borderId.value = n;
-		console.log(fmm.borderId.value);
-		fmm.action = "borderView.do";
-		fmm.submit();
-	}
 	
 function qnaContents(g){
 		
 		console.log(g);
-		fmm.qnaNo.value = g;
-		console.log(fmm.qnaNo.value);
-		fmm.action = "borderView.do";
-		fmm.submit();
+		fmr.qnaNo.value = g;
+		console.log(fmr.qnaNo.value);
+		fmr.action = "borderView.do";
+		fmr.submit();
 	}
 	
 	function searchList() {

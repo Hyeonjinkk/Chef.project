@@ -13,7 +13,7 @@ public class QnaList implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 
 		QnaService qnaDao = new QnaServiceImpl();
-		request.setAttribute("qnas", qnaDao.qnaSelectList());
+		request.setAttribute("qnaQ", qnaDao.qnaSelectList());
 		
 		return "qna/qnaList";
 	}

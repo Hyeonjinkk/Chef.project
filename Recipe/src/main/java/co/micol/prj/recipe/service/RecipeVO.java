@@ -1,5 +1,10 @@
 package co.micol.prj.recipe.service;
 
+
+import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,6 +28,9 @@ public class RecipeVO {
 	private String rImageLg;	// 메인이미지(대)
 	private String rParts;		// 재료
 	private int userNo;			// 유저NO
+	
+	@JsonFormat(pattern = "yy-MM-dd", timezone = "Asia/Seoul")
+	private Date rDate;			// 등록일자
 	
 //	레시피 요리과정
 	

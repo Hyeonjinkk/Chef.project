@@ -19,6 +19,7 @@
 		<result property="rImageLg" column="r_image_lg" />
 		<result property="rParts" column="r_parts" />
 		<result property="userNo" column="user_no" />
+		<result property="rDate" column="rdate"/>
 		
 		<!-- 요리과정  -->
 		<result property="manual01" column="manual01" />

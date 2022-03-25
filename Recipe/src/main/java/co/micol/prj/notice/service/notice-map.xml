@@ -29,7 +29,8 @@
 	
 	
 	<update id="noticeUpdate" parameterType="co.micol.prj.notice.service.NoticeVO">
-		UPDATE notice SET notice_title = #{val}, notice_content = #{val}, WHERE notice_no = #{id}
+		UPDATE notice SET user_alias = #{userAlias}, notice_date = #{noticeDate}, notice_title = #{noticeTitle}, notice_content = #{noticeContent} 
+		WHERE notice_no = #{noticeNo}
 	</update>
 	
 	<delete id="noticeDelete" parameterType="co.micol.prj.notice.service.NoticeVO">

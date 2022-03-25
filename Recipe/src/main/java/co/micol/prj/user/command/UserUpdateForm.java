@@ -19,7 +19,6 @@ public class UserUpdateForm implements Command {
 		HttpSession session = request.getSession();
 		vo.setUserId((String) session.getAttribute("userId"));
 		vo = userDAO.selectUser(vo);
-		
 		if (vo != null) {
 			session.setAttribute("userPassword", vo.getUserPassword());
 			session.setAttribute("userName", vo.getUserName());
@@ -30,7 +29,6 @@ public class UserUpdateForm implements Command {
 		} else {
 			request.setAttribute("message", "회원정보수정 화면을 불러오지 못하였습니다. 다시 시도해 주세요.");
 		}
-
 		return "user/userUpdateForm";
 	}
 

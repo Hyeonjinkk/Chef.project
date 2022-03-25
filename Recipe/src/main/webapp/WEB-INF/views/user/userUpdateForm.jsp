@@ -8,6 +8,7 @@
 
 <style>
 
+
 table td .inpAlias {
 	padding: 3px;
 	font-size: 12px;

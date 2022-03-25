@@ -19,14 +19,12 @@ public class UserMypage implements Command {
 		HttpSession session = request.getSession();
 		vo.setUserId((String)session.getAttribute("userId"));
 		vo = userDAO.selectUser(vo);
-		
 		if(vo != null) {
 			session.setAttribute("userId", session.getAttribute("userId"));
 			request.setAttribute("message", vo.getUserAlias() + "님의 마이페이지");
 		} else {
 			request.setAttribute("message", "로그인이 필요한 서비스입니다.");
 		}
-		
 		return "user/mypage";
 	}
 

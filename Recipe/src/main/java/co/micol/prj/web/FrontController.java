@@ -36,7 +36,6 @@ import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
 import co.micol.prj.recipe.command.RecipeInsertForm;
-import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.UserJoin;

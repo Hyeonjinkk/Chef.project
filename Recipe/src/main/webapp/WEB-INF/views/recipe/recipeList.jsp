@@ -50,6 +50,7 @@ td {
 				</tbody>
 			</table>
 			<div>
+				<button type="button" onclick="location.href='home.do'">레시피 등록</button>
 				<input type="hidden" id="recipeSeq" name="recipeSeq">
 			</div>
 		</form>

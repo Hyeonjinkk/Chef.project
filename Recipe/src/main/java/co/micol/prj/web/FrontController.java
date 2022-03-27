@@ -32,6 +32,7 @@ import co.micol.prj.notice.command.NoticeUpdate;
 import co.micol.prj.notice.command.NoticeUpdateForm;
 import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.notice.command.NoticeView;
+import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
@@ -104,8 +105,10 @@ public class FrontController extends HttpServlet {
 		map.put("/recipeInsertForm.do", new RecipeInsertForm()); // 레시피 등록 페이지
 
 //		기능처리(QnA)
-		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
-		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
+		map.put("/qnaInsertForm.do", new qnaInsertForm());	// QnA 작성폼 호출
+		map.put("/qnaInsert.do", new qnaInsert());			// QnA 등록
+		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch());	// 검색
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

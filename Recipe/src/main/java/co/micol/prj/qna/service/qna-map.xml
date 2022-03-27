@@ -37,13 +37,13 @@
 	</delete>
 	
 	<select id="qnaSelectSearchList" resultMap="qnaMap">
-		SELECT*FROM BORDER
+		SELECT * FROM QNA
 		WHERE 
 		<if test='key == "전체"'>1 = 1</if>
-		<if test='key == "작성자"'>BORDER_WRITER LIKE '%'||#{val}||'%'</if>
-		<if test='key == "제목"'>BORDER_TITLE LIKE '%'||#{val}||'%'</if>
-		<if test='key == "내용"'>BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>
-		ORDER BY BORDER_ID DESC
+		
+		<if test='key == "질문"'>QNA_TITLE LIKE '%'||#{val}||'%'</if>
+		<if test='key == "답변"'>QNA_CONTENTS LIKE '%'||#{val}||'%'</if>
+		
 	</select>
 	
 	<select id="qnaSortList" parameterType="String"

@@ -41,7 +41,7 @@ td {
 						<th width="100px">등록일자</th>
 						<th width="100px">조회수</th>
 					</tr>
-					<c:forEach items="${recipes }" var="list" varStatus="status">
+					<c:forEach items="${recipes }" var="list">
 
 
 						<tr
@@ -52,8 +52,7 @@ td {
 							<td><img src=${list.recipeImageSm } width="130px"
 								height="100%"></td>
 							<td width="350px">${list.recipeName }</td>
-							<td><input type="hidden" id="userNo" name="userNo"
-								value="${list.userNo}"></td>
+							<td>${list.userAlias }</td>
 							<td>${list.recipeDate}</td>
 							<td>${list.recipeHit}</td>
 

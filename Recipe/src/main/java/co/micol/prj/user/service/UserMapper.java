@@ -7,7 +7,6 @@ public interface UserMapper {
 	List<UserVO> selectUserList(); //전체리스트
 	UserVO selectUser(UserVO vo);
 	
-	UserVO selectAlias(UserVO vo);	// recipe 페이지 alias출력
 	
 	int insertUser(UserVO vo);
 	int updateUser(UserVO vo);

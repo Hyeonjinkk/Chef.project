@@ -29,7 +29,7 @@ public class RecipeVO {
 	private String recipeParts; // 재료
 	private int userNo; // 유저NO
 	private int recipeHit;	// 조회수
-	
+	private String userAlias;	// 별칭
 
 	@JsonFormat(pattern = "yy-MM-dd", timezone = "Asia/Seoul")
 	private Date recipeDate; // 등록일자

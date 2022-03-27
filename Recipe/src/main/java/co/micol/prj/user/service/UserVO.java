@@ -3,9 +3,9 @@ package co.micol.prj.user.service;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
-
 public class UserVO {
 
 	private int userNo;

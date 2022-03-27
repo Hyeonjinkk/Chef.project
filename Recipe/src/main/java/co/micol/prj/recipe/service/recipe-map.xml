@@ -21,6 +21,7 @@
 		<result property="userNo" column="user_no" />
 		<result property="recipeDate" column="rdate" />
 		<result property="recipeHit" column="r_hit" />
+		<result property="userAlias" column="user_alias" />
 
 		<!-- 요리과정 -->
 		<result property="manual1" column="manual01" />
@@ -69,7 +70,9 @@
 
 	<!-- 레시피 전체 조회 -->
 	<select id="selectRecipeList" resultMap="recipeMap">
-		SELECT * FROM RECIPE
+		SELECT R.*, U.USER_ALIAS
+		FROM RECIPE R, USERS U
+		WHERE U.USER_NO = R.USER_NO
 		ORDER BY R_HIT DESC
 	</select>
 

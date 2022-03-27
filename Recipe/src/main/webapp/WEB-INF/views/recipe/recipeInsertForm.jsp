@@ -23,7 +23,7 @@ td {
 	<div align="center">
 		<table>
 			<thead>
-				<h1>레시피 등록부분</h1>
+				<h1>레시피 등록부분!</h1>
 			</thead>
 			<tbody>
 				<tr>

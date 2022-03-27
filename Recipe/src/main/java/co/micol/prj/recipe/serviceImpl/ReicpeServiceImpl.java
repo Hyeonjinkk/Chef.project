@@ -8,6 +8,7 @@ import co.micol.prj.comm.DataSource;
 import co.micol.prj.recipe.service.RecipeMapper;
 import co.micol.prj.recipe.service.RecipeService;
 import co.micol.prj.recipe.service.RecipeVO;
+import co.micol.prj.user.service.UserVO;
 
 public class ReicpeServiceImpl implements RecipeService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
@@ -44,5 +45,15 @@ public class ReicpeServiceImpl implements RecipeService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int updateHit(int recipeSeq) {
+		// TODO Auto-generated method stub
+		return map.updateHit(recipeSeq);
+	}
+
+
+
+	
 
 }

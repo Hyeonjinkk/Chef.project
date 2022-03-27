@@ -21,12 +21,12 @@
 
 		<c:if test="${not empty recipe[image] }">
 
-			<img src="${recipe[image]}" width="150px" height="150px">
+			<img src="${recipe[image]}" style="width: 350px;">
 
 		</c:if>
 
 	</c:forEach>
 
 	<h1>완성</h1>
-	<img src="${recipe.recipeImageLg }">
+	<img src="${recipe.recipeImageLg }" style="width: 450px;">
 </div>

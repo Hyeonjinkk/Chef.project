@@ -20,6 +20,7 @@
 		<result property="recipeParts" column="r_parts" />
 		<result property="userNo" column="user_no" />
 		<result property="recipeDate" column="rdate" />
+		<result property="recipeHit" column="r_hit" />
 
 		<!-- 요리과정 -->
 		<result property="manual1" column="manual01" />
@@ -63,19 +64,16 @@
 		<result property="manual20" column="manual20" />
 		<result property="manualImage20" column="manual_Img20" />
 
-
-
-
-
-
-
 	</resultMap>
+
 
 	<!-- 레시피 전체 조회 -->
 	<select id="selectRecipeList" resultMap="recipeMap">
 		SELECT * FROM RECIPE
-		ORDER BY R_SEQ DESC
+		ORDER BY R_HIT DESC
 	</select>
+
+
 
 	<!-- 레시피 상세 과정 조회 -->
 	<select id="selectRecipe" resultMap="recipeMap"
@@ -83,6 +81,11 @@
 		SELECT * FROM RECIPE WHERE R_SEQ = #{recipeSeq}
 	</select>
 
+	<!-- 레시피 클릭하면 조회수 업데이트 -->
+	<update id="updateHit" parameterType="int">
+		UPDATE RECIPE SET R_HIT =
+		R_HIT + 1 WHERE R_SEQ = #{recipeSeq}
+	</update>
 
 
 

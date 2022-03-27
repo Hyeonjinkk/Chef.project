@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import co.micol.prj.user.service.UserVO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,6 +28,8 @@ public class RecipeVO {
 	private String recipeImageLg; // 메인이미지(대)
 	private String recipeParts; // 재료
 	private int userNo; // 유저NO
+	private int recipeHit;	// 조회수
+	
 
 	@JsonFormat(pattern = "yy-MM-dd", timezone = "Asia/Seoul")
 	private Date recipeDate; // 등록일자

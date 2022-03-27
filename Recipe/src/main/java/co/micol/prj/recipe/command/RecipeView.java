@@ -17,8 +17,10 @@ public class RecipeView implements Command {
 		RecipeVO vo = new RecipeVO();
 		vo.setRecipeSeq(Integer.parseInt(request.getParameter("recipeSeq")));
 		
-		request.setAttribute("recipe", recipeDao.selectRecipe(vo));
+		recipeDao.updateHit(Integer.parseInt(request.getParameter("recipeSeq")));
 		
+		
+		request.setAttribute("recipe", recipeDao.selectRecipe(vo));
 		
 
 		return "recipe/recipeView";

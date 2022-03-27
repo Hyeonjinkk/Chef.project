@@ -10,6 +10,9 @@ import co.micol.prj.comm.Command;
 import co.micol.prj.recipe.service.RecipeService;
 import co.micol.prj.recipe.service.RecipeVO;
 import co.micol.prj.recipe.serviceImpl.ReicpeServiceImpl;
+import co.micol.prj.user.service.UserService;
+import co.micol.prj.user.service.UserVO;
+import co.micol.prj.user.serviceImpl.UserServiceImpl;
 
 public class RecipeList implements Command {
 
@@ -18,8 +21,10 @@ public class RecipeList implements Command {
 		// TODO RECIPE 페이지 처리하면서 전체리스트 끌고 들어오기
 		RecipeService RecipeDao = new ReicpeServiceImpl();
 		
-		List<RecipeVO> recipe = new ArrayList<RecipeVO>();
-		recipe = RecipeDao.selectRecipeList();
+		
+		
+		
+		
 		request.setAttribute("recipes", RecipeDao.selectRecipeList());
 		return "recipe/recipeList";
 	}

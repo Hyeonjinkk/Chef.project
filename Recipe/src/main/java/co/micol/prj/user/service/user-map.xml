@@ -8,6 +8,7 @@
 		<result property="userAlias" column="user_alias"/>
 		<result property="userTel" column="user_tel"/>
 		<result property="userAddress" column="user_address"/>
+		<result property="userNo" column="user_no" />
 	</resultMap>
 
 	<select id="selectUserList" resultType="co.micol.prj.user.service.UserVO">
@@ -45,5 +46,6 @@
 		SELECT CASE WHEN COUNT(USER_ID) = 1 THEN 0 ELSE 1 END AS ID
 		FROM USERS WHERE USER_ID = #{str}
 	</select>
+	
 
 </mapper>

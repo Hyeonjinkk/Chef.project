@@ -50,4 +50,10 @@ public class UserServiceImpl implements UserService {
 		return map.isIdCheck(str);
 	}
 
+	@Override
+	public UserVO selectAlias(UserVO vo) {
+		// TODO recipe 페이지 alias출력
+		return map.selectAlias(vo);
+	}
+
 }

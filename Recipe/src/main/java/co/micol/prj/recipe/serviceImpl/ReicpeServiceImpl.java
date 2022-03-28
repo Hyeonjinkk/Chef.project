@@ -31,7 +31,7 @@ public class ReicpeServiceImpl implements RecipeService {
 	@Override
 	public int insertRecipe(RecipeVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return map.insertRecipe(vo);
 	}
 
 	@Override

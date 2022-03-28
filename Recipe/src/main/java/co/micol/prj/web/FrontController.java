@@ -37,6 +37,7 @@ import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
+import co.micol.prj.recipe.command.DeleteRecipe;
 import co.micol.prj.recipe.command.RecipeInsert;
 import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeView;
@@ -111,6 +112,7 @@ public class FrontController extends HttpServlet {
 		map.put("/recipeInsert.do", new RecipeInsert()); // 레시피 등록처리
 		map.put("/updateRecipeForm.do", new UpdateRecipeForm()); // 레시피 수정폼
 		map.put("/recipeUpdate.do", new RecipeUpdate()); // 레시피 수정처리
+		map.put("/deleteRecipe.do", new DeleteRecipe()); 	// 레시피 삭제처리
 		
 
 ////--------------------------------------		기능처리(QnA)

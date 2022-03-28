@@ -29,7 +29,7 @@ td {
 
 <body>
 	<div align="center">
-		<form action="recipeInsert.do" method="POST">
+		<form action="recipeInsert.do" method="POST" id="insertFrm" name="insertFrm">
 			<table>
 				<thead>
 					<h1>레시피 등록부분!</h1>
@@ -151,15 +151,15 @@ td {
 				</c:forEach>
 				<div>
 					<input type="hidden" value="1" id="insertNo" name="insertNo">
-					<button type="submit">등록하기</button>
+					<button type="button" onclick="insetCheck()">등록하기</button>
 					<button type="button" onclick="home()">취소하기</button>
 					<br> <input type="button" value="+" onclick="plusInsert()"
 						id="btnClick">
 				</div>
 			</table>
-		</form>
-		<button type="submit">등록하기</button>
+		<button type="button" onclick="insetCheck()">등록하기</button>
 		<button type="button" onclick="home()">취소하기</button>
+		</form>
 	</div>
 
 
@@ -167,6 +167,14 @@ td {
 </body>
 
 <script>
+	function insetCheck(){
+		let check = confirm('등록하시겠습니까?');
+		if(check == true) {
+			insertFrm.submit();
+		}
+		
+		
+	}
 	function plusInsert() {
 		let i = document.querySelector('#insertNo').value;
 		let hiddenTr = document.getElementById('insert' + i);

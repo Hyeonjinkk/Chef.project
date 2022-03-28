@@ -42,15 +42,22 @@
 	</form>
 </div>
 <script>
+	if('${message}' != '') {
+		alert('${message}');
+		window.location = "recipeView.do?recipeSeq=" + ${recipe.recipeSeq};
+	}
 
-function update(){
-recipeViewFrm.action = "updateRecipeForm.do";
-recipeViewFrm.submit();
-	
-}
+	function update() {
+		recipeViewFrm.action = "updateRecipeForm.do";
+		recipeViewFrm.submit();
 
-function delete1(){
-	recipeViewFrm.action = "deleteRecipe.do";
-	recipeViewFrm.submit();
-}
+	}
+
+	function delete1() {
+		let check = confirm('해당 게시글을 삭제하시겠습니까?');
+		if(check == true) {
+		recipeViewFrm.action = "deleteRecipe.do?recipeSeq=" + ${recipe.recipeSeq};
+		recipeViewFrm.submit();
+		}
+	}
 </script>

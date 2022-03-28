@@ -15,4 +15,11 @@
 
 </div>
 </body>
+<script type="text/javascript">
+if('${message}' != '') {
+	alert('${message}');
+	window.location = "home.do";
+}
+
+</script>
 </html>

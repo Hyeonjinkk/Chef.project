@@ -10,10 +10,10 @@
 		<result property="ntImage1" column="notice_image1"/>
 		<result property="ntImage2" column="notice_image2"/>
 		<result property="ntImage3" column="notice_image3"/>
+		<result property="noticeHit" column="notice_hit"/>
 	</resultMap>
 	
 	<select id="noticeSelectList" resultMap="noticeMap">
-	
 		SELECT * FROM notice ORDER BY notice_no DESC
 	</select>
 	<select id="noticeSelect" parameterType="co.micol.prj.notice.service.NoticeVO" resultMap="noticeMap">
@@ -30,7 +30,10 @@
 	
 	
 	<update id="noticeUpdate" parameterType="co.micol.prj.notice.service.NoticeVO">
-		UPDATE notice SET user_alias = #{userAlias}, notice_date = #{noticeDate}, notice_title = #{noticeTitle}, notice_content = #{noticeContent} 
+	
+		UPDATE notice 
+		SET user_alias = #{userAlias}, notice_date = #{noticeDate}, notice_title = #{noticeTitle}, notice_content = #{noticeContent}, 
+			notice_image1 = #{ntImage1}, notice_image2 = #{ntImage2}, notice_image3 = #{ntImage3} 
 		WHERE notice_no = #{noticeNo}
 	</update>
 	

@@ -30,14 +30,22 @@ import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.notice.command.NoticeUpdate;
 import co.micol.prj.notice.command.NoticeUpdateForm;
+<<<<<<< HEAD
+=======
+import co.micol.prj.recipe.command.RecipeList;
+import co.micol.prj.recipe.command.RecipeUpdate;
+>>>>>>> branch 'main' of https://github.com/Hyeonjinkk/Chef.project.git
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
+import co.micol.prj.recipe.command.DeleteRecipe;
+import co.micol.prj.recipe.command.RecipeInsert;
 import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeView;
+import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.AjaxUserOldPwdCheck;
 import co.micol.prj.user.command.UpdatePwd;
@@ -61,7 +69,7 @@ public class FrontController extends HttpServlet {
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-//		Page 처리
+//--------------------------------------		Page 처리
 		map.put("/home.do", new HomeCommand()); // 처음 들어오는 페이지
 
 		map.put("/userJoinForm.do", new UserJoinForm()); // 회원가입폼 호출
@@ -72,7 +80,7 @@ public class FrontController extends HttpServlet {
 
 		map.put("/qnaList.do", new QnaList()); // 자주듣는 질문 페이지 호출
 
-//		기능처리(user)
+////-------------------------------------- -------------------------------------- 기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
 		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
 		map.put("/userLoginForm.do", new UserLoginForm()); // 로그인폼 호출
@@ -84,14 +92,14 @@ public class FrontController extends HttpServlet {
 		map.put("/updatePwd.do", new UpdatePwd()); //패스워드 변경
 		map.put("/updateUserInfo.do", new UpdateUserInfo()); //회원정보 변경 처리
 
-//		기능처리(border)			
+////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
 		map.put("/borderUpdate.do", new BorderUpdate()); // 공지사항 수정
 		map.put("/borderDelete.do", new BorderDelete()); // 공지사항 삭제
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬
 
-//		기능처리(notice) - 자유게시판
+////--------------------------------------		기능처리(notice) - 자유게시판
 		map.put("/noticeList.do", new NoticeList()); // 목록
 		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
 		map.put("/noticeInsert.do", new NoticeInsert()); // 게시물 등록
@@ -102,19 +110,26 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch()); // 검색
 		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
 
-//		기능처리(inquiry) - 레시피/재료 문의게시판
-		map.put("/inquiry.do", new InquiryList()); // 목록
+		
+////--------------------------------------		기능처리(inquiry) - 레시피/재료 문의게시판
+		map.put("/inquiryList.do", new InquiryList()); // 목록
 
-//		기능처리(recipe) - 레시피
+		
+////--------------------------------------		기능처리(recipe) - 레시피
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		map.put("/recipeView.do", new RecipeView()); // 레시피 상세 과정 보기
 		map.put("/recipeInsertForm.do", new RecipeInsertForm()); // 레시피 등록 페이지
-
-//		기능처리(QnA)
-		map.put("/qnaInsertForm.do", new qnaInsertForm());	// QnA 작성폼 호출
-		map.put("/qnaInsert.do", new qnaInsert());			// QnA 등록
-		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch());	// 검색
+		map.put("/recipeInsert.do", new RecipeInsert()); // 레시피 등록처리
+		map.put("/updateRecipeForm.do", new UpdateRecipeForm()); // 레시피 수정폼
+		map.put("/recipeUpdate.do", new RecipeUpdate()); // 레시피 수정처리
+		map.put("/deleteRecipe.do", new DeleteRecipe()); 	// 레시피 삭제처리
 		
+
+////--------------------------------------		기능처리(QnA)
+		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
+		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
+		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

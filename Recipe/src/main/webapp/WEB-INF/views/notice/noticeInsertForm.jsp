@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,12 @@
 </head>
 <body>
 <div align="center">
+	<c:if test="${empty userId }">
+		<h1>로그인이 필요합니다.</h1>
+		<p>회원입니까?<a href="userLoginForm.do">    로그인</a></p> 
+		<p>아직 회원이 아니라면<a href="userJoinForm.do">    회원가입</a></p>
+	</c:if>
+	<c:if test="${not empty userId }">
 	<div><h1>게시글 작성</h1></div>
 	<div>
 		<form id="frm" action="noticeInsert.do" method="post">
@@ -41,6 +48,8 @@
 			</div>
 		</form>
 	</div>
+	
+		</c:if>
 </div>
 </body>
 </html>

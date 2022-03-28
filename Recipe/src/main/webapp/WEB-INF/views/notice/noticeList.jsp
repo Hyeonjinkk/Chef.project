@@ -46,8 +46,8 @@
 									<td colspan="5">등록된 게시물이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
-							<c:if test="${not empty notices }">
-									<c:forEach items="${notices }" var="n">
+							<c:if test="${not empty notices}">
+									<c:forEach items="${notices}" var="n">
 										<tr onmouseover='this.style.background="#fcecae";'
 											onmouseleave='this.style.background="#FFFFFF";' 
 											onclick="noticeContent('${n.noticeNo}')">

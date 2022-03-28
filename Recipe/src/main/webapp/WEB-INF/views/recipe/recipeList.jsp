@@ -45,8 +45,9 @@ td {
 
 
 						<tr
-							onmouseover='this.style.background="#BDBDBD", this.style.fontWeight = "bold";'
+							onmouseover='this.style.background="#BDBDBD", this.style.fontWeight = "bold", this.style.cursor="pointer";'
 							onmouseleave='this.style.backgroundColor = "white", this.style.fontWeight = "normal";'
+							
 							onclick='DefAction("${list.recipeSeq}")'>
 							<td>${list.recipeSeq }</td>
 							<td><img src=${list.recipeImageSm } width="130px"

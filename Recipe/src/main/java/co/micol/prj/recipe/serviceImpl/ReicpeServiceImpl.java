@@ -37,13 +37,13 @@ public class ReicpeServiceImpl implements RecipeService {
 	@Override
 	public int updateRecipe(RecipeVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return map.updateRecipe(vo);
 	}
 
 	@Override
 	public int deleteRecipe(RecipeVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return map.deleteRecipe(vo);
 	}
 
 	@Override

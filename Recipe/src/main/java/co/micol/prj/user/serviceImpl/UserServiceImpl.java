@@ -50,6 +50,12 @@ public class UserServiceImpl implements UserService {
 		return map.isIdCheck(str);
 	}
 
+	@Override
+	public String pwCheck(UserVO vo) {
+		
+		return map.pwCheck(vo);
+	}
+
 	
 
 }

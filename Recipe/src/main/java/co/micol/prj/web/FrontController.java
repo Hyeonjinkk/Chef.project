@@ -30,8 +30,11 @@ import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.notice.command.NoticeUpdate;
 import co.micol.prj.notice.command.NoticeUpdateForm;
+<<<<<<< HEAD
+=======
 import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeUpdate;
+>>>>>>> branch 'main' of https://github.com/Hyeonjinkk/Chef.project.git
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
@@ -40,9 +43,13 @@ import co.micol.prj.qna.command.qnaInsertForm;
 import co.micol.prj.recipe.command.DeleteRecipe;
 import co.micol.prj.recipe.command.RecipeInsert;
 import co.micol.prj.recipe.command.RecipeInsertForm;
+import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.user.command.AjaxUserIdCheck;
+import co.micol.prj.user.command.AjaxUserOldPwdCheck;
+import co.micol.prj.user.command.UpdatePwd;
+import co.micol.prj.user.command.UpdateUserInfo;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
 import co.micol.prj.user.command.UserLogin;
@@ -81,6 +88,9 @@ public class FrontController extends HttpServlet {
 		map.put("/userLogout.do", new UserLogout()); // 로그아웃 처리
 		map.put("/userMypage.do", new UserMypage()); // 마이페이지 출력
 		map.put("/userUpdateForm.do", new UserUpdateForm()); // 회원정보수정폼 출력
+		map.put("/ajaxUserOldPwdCheck.do", new AjaxUserOldPwdCheck()); //패스워드 변경 시 패스워드 재확인
+		map.put("/updatePwd.do", new UpdatePwd()); //패스워드 변경
+		map.put("/updateUserInfo.do", new UpdateUserInfo()); //회원정보 변경 처리
 
 ////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록

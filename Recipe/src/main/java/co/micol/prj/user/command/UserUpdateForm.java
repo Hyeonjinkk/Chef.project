@@ -20,7 +20,6 @@ public class UserUpdateForm implements Command {
 		vo.setUserId((String) session.getAttribute("userId"));
 		vo = userDAO.selectUser(vo);
 		if (vo != null) {
-			session.setAttribute("userPassword", vo.getUserPassword());
 			session.setAttribute("userName", vo.getUserName());
 			session.setAttribute("userAlias", vo.getUserAlias());
 			session.setAttribute("userAddress", vo.getUserAddress());

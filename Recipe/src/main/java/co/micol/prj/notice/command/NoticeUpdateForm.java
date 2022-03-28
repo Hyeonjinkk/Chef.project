@@ -16,7 +16,7 @@ public class NoticeUpdateForm implements Command {
 		NoticeVO vo = new NoticeVO();
 		
 		vo.setNoticeNo(Integer.parseInt(request.getParameter("noticeNo")));
-		request.setAttribute("nt", noticeDao.noticeUpdate(vo));
+		request.setAttribute("nt", noticeDao.noticeSelect(vo);
 		return "notice/noticeUpdateForm";
 
 	}

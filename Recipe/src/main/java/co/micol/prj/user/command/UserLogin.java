@@ -26,6 +26,7 @@ public class UserLogin implements Command {
 			session.setAttribute("userId", vo.getUserId());
 			session.setAttribute("userAlias", vo.getUserAlias());
 			session.setAttribute("userAuthor", vo.getUserAuthor());
+			session.setAttribute("userNo", vo.getUserNo());
 			
 			request.setAttribute("message", vo.getUserAlias() + "님 환영합니다.");
 		} else {

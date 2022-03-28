@@ -29,7 +29,7 @@
 			<div>
 				<div>
 					<ul>
-						<li id="borderBody"><c:if test="${empty qnaQ }">
+						<li id="qnaBody"><c:if test="${empty qnaQ }">
 								<li>
 									<p>게시글이 존재하지 않습니다.</p>
 								</li>
@@ -45,16 +45,16 @@
 									</div>
 								</c:forEach>
 							</c:if>
+							</li>
 					</ul>
 				</div>
 			</div>
 			<div>
-				<select id="searchKey" name="searchKey">
+				<select id="findKey" name="findKey">
 					<option value="전체">전체</option>
-					<option value="작성자">작성자</option>
-					<option value="제목">제목</option>
-					<option value="내용">내용</option>
-				</select> <span> <input type="text" id="searchVal">&nbsp; <input
+					<option value="질문">질문</option>
+					<option value="답변">답변</option>
+				</select> <span> <input type="text" id="findVal">&nbsp; <input
 					type="button" onclick="searchList()" value="검색">
 				</span>
 			</div>
@@ -99,9 +99,9 @@ function qnaContents(g){
 	
 	function searchList() {
 		$.ajax({
-			url : "ajaxBorderSearch.do",
+			url : "ajaxQnaSearch.do",
 			type : "post",
-			data : {"key" : $("#searchKey").val(), "val" : $("#searchVal").val()},
+			data : {"key" : $("#findKey").val(), "val" : $("#findVal").val()},
 			dataType : "json",
 			success : function(result) {
 				if(result.length >0){
@@ -115,24 +115,24 @@ function qnaContents(g){
 	}
 	
 	function searchResult(data){ //json 객체를  html로 변환 후 화면에 적용함.
-		var tb = $("#borderBody");
-		$("#borderBody").empty();
-		
+		var tb = $("#qnaBody");
+		$("#qnaBody").empty();
+
 		$.each(data, function(index, item) {
-			var html = $("<tr />").attr({
-					'onmouseover' : 'this.style.background="#fcecae";' ,
-					'onmouseleave' : 'this.style.background="#FFFFFF";',
-					'onclick' : 'borderContents('+item.borderId+')'		
-			}).append(
-			$("<td align ='center'/>").text(item.borderId),
-			$("<td align ='center'/>").text(item.borderWriter),
-			$("<td />").text(item.borderTitle),
-			$("<td align ='center'/>").text(item.borderDate),
-			$("<td align ='center'/>").text(item.borderHit),
+			var html = $("<li />").append(
+
+					
+					
+					$(document).ready(function(){
+			$("<a/>").text(item.qnaTitle).click(function(){
+				$(this).next("a").toggleClass("hide");
+			}
+	        });
+			$("<a/>").text(item.qnaContents),
 			);
 			tb.append(html);
 		});
-		$("#contents").append(tb);
+		
 	}
 	
 	function sortBorder(key){

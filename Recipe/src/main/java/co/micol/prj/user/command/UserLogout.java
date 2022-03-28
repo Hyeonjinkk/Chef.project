@@ -12,6 +12,10 @@ public class UserLogout implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 로그아웃 처리
 		HttpSession session = request.getSession();
+		session.removeAttribute("userId");
+		session.removeAttribute("userAuthor");
+		session.removeAttribute("userAlias");
+		session.removeAttribute("userNo");
 		session.invalidate(); // 세션삭제
 		
 		request.setAttribute("message", "정상적으로 로그아웃되었습니다.");

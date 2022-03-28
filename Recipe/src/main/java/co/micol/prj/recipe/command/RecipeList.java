@@ -20,11 +20,8 @@ public class RecipeList implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// TODO RECIPE 페이지 처리하면서 전체리스트 끌고 들어오기
 		RecipeService RecipeDao = new ReicpeServiceImpl();
-		
-		
-		
-		
-		
+
+		request.removeAttribute("message");
 		request.setAttribute("recipes", RecipeDao.selectRecipeList());
 		return "recipe/recipeList";
 	}

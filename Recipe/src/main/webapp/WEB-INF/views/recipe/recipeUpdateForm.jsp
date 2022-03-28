@@ -38,10 +38,10 @@ td {
 					<tr>
 						<th>작성자</th>
 						<td width="250px">${recipe.userAlias}<input type="hidden"
-							id="userNo" name="userNo" value="${recipe.userNo}">
-							<input type="hidden"
-							id="recipeSeq" name="recipeSeq" value="${recipe.recipeSeq}">
-							</td>
+							id="userNo" name="userNo" value="${recipe.userNo}"> <input
+							type="hidden" id="recipeSeq" name="recipeSeq"
+							value="${recipe.recipeSeq}">
+						</td>
 
 						<th width="350px">등록일자</th>
 						<td width="150px"><input type='date' id='currentDate'
@@ -139,19 +139,22 @@ td {
 
 
 
-					<tr style="display: none;" id="${insert}" name="${insert}" class="updateTr">
+					<tr style="display: none;" id="${insert}" name="${insert}"
+						class="updateTr">
 						<th colspan="2" width="30%">
 							<h3>
 								<input type="file" onchange='Reader(event, ${i})'><input
-									type="hidden" id="manualImage${i}" class="updateSrc" name="manualImage${i}"
-									value="${recipe[manualImage]}">
+									type="hidden" id="manualImage${i}" class="updateSrc"
+									name="manualImage${i}" value="${recipe[manualImage]}">
 							</h3>
 						</th>
-						<td><img id='output${i}' style="width: 350px;" class="updateImg" src="${recipe[manualImage]}"></td>
+						<td><img id='output${i}' style="width: 350px;"
+							class="updateImg" src="${recipe[manualImage]}"></td>
 
 						<td colspan="2">
 							<div align="left">
-								<input type="text" id="manual${i}" name="manual${i}" class="updateText" value="${recipe[manual]}"
+								<input type="text" id="manual${i}" name="manual${i}"
+									class="updateText" value="${recipe[manual]}"
 									style="font-size: 2em">
 							</div>
 						</td>
@@ -166,15 +169,14 @@ td {
 						id="btnClick">
 				</div>
 			</table>
-		<button type="submit">수정하기</button>
-		<button type="button" onclick="home()">취소하기</button>
+			<button type="submit">수정하기</button>
+			<button type="button" onclick="home()">취소하기</button>
 		</form>
 	</div>
 
 
 
 </body>
-
 <script>
 	function plusInsert() {
 		let i = document.querySelector('#insertNo').value;

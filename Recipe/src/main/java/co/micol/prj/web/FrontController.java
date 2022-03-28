@@ -100,7 +100,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
 
 //		기능처리(inquiry) - 레시피/재료 문의게시판
-		map.put("/inquiry.do", new InquiryList()); // 목록
+		map.put("/inquiryList.do", new InquiryList()); // 목록
 
 //		기능처리(recipe) - 레시피
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지

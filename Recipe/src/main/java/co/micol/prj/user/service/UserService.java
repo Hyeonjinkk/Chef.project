@@ -12,5 +12,6 @@ public interface UserService {
 	int updateUser(UserVO vo);     //수정
 	int deleteUser(UserVO vo);     //삭제
 	boolean isIdCheck(String str); //아이디 중복체크
+	String pwCheck(UserVO vo); //기존 패스워드 체크
 	
 }

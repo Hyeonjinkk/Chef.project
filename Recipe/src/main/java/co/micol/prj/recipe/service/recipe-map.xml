@@ -85,10 +85,13 @@
 			AS RECIPESEQ FROM RECIPE
 		</selectKey>
 		Insert into CHEF.RECIPE
-		(R_SEQ,R_NAME,R_WAY,R_KIND,R_PARTS,R_IMAGE_SM, R_IMAGE_LG, MANUAL01,MANUAL02,MANUAL03,MANUAL04,MANUAL05,MANUAL06,MANUAL07,MANUAL08,MANUAL09,MANUAL10,MANUAL11,MANUAL12,MANUAL13,MANUAL14,MANUAL15,MANUAL16,MANUAL17,MANUAL18,MANUAL19,MANUAL20,USER_NO,RDATE,R_HIT,
+		(R_SEQ,R_NAME,R_WAY,R_KIND,R_PARTS,R_IMAGE_SM,
+		R_IMAGE_LG,
+		MANUAL01,MANUAL02,MANUAL03,MANUAL04,MANUAL05,MANUAL06,MANUAL07,MANUAL08,MANUAL09,MANUAL10,MANUAL11,MANUAL12,MANUAL13,MANUAL14,MANUAL15,MANUAL16,MANUAL17,MANUAL18,MANUAL19,MANUAL20,USER_NO,RDATE,R_HIT,
 		MANUAL_IMG01,MANUAL_IMG02,MANUAL_IMG03,MANUAL_IMG04,MANUAL_IMG05,MANUAL_IMG06,MANUAL_IMG07,MANUAL_IMG08,MANUAL_IMG09,MANUAL_IMG10,MANUAL_IMG11,MANUAL_IMG12,MANUAL_IMG13,MANUAL_IMG14,MANUAL_IMG15,MANUAL_IMG16,MANUAL_IMG17,MANUAL_IMG18,MANUAL_IMG19,MANUAL_IMG20)
 		values (#{recipeSeq}, #{recipeName}, #{recipeWay}, #{recipeKind},
-		#{recipeParts},#{recipeImageSm}, #{recipeImageLg} ,#{manual1}, #{manual2}, #{manual3},
+		#{recipeParts},#{recipeImageSm}, #{recipeImageLg} ,#{manual1},
+		#{manual2}, #{manual3},
 		#{manual4},#{manual5},#{manual6},#{manual7},#{manual8},#{manual9},#{manual10},#{manual11},#{manual12},#{manual13},#{manual14},#{manual15},#{manual16},#{manual17},#{manual18},#{manual19},#{manual20},
 		#{userNo}, #{recipeDate}, #{recipeHit},
 		#{manualImage1},
@@ -103,13 +106,99 @@
 		#{manualImage20})
 	</insert>
 
+	<update id="updateRecipe"
+		parameterType="co.micol.prj.recipe.service.RecipeVO">
+		update recipe set
+		R_NAME =
+		#{recipeName},R_WAY =
+		#{recipeWay}, R_KIND = #{recipeKind}, R_PARTS =
+		#{recipeParts},
+		R_IMAGE_SM = #{recipeImageSm},
+		R_IMAGE_LG =
+		#{recipeImageLg},
+		MANUAL01 =
+		#{manual1},
+		MANUAL02 = #{manual2},
+		MANUAL03 = #{manual3},
+		MANUAL04 =
+		#{manual4},
+		MANUAL05 = #{manual5},
+		MANUAL06 =
+		#{manual6},
+		MANUAL07 =
+		#{manual7},
+		MANUAL08 = #{manual8},
+		MANUAL09 =
+		#{manual9},
+		MANUAL10 =
+		#{manual10},
+		MANUAL11 = #{manual11},
+		MANUAL12 =
+		#{manual12},
+		MANUAL13 =
+		#{manual13},
+		MANUAL14 = #{manual14},
+		MANUAL15 = #{manual15},
+		MANUAL16 =
+		#{manual16},
+		MANUAL17 = #{manual17},
+		MANUAL18 = #{manual18},
+		MANUAL19 =
+		#{manual19},
+		MANUAL20 = #{manual20},
+		RDATE =
+		#{recipeDate},
+		R_HIT =
+		#{recipeHit},
+		MANUAL_IMG01 = #{manualImage1},
+		MANUAL_IMG02 =
+		#{manualImage2},
+		MANUAL_IMG03 = #{manualImage3},
+		MANUAL_IMG04 =
+		#{manualImage4},
+		MANUAL_IMG05 = #{manualImage5},
+		MANUAL_IMG06 =
+		#{manualImage6},
+		MANUAL_IMG07 = #{manualImage7},
+		MANUAL_IMG08 =
+		#{manualImage8},
+		MANUAL_IMG09 = #{manualImage9},
+		MANUAL_IMG10 =
+		#{manualImage10},
+		MANUAL_IMG11 = #{manualImage11},
+		MANUAL_IMG12 =
+		#{manualImage12},
+		MANUAL_IMG13 = #{manualImage13},
+		MANUAL_IMG14 =
+		#{manualImage14},
+		MANUAL_IMG15 = #{manualImage15},
+		MANUAL_IMG16 =
+		#{manualImage16},
+		MANUAL_IMG17 = #{manualImage17},
+		MANUAL_IMG18 =
+		#{manualImage18},
+		MANUAL_IMG19 = #{manualImage19},
+		MANUAL_IMG20 =
+		#{manualImage20}
+		WHERE USER_NO = #{userNo} AND R_SEQ = #{recipeSeq}
+
+	</update>
+
 
 
 	<!-- 레시피 상세 과정 조회 -->
 	<select id="selectRecipe" resultMap="recipeMap"
 		parameterType="co.micol.prj.recipe.service.RecipeVO">
-		SELECT * FROM RECIPE WHERE R_SEQ = #{recipeSeq}
+		SELECT R.*, U.USER_ALIAS
+		FROM RECIPE R, USERS U
+		WHERE
+		U.USER_NO = R.USER_NO
+		and R.R_SEQ = #{recipeSeq}
+
 	</select>
+
+
+
 
 	<!-- 레시피 클릭하면 조회수 업데이트 -->
 	<update id="updateHit" parameterType="int">

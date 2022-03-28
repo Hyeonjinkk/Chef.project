@@ -14,15 +14,16 @@
 		
 		<!-- EL문안에 EL문 입력 -->
 		<c:if test="${not empty recipe[manual] }">
-
+			<c:if test="${'' ne recipe[manual]}">
 			<h4>${recipe[manual] }</h4>
+			</c:if>
 
 		</c:if>
 
 		<c:if test="${not empty recipe[image] }">
-
+			<c:if test="${'' ne recipe[image]}">
 			<img src="${recipe[image]}" style="width: 350px;">
-
+			</c:if>
 		</c:if>
 
 	</c:forEach>

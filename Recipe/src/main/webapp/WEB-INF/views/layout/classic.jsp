@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title> <tiles:getAsString name="title" /> </title>
 
-<link rel="stylesheet" href="css/header.css?after" type="text/css">
 </head>
 <body>
 	<tiles:insertAttribute name="header" />

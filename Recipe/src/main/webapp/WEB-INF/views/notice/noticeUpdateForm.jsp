@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,22 +18,26 @@
 					<table border="1">
 						<tr>
 							<th width="100">작성자</th>
-							<td width="150"><input type="text" id="userAlias"
-								name="userAlias" required="required"></td>
+							<td width="150">
+								<input type="text" id="userAlias" name="userAlias" required="required">${nt.userAlias }
+							</td>
 
 							<th width="100">작성일자</th>
-							<td width="150"><input type="date" id="noticeDate"
-								name="noticeDate" required="required"></td>
+							<td width="150">
+								<input type="date" id="noticeDate" name="noticeDate" required="required">${nt.noticeDate }
+							</td>
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td colspan="3"><input type="text" id="noticeTitle"
-								name="noticeTitle" required="required"></td>
+							<td colspan="3">
+								<input type="text" id="noticeTitle" name="noticeTitle" required="required">${nt.noticeTitle }
+							</td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td colspan="3"><textarea rows="10" cols="80"
-									name="noticeContent"></textarea></td>
+							<td colspan="3">
+								<textarea rows="10" cols="80" name="noticeContent">${nt.noticeContent }</textarea>
+							</td>
 						</tr>
 					</table>
 				</div>

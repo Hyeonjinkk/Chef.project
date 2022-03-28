@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 
 
-<link rel="stylesheet" href="../css/header.css" type="text/css">
 </head>
 <body>
 	<div align="center">
@@ -46,7 +45,7 @@
 												<li><a href="./#">커뮤니티</a>
 													<ul class="dropdown">
 														<li><a href="noticeList.do">자유게시판</a>
-														<li><a href="inquiry.do">레시피/재료 문의</a>
+														<li><a href="inquiryList.do">레시피/재료 문의</a>
 														<li><a href="./#">후기게시판</a>
 													</ul>
 												<li><a href="./#">나의 냉장고</a>

@@ -14,6 +14,7 @@
 	</resultMap>
 	
 	<select id="noticeSelectList" resultMap="noticeMap">
+	
 		SELECT * FROM notice ORDER BY notice_no DESC
 	</select>
 	<select id="noticeSelect" parameterType="co.micol.prj.notice.service.NoticeVO" resultMap="noticeMap">

@@ -6,6 +6,8 @@ public interface UserService {
 
 	List<UserVO> selectUserList(); //전체 사용자 리스트
 	UserVO selectUser(UserVO vo);  //데이터 1건 출력, 로그인 처리
+	
+	
 	int insertUser(UserVO vo);     //등록
 	int updateUser(UserVO vo);     //수정
 	int deleteUser(UserVO vo);     //삭제

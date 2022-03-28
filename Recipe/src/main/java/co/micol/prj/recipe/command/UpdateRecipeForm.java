@@ -8,22 +8,18 @@ import co.micol.prj.recipe.service.RecipeService;
 import co.micol.prj.recipe.service.RecipeVO;
 import co.micol.prj.recipe.serviceImpl.ReicpeServiceImpl;
 
-public class RecipeView implements Command {
+public class UpdateRecipeForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 레시피 상세과정 보기
-		RecipeService recipeDao = new ReicpeServiceImpl();
+		// TODO
 		RecipeVO vo = new RecipeVO();
-		vo.setRecipeSeq(Integer.parseInt(request.getParameter("recipeSeq")));
+		RecipeService recipeDao = new ReicpeServiceImpl();
 		
-		recipeDao.updateHit(Integer.parseInt(request.getParameter("recipeSeq")));
-		
+		vo.setRecipeSeq(Integer.parseInt(request.getParameter("recipeSeq")));   
 		
 		request.setAttribute("recipe", recipeDao.selectRecipe(vo));
-		
-
-		return "recipe/recipeView";
+		return "recipe/recipeUpdateForm";
 	}
 
 }

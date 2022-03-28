@@ -13,7 +13,7 @@ public class UserJoin implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 회원가입 처리
-		
+
 		UserService userDAO = new UserServiceImpl();
 		UserVO vo = new UserVO();
 		vo.setUserId(request.getParameter("userId"));
@@ -23,7 +23,7 @@ public class UserJoin implements Command {
 		vo.setUserTel(request.getParameter("userTel"));
 		vo.setUserAddress(request.getParameter("userAddress"));
 		int n = userDAO.insertUser(vo);
-		if(n != 0) {
+		if (n != 0) {
 			request.setAttribute("message", "냉장고를 부탁해의 회원이 되신 것을 환영합니다.");
 		} else {
 			request.setAttribute("message", "회원가입이 정상적으로 이루어지지 않았습니다.");

@@ -39,5 +39,12 @@
 		}
 	}
 	
+	if ('${inquiryComments}' != '') {
+		alert('${inquiryComments}');
+		if ('${iq.inquiryNo}' != '') {
+			window.location = "inquiryView.do?inquiryNo=" + '${iq.inquiryNo}';
+		}
+	}
+	
 </script>
 </html>

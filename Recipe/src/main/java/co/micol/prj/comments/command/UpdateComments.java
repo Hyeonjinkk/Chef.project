@@ -9,6 +9,9 @@ import co.micol.prj.comm.Command;
 import co.micol.prj.comments.service.CommentsService;
 import co.micol.prj.comments.service.CommentsVO;
 import co.micol.prj.comments.serviceImpl.CommentsServiceImpl;
+import co.micol.prj.inquiry.service.InquiryService;
+import co.micol.prj.inquiry.service.InquiryVO;
+import co.micol.prj.inquiry.serviceImpl.InquiryServiceImpl;
 import co.micol.prj.notice.service.NoticeService;
 import co.micol.prj.notice.service.NoticeVO;
 import co.micol.prj.notice.serviceImpl.NoticeServiceImpl;
@@ -47,16 +50,29 @@ public class UpdateComments implements Command {
 //			자유게시판 View
 			case 2:
 				request.setAttribute("noticeComments", "댓글이 성공적으로 수정되었습니다!");
-				
+
 				NoticeService noticeDao = new NoticeServiceImpl();
-				
+
 				NoticeVO noticeVO = new NoticeVO();
-				
+
 				noticeVO.setNoticeNo(vo.getComSeq());
-				
+
 				request.setAttribute("nt", noticeDao.noticeSelect(noticeVO));
-				
+
+				break;
+//				Inquiry 게시판 View	
 			case 3:
+				request.setAttribute("inquiryComments", "댓글이 성공적으로 수정되었습니다!");
+
+				InquiryService inquiryDao = new InquiryServiceImpl();
+
+				InquiryVO inquiryVO = new InquiryVO();
+
+				inquiryVO.setInquiryNo(vo.getComSeq());
+
+				request.setAttribute("iq", inquiryDao.inquirySelect(inquiryVO));
+
+				break;
 			case 4:
 			case 5:
 			}

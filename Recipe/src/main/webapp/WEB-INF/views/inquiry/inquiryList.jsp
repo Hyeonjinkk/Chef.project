@@ -91,7 +91,7 @@
 					if(result.length > 0){
 						searchResult(result);
 					}else{
-						alert("검색한 결과가 존재하지 않습니다.");
+						alert("검색한 결과가 존재하지 않습니다. ");
 					}
 				}
 			});

@@ -16,7 +16,7 @@ import co.micol.prj.recipe.serviceImpl.ReicpeServiceImpl;
 import co.micol.prj.user.service.UserService;
 import co.micol.prj.user.serviceImpl.UserServiceImpl;
 
-public class insertRecipeViewComments implements Command {
+public class InsertComments implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {

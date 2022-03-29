@@ -20,12 +20,12 @@ import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
+import co.micol.prj.comments.command.InsertComments;
 import co.micol.prj.inquiry.command.AjaxInquirySearch;
 import co.micol.prj.inquiry.command.AjaxSortInquiry;
 import co.micol.prj.inquiry.command.InquiryDelete;
 import co.micol.prj.inquiry.command.InquiryInsert;
 import co.micol.prj.inquiry.command.InquiryInsertForm;
-import co.micol.prj.comments.command.insertRecipeViewComments;
 import co.micol.prj.inquiry.command.InquiryList;
 import co.micol.prj.inquiry.command.InquiryUpdate;
 import co.micol.prj.inquiry.command.InquiryUpdateForm;
@@ -39,7 +39,6 @@ import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.notice.command.NoticeUpdate;
 import co.micol.prj.notice.command.NoticeUpdateForm;
-import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
@@ -57,6 +56,7 @@ import co.micol.prj.recipe.command.DeleteRecipe;
 import co.micol.prj.recipe.command.RecipeInsert;
 import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
+import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.user.command.AjaxUserIdCheck;
@@ -160,7 +160,7 @@ public class FrontController extends HttpServlet {
 		map.put("/questionView.do", new QuestionView()); // 공지사항 상세보기
 		
 ////--------------------------------------		댓글처리(comments)
-		map.put("/insertRecipeViewComments.do", new insertRecipeViewComments()); // 레시피 댓글 등록
+		map.put("/insertComments.do", new InsertComments()); // 레시피 댓글 등록
 
 	}
 

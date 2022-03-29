@@ -17,6 +17,10 @@
 	INSERT INTO COMMENTS VALUES (#{comNo},#{comAlias},#{comCategory},#{comDate},#{comContents},#{comSeq})
 	</insert>
 	
+	<select id="selectCommentsList" resultMap="commentsMap">
+		SELECT * FROM COMMENTS ORDER BY COM_NO DESC
+	</select>
+	
 	
 
 </mapper>

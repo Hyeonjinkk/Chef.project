@@ -43,30 +43,55 @@
 	</div>
 	<!-- 댓글창 -->
 
+	<div align="center">
+		<table id="tbl">
+			<c:forEach items="${comments}" var="c">
+				<c:if test="${c.comSeq eq recipe.recipeSeq}">
+					<c:if test="${c.comCategory == '1' }">
+
+						<tr>
+							<td width="150px">${c.comAlias}</td>
+							<td>${c.comDate}</td>
+
+						</tr>
+						<tr id="asd">
+							<td colspan="4"><pre>${c.comContents}</pre></td>
+
+							<td>
+								<button type="button" onclick="insertComments()"
+									style="border: 0px; cursor: pointer;">등록</button>
+							</td>
+
+						</tr>
+					</c:if>
+				</c:if>
+			</c:forEach>
+
+		</table>
+	</div>
+
+
 
 	<div align="center">
 		<table id="tbl">
-
 			<tr>
 				<td width="150px">작성자</td>
 				<td><b>${userAlias}</b></td>
-
 				<td><input type='date' id='currentDate' name="comDate" readOnly
 					style="border: none;" /> <input type="hidden" name="comCategory"
 					value="1" /> <input type="hidden" name="comSeq"
 					value="${recipe.recipeSeq}" /></td>
-
 			</tr>
 			<tr id="asd">
 				<td colspan="4"><textarea id="comments" name="comContents"
 						style="width: 100%;"></textarea></td>
-
 				<td>
 					<button type="button" onclick="insertComments()"
 						style="border: 0px; cursor: pointer;">등록</button>
 				</td>
 
 			</tr>
+
 		</table>
 	</div>
 
@@ -74,13 +99,29 @@
 </form>
 <script>
 	function insertComments() {
-		recipeViewFrm.action = "insertRecipeViewComments.do";
-		recipeViewFrm.submit();
+		if ('${userAlias}' == '') {
+			let check = confirm('로그인이 필요한 기능입니다.\n' + '로그인 하시겠습니까?');
+			if (check == true) {
+				location.href = "userLoginForm.do";
+			}
+		} else {
+			let value = document.getElementById('comments').value;
+			if (value == '') {
+				alert('댓글을 입력해주세요.');
+			} else {
+				recipeViewFrm.action = "insertComments.do";
+				recipeViewFrm.submit();
+			}
+		}
 	}
 
 	if ('${message}' != '') {
 		alert('${message}');
-		window.location = "recipeView.do?recipeSeq=" + ${recipe.recipeSeq};
+		window.location = "recipeView.do?recipeSeq=" + $
+		{
+			recipe.recipeSeq
+		}
+		;
 	}
 
 	function update() {

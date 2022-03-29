@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,26 +8,32 @@
 
 </head>
 <body>
-<div align="center">
+	<div align="center">
 
-	<div><h1>This is Our Main Page of website!!!!!</h1></div>
+		<div>
+			<h1>This is Our Main Page of website!!!!!</h1>
+		</div>
 
 
-</div>
+	</div>
 </body>
 <script type="text/javascript">
-if('${message}' != '') {
-	alert('${message}');
-	window.location = "home.do";
-}
+	if ('${LoginMessage}' != '') {
+		alert('${LoginMessage}');
+		window.location = "home.do";
+	}
+	
+	if ('${LogoutMessage}' != '') {
+		alert('${LogoutMessage}');
+		window.location = "home.do";
+	}
 
-if ('${recipeComments}' != '') {
-	alert('${recipeComments}');
-	window.location = "recipeView.do?recipeSeq=" + ${recipe.recipeSeq};
-}
-
-
-
-
+	if ('${recipeComments}' != '') {
+		alert('${recipeComments}');
+		if ('${recipe.recipeSeq}' != '') {
+			window.location = "recipeView.do?recipeSeq=" + '${recipe.recipeSeq}';
+		}
+	}
+	
 </script>
 </html>

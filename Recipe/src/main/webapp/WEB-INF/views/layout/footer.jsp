@@ -10,7 +10,8 @@
 <div align="center">
 	<div>
 		<hr>
-		<a href="qnaList.do">QnA</a>
+		<a href="qnaList.do">FAQ</a>
+		<a href="questionList.do">질문&답변</a>
 		<h1>푸터부분123123</h1>
 	</div>
 </div>

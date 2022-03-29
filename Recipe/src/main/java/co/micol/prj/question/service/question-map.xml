@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.question.service.QuestionMapper">
+
+	<resultMap type="co.micol.prj.question.service.QuestionVO" id="questionMap">
+		<id property="questionId" column="question_id"/>
+		<result property="questionWriter" column="question_writer"/>
+		<result property="questionDate" column="question_date"/>
+		<result property="questionTitle" column="question_title"/>
+		<result property="questionContents" column="question_contents"/>
+		<result property="questionHit" column="question_hit"/>
+	</resultMap>
+	
+	
+	<select id="questionSelectList" resultMap="questionMap">
+		SELECT*FROM QUESTION ORDER BY QUESTION_ID DESC
+	</select>
+	<select id="questionSelect" parameterType="co.micol.prj.question.service.QuestionVO"
+			resultMap="questionMap">
+		SELECT*FROM QUESTION WHERE QUESTION_ID = #{questionId}
+	</select>
+	
+	<insert id="questionInsert" parameterType="co.micol.prj.question.service.QuestionVO">
+		<selectKey keyProperty="questionId" resultType="int" order="BEFORE">
+			SELECT CASE WHEN MAX(QUESTION_ID) IS NULL THEN 1 ELSE MAX(QUESTION_ID) + 1 END AS ID FROM QUESTION
+		</selectKey>
+		INSERT INTO QUESTION 
+		VALUES(#{questionId},#{questionWriter},#{questionDate},#{questionTitle},#{questionContents},0)
+	</insert>
+	
+	<update id="questionUpdate" parameterType="co.micol.prj.question.service.QuestionVO" >
+		UPDATE QUESTION SET QUESTION_WRITER = #{questionWriter} ,QUESTION_DATE =#{questionDate} , QUESTION_TITLE =#{questionTitle} ,
+		QUESTION_CONTENTS = #{questionContents} WHERE QUESTION_ID = #{questionId}
+	</update>
+	<delete id="questionDelete" parameterType="co.micol.prj.question.service.QuestionVO">
+		DELETE FROM QUESTION WHERE QUESTION_ID = #{questionId}
+	
+	
+	</delete>
+	
+	<select id="questionSelectSearchList" resultMap="questionMap">
+		SELECT*FROM QUESTION
+		WHERE 
+		<if test='key == "전체"'>1 = 1</if>
+		<if test='key == "작성자"'>QUESTION_WRITER LIKE '%'||#{val}||'%'</if>
+		<if test='key == "제목"'>QUESTION_TITLE LIKE '%'||#{val}||'%'</if>
+		<if test='key == "내용"'>QUESTION_CONTENTS LIKE '%'||#{val}||'%'</if>
+		ORDER BY QUESTION_ID DESC
+	</select>
+	
+	<select id="questionSortList" parameterType="String"
+			resultMap="questionMap">
+	SELECT*FROM QUESTION ORDER BY QUESTION_ID
+		<if test='key == "A"'>ASC</if> 		
+		<if test='key == "D"'>DESC</if>
+	</select>
+	
+	<update id="questionUpdateHit" parameterType="int">
+		UPDATE QUESTION SET QUESTION_HIT = QUESTION_HIT + 1 WHERE QUESTION_ID = #{id}
+	</update>
+</mapper>

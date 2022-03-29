@@ -18,15 +18,12 @@
 	</div>
 </body>
 <script type="text/javascript">
-	if ('${LoginMessage}' != '') {
-		alert('${LoginMessage}');
+	/* 로그인 메세지 */
+	if ('${message}' != '') {
+		alert('${message}');
 		window.location = "home.do";
 	}
-	
-	if ('${LogoutMessage}' != '') {
-		alert('${LogoutMessage}');
-		window.location = "home.do";
-	}
+
 
 	if ('${recipeComments}' != '') {
 		alert('${recipeComments}');

@@ -22,7 +22,7 @@
 				<table border="1">
 					<tr>
 						<th width="100">작성자</th>
-						<td width="150"><input type="text" id="userAlias" name="userAlias" required="required"></td>
+						<td width="150"><input type="text" id="userAlias" name="userAlias" value="${userAlias }"></td>
 						
 						<th width="100">작성일자</th>
 						<td width="150"><input type="date" id="noticeDate" name="noticeDate" required="required"></td>

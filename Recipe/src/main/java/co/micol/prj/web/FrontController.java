@@ -28,6 +28,7 @@ import co.micol.prj.inquiry.command.AjaxSortInquiry;
 import co.micol.prj.inquiry.command.InquiryDelete;
 import co.micol.prj.inquiry.command.InquiryInsert;
 import co.micol.prj.inquiry.command.InquiryInsertForm;
+import co.micol.prj.comments.command.insertRecipeViewComments;
 import co.micol.prj.inquiry.command.InquiryList;
 import co.micol.prj.inquiry.command.InquiryUpdate;
 import co.micol.prj.inquiry.command.InquiryUpdateForm;

@@ -21,6 +21,12 @@
 		SELECT * FROM COMMENTS ORDER BY COM_NO DESC
 	</select>
 	
+	<update id="updateComments" parameterType="co.micol.prj.comments.service.CommentsVO">
+		UPDATE COMMENTS SET COM_DATE = #{comDate}, COM_CONTENTS = #{comContents} WHERE COM_NO = #{comNo}
+	</update>
 	
+	<delete id="deleteComments" parameterType="co.micol.prj.comments.service.CommentsVO">
+		DELETE FROM COMMENTS WHERE COM_NO = #{comNo}
+	</delete>
 
 </mapper>

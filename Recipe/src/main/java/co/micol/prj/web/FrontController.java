@@ -20,7 +20,9 @@ import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
+import co.micol.prj.comments.command.DeleteComments;
 import co.micol.prj.comments.command.InsertComments;
+import co.micol.prj.comments.command.UpdateComments;
 import co.micol.prj.inquiry.command.AjaxInquirySearch;
 import co.micol.prj.inquiry.command.AjaxSortInquiry;
 import co.micol.prj.inquiry.command.InquiryDelete;
@@ -160,7 +162,9 @@ public class FrontController extends HttpServlet {
 		map.put("/questionView.do", new QuestionView()); // 공지사항 상세보기
 		
 ////--------------------------------------		댓글처리(comments)
-		map.put("/insertComments.do", new InsertComments()); // 레시피 댓글 등록
+		map.put("/insertComments.do", new InsertComments()); // 댓글 등록
+		map.put("/updateComments.do", new UpdateComments()); // 댓글 수정
+		map.put("/deleteComments.do", new DeleteComments()); // 댓글 삭제
 
 	}
 

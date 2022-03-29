@@ -48,6 +48,7 @@ import co.micol.prj.user.command.UpdatePwd;
 import co.micol.prj.user.command.UpdateUserInfo;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
+import co.micol.prj.user.command.UserList;
 import co.micol.prj.user.command.UserLogin;
 import co.micol.prj.user.command.UserLoginForm;
 import co.micol.prj.user.command.UserLogout;
@@ -87,6 +88,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxUserOldPwdCheck.do", new AjaxUserOldPwdCheck()); // 패스워드 변경 시 패스워드 재확인
 		map.put("/updatePwd.do", new UpdatePwd()); // 패스워드 변경
 		map.put("/updateUserInfo.do", new UpdateUserInfo()); // 회원정보 변경 처리
+		map.put("/userList.do", new UserList()); //관리자용 회원리스트 호출
 
 ////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
@@ -123,6 +125,8 @@ public class FrontController extends HttpServlet {
 		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
 
+////--------------------------------------		기능처리(Subscribe) - 팔로잉/팔로워 기능
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

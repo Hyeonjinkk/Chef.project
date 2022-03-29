@@ -42,6 +42,9 @@ import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
+import co.micol.prj.subscribe.command.FollowerList;
+import co.micol.prj.subscribe.command.FollowingList;
+import co.micol.prj.subscribe.command.Unfollowing;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.AjaxUserOldPwdCheck;
 import co.micol.prj.user.command.UpdatePwd;
@@ -126,6 +129,9 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
 
 ////--------------------------------------		기능처리(Subscribe) - 팔로잉/팔로워 기능
+		map.put("/followingList.do", new FollowingList()); //구독한 유저 리스트 출력
+		map.put("/followerList.do", new FollowerList());   //나를 구독하는 유저 리스트 출력
+		map.put("/unfollowing.do", new Unfollowing());     //구독취소 처리
 		
 	}
 

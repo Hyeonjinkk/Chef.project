@@ -36,6 +36,7 @@ td {
 				<tbody>
 					<tr>
 						<th width="150px">일련번호</th>
+						<th width="100px">카테고리</th>
 						<th width="200px" colspan="2">제목</th>
 						<th width="100px">작성자</th>
 						<th width="100px">등록일자</th>
@@ -49,6 +50,7 @@ td {
 							onmouseleave='this.style.backgroundColor = "white", this.style.fontWeight = "normal";'
 							onclick='DefAction("${list.recipeSeq}")'>
 							<td>${list.recipeSeq }</td>
+							<td>${list.recipeWay }</td>
 							<td><img src=${list.recipeImageSm } width="130px"
 								height="100%"></td>
 							<td width="350px">${list.recipeName }</td>
@@ -93,7 +95,7 @@ td {
 		};
 	</script>
 
-	
+
 </body>
 
 

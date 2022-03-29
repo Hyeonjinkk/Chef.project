@@ -32,5 +32,12 @@
 		}
 	}
 	
+	if ('${noticeComments}' != '') {
+		alert('${noticeComments}');
+		if ('${nt.noticeNo}' != '') {
+			window.location = "noticeView.do?noticeNo=" + '${nt.noticeNo}';
+		}
+	}
+	
 </script>
 </html>

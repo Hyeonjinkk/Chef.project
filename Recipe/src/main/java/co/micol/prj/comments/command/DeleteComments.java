@@ -7,6 +7,9 @@ import co.micol.prj.comm.Command;
 import co.micol.prj.comments.service.CommentsService;
 import co.micol.prj.comments.service.CommentsVO;
 import co.micol.prj.comments.serviceImpl.CommentsServiceImpl;
+import co.micol.prj.notice.service.NoticeService;
+import co.micol.prj.notice.service.NoticeVO;
+import co.micol.prj.notice.serviceImpl.NoticeServiceImpl;
 import co.micol.prj.recipe.service.RecipeService;
 import co.micol.prj.recipe.service.RecipeVO;
 import co.micol.prj.recipe.serviceImpl.ReicpeServiceImpl;
@@ -22,7 +25,7 @@ public class DeleteComments implements Command {
 		vo.setComCategory(Integer.parseInt(request.getParameter("comCategory")));
 		vo.setComSeq(Integer.parseInt(request.getParameter("comSeq")));
 		int result = commentsDao.deleteComments(vo);
-		
+
 		if (result != 0) {
 			switch (vo.getComCategory()) {
 			case 1:
@@ -36,11 +39,22 @@ public class DeleteComments implements Command {
 
 				request.setAttribute("recipe", recipeDao.selectRecipe(recipeVO));
 
-				
 				break;
-
+//				자유게시판 View
 			case 2:
+				request.setAttribute("noticeComments", "댓글이 성공적으로 삭제되었습니다!");
+
+				NoticeService noticeDao = new NoticeServiceImpl();
+
+				NoticeVO noticeVO = new NoticeVO();
+
+				noticeVO.setNoticeNo(vo.getComSeq());
+
+				request.setAttribute("nt", noticeDao.noticeSelect(noticeVO));
+
 			case 3:
+			case 4:
+			case 5:
 			}
 			return "main/home";
 		} else {

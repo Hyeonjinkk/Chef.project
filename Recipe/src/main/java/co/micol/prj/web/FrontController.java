@@ -36,6 +36,14 @@ import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
+import co.micol.prj.question.command.AjaxQuestionSearch;
+import co.micol.prj.question.command.AjaxSortQuestion;
+import co.micol.prj.question.command.QuestionDelete;
+import co.micol.prj.question.command.QuestionInsert;
+import co.micol.prj.question.command.QuestionInsertForm;
+import co.micol.prj.question.command.QuestionList;
+import co.micol.prj.question.command.QuestionUpdate;
+import co.micol.prj.question.command.QuestionView;
 import co.micol.prj.recipe.command.DeleteRecipe;
 import co.micol.prj.recipe.command.RecipeInsert;
 import co.micol.prj.recipe.command.RecipeInsertForm;
@@ -122,7 +130,16 @@ public class FrontController extends HttpServlet {
 		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
 		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
-
+		
+//		기능처리(질문&답변)
+		map.put("/questionList.do", new QuestionList()); // 질문 리스트
+		map.put("/questionInsert.do", new QuestionInsert()); // 공지사항 등록
+		map.put("/questionUpdate.do", new QuestionUpdate()); // 공지사항 수정
+		map.put("/questionDelete.do", new QuestionDelete()); // 공지사항 삭제
+		map.put("/ajaxQuestionSearch.do", new AjaxQuestionSearch()); // 공지사항 리스트에서 검색
+		map.put("/ajaxSortQuestion.do", new AjaxSortQuestion()); // 공지사항 정렬
+		map.put("/questionInsertForm.do", new QuestionInsertForm()); // 공지사항 작성폼 호출
+		map.put("/questionView.do", new QuestionView()); // 공지사항 상세보기
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -76,6 +76,7 @@ public class RecipeInsert implements Command {
 		int result = recipeDao.insertRecipe(vo);
 		
 		if(result != 0) {
+			request.setAttribute("message", "정상적으로 등록되었습니다.");
 			return "recipe/recipeList";
 			
 		} else {

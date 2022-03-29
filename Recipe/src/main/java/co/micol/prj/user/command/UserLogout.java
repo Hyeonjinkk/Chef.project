@@ -20,7 +20,7 @@ public class UserLogout implements Command {
 		
 		request.setAttribute("message", "정상적으로 로그아웃되었습니다.");
 		
-		return "user/userLogout";
+		return "main/home";
 	}
 
 }

@@ -33,7 +33,7 @@ public class UserLogin implements Command {
 			request.setAttribute("message", "아이디 또는 패스워드가 틀립니다.");
 		}
 		
-		return "user/userLogin";
+		return "main/home";
 	}
 
 }

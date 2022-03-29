@@ -194,6 +194,9 @@
 		WHERE
 		U.USER_NO = R.USER_NO
 		and R.R_SEQ = #{recipeSeq}
+		<if test="recipeName != ''">
+		or R.R_NAME = #{recipeName}
+		</if>
 
 	</select>
 
@@ -205,7 +208,10 @@
 		UPDATE RECIPE SET R_HIT =
 		R_HIT + 1 WHERE R_SEQ = #{recipeSeq}
 	</update>
-
+	
+	<delete id="deleteRecipe" parameterType="co.micol.prj.recipe.service.RecipeVO">
+		DELETE FROM RECIPE WHERE R_SEQ = #{recipeSeq}
+	</delete>
 
 
 

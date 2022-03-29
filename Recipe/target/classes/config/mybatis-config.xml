@@ -25,6 +25,8 @@
     <mapper resource="co/micol/prj/user/service/user-map.xml" />
     <mapper resource="co/micol/prj/qna/service/qna-map.xml" />
     <mapper resource="co/micol/prj/inquiry/service/inquiry-map.xml"/>
+    <mapper resource="co/micol/prj/comments/service/comments-map.xml"/>
+    
   </mappers>
 </configuration>
 

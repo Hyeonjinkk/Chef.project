@@ -89,9 +89,6 @@ public class FrontController extends HttpServlet {
 
 		map.put("/userJoinForm.do", new UserJoinForm()); // 회원가입폼 호출
 
-		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
-		map.put("/borderList.do", new BorderList()); // 공지사항목록 보기
-		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 
 		map.put("/qnaList.do", new QnaList()); // 자주듣는 질문 페이지 호출
 
@@ -111,6 +108,10 @@ public class FrontController extends HttpServlet {
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
 		map.put("/borderUpdate.do", new BorderUpdate()); // 공지사항 수정
 		map.put("/borderDelete.do", new BorderDelete()); // 공지사항 삭제
+
+		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
+		map.put("/borderList.do", new BorderList()); // 공지사항목록 보기
+		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬
 

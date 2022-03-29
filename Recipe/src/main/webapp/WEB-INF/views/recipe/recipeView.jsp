@@ -182,6 +182,9 @@ input[type=date]:focus {
              cancelBtn.style.display = "none";
 
              updateBtn.setAttribute("onClick", "updateButton("+n+")");
+             
+             let date = document.getElementById('currentDate');
+             date.setAttribute('id','updateDate');
 
          }
      }

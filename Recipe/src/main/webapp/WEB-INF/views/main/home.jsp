@@ -32,5 +32,19 @@
 		}
 	}
 	
+	if ('${noticeComments}' != '') {
+		alert('${noticeComments}');
+		if ('${nt.noticeNo}' != '') {
+			window.location = "noticeView.do?noticeNo=" + '${nt.noticeNo}';
+		}
+	}
+	
+	if ('${inquiryComments}' != '') {
+		alert('${inquiryComments}');
+		if ('${iq.inquiryNo}' != '') {
+			window.location = "inquiryView.do?inquiryNo=" + '${iq.inquiryNo}';
+		}
+	}
+	
 </script>
 </html>

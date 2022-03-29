@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.micol.prj.comm.Command;
 import co.micol.prj.recipe.service.RecipeService;
@@ -17,6 +18,7 @@ public class RecipeUpdate implements Command {
 		// TODO 레시피 수정처리
 		RecipeVO vo = new RecipeVO();
 		RecipeService recipeDao = new ReicpeServiceImpl();
+		HttpSession session = request.getSession();
 		vo.setRecipeName(request.getParameter("recipeName"));
 		vo.setRecipeKind(request.getParameter("recipeKinds"));
 		vo.setRecipeDate(Date.valueOf(request.getParameter("rDate")));
@@ -72,7 +74,7 @@ public class RecipeUpdate implements Command {
 		int result = recipeDao.updateRecipe(vo);
 		if (result != 0) {
 			request.setAttribute("recipe", recipeDao.selectRecipe(vo));
-
+			request.setAttribute("message", "수정완료되었습니다.");
 			return "recipe/recipeView";
 		} else {
 

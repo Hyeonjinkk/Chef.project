@@ -25,6 +25,7 @@ import co.micol.prj.inquiry.command.AjaxSortInquiry;
 import co.micol.prj.inquiry.command.InquiryDelete;
 import co.micol.prj.inquiry.command.InquiryInsert;
 import co.micol.prj.inquiry.command.InquiryInsertForm;
+import co.micol.prj.comments.command.insertRecipeViewComments;
 import co.micol.prj.inquiry.command.InquiryList;
 import co.micol.prj.inquiry.command.InquiryUpdate;
 import co.micol.prj.inquiry.command.InquiryUpdateForm;
@@ -38,18 +39,22 @@ import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.notice.command.NoticeUpdate;
 import co.micol.prj.notice.command.NoticeUpdateForm;
-import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
+import co.micol.prj.recipe.command.DeleteRecipe;
 import co.micol.prj.recipe.command.RecipeInsert;
 import co.micol.prj.recipe.command.RecipeInsertForm;
+import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.user.command.AjaxUserIdCheck;
+import co.micol.prj.user.command.AjaxUserOldPwdCheck;
+import co.micol.prj.user.command.UpdatePwd;
+import co.micol.prj.user.command.UpdateUserInfo;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
 import co.micol.prj.user.command.UserLogin;
@@ -88,6 +93,9 @@ public class FrontController extends HttpServlet {
 		map.put("/userLogout.do", new UserLogout()); // 로그아웃 처리
 		map.put("/userMypage.do", new UserMypage()); // 마이페이지 출력
 		map.put("/userUpdateForm.do", new UserUpdateForm()); // 회원정보수정폼 출력
+		map.put("/ajaxUserOldPwdCheck.do", new AjaxUserOldPwdCheck()); // 패스워드 변경 시 패스워드 재확인
+		map.put("/updatePwd.do", new UpdatePwd()); // 패스워드 변경
+		map.put("/updateUserInfo.do", new UpdateUserInfo()); // 회원정보 변경 처리
 
 ////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
@@ -107,7 +115,6 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch()); // 검색
 		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
 
-		
 ////--------------------------------------		기능처리(inquiry) - 레시피/재료 문의게시판
 		map.put("/inquiryList.do", 			new InquiryList()); // 목록
 		map.put("/inquiryInsertForm.do", 	new InquiryInsertForm()); // 등록 폼
@@ -120,7 +127,6 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxInquirySearch.do", new AjaxInquirySearch()); // 검색
 		map.put("/ajaxSortInquiry.do", new AjaxSortInquiry()); // 정렬
 
-		
 ////--------------------------------------		기능처리(recipe) - 레시피
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		map.put("/recipeView.do", new RecipeView()); // 레시피 상세 과정 보기
@@ -128,12 +134,16 @@ public class FrontController extends HttpServlet {
 		map.put("/recipeInsert.do", new RecipeInsert()); // 레시피 등록처리
 		map.put("/updateRecipeForm.do", new UpdateRecipeForm()); // 레시피 수정폼
 		map.put("/recipeUpdate.do", new RecipeUpdate()); // 레시피 수정처리
-		
+		map.put("/deleteRecipe.do", new DeleteRecipe()); // 레시피 삭제처리
 
 ////--------------------------------------		기능처리(QnA)
 		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
 		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
+		
+		
+////--------------------------------------		댓글처리(comments)
+		map.put("/insertRecipeViewComments.do", new insertRecipeViewComments()); // 레시피 댓글 등록
 
 	}
 

@@ -3,9 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
+<form id="recipeViewFrm" name="recipeViewFrm" method="post">
 
-<div align="center">
-	<form id="recipeViewFrm" name="recipeViewFrm" method="post">
+	<div align="center">
 		<h1>${recipe.userAlias }</h1>
 		<input type="hidden" name="recipeSeq" value="${recipe.recipeSeq}">
 		<c:forEach var="i" begin="1" end="20">
@@ -39,18 +39,70 @@
 				<button type="submit" onclick="delete1()">삭제하기</button>
 			</div>
 		</c:if>
-	</form>
-</div>
+
+	</div>
+	<!-- 댓글창 -->
+
+
+	<div align="center">
+		<table id="tbl">
+
+			<tr>
+				<td width="150px">작성자</td>
+				<td><b>${userAlias}</b></td>
+
+				<td><input type='date' id='currentDate' name="comDate" readOnly
+					style="border: none;" /> <input type="hidden" name="comCategory"
+					value="1" /> <input type="hidden" name="comSeq"
+					value="${recipe.recipeSeq}" /></td>
+
+			</tr>
+			<tr id="asd">
+				<td colspan="4"><textarea id="comments" name="comContents"
+						style="width: 100%;"></textarea></td>
+
+				<td>
+					<button type="button" onclick="insertComments()"
+						style="border: 0px; cursor: pointer;">등록</button>
+				</td>
+
+			</tr>
+		</table>
+	</div>
+
+
+</form>
 <script>
+	function insertComments() {
+		recipeViewFrm.action = "insertRecipeViewComments.do";
+		recipeViewFrm.submit();
+	}
 
-function update(){
-recipeViewFrm.action = "updateRecipeForm.do";
-recipeViewFrm.submit();
-	
-}
+	if ('${message}' != '') {
+		alert('${message}');
+		window.location = "recipeView.do?recipeSeq=" + ${recipe.recipeSeq};
+	}
 
-function delete1(){
-	recipeViewFrm.action = "deleteRecipe.do";
-	recipeViewFrm.submit();
-}
+	function update() {
+		recipeViewFrm.action = "updateRecipeForm.do";
+		recipeViewFrm.submit();
+
+	}
+
+	function delete1() {
+		let check = confirm('해당 게시글을 삭제하시겠습니까?');
+		if (check == true) {
+			recipeViewFrm.action = "deleteRecipe.do?recipeSeq=" + $
+			{
+				recipe.recipeSeq
+			}
+			;
+			recipeViewFrm.submit();
+		}
+	}
+</script>
+<script>
+	document.getElementById('currentDate').value = new Date().toISOString()
+			.substring(0, 10);
+	;
 </script>

@@ -15,4 +15,19 @@
 
 </div>
 </body>
+<script type="text/javascript">
+if('${message}' != '') {
+	alert('${message}');
+	window.location = "home.do";
+}
+
+if ('${recipeComments}' != '') {
+	alert('${recipeComments}');
+	window.location = "recipeView.do?recipeSeq=" + ${recipe.recipeSeq};
+}
+
+
+
+
+</script>
 </html>

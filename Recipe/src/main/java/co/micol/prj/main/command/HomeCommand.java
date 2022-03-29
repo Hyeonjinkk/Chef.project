@@ -10,6 +10,8 @@ public class HomeCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		request.removeAttribute("message");
+		
 		return "main/home";
 	}
 

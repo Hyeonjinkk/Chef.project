@@ -15,11 +15,12 @@ public class UserLogout implements Command {
 		session.removeAttribute("userId");
 		session.removeAttribute("userAuthor");
 		session.removeAttribute("userAlias");
+		session.removeAttribute("userNo");
 		session.invalidate(); // 세션삭제
 		
 		request.setAttribute("message", "정상적으로 로그아웃되었습니다.");
 		
-		return "user/userLogout";
+		return "main/home";
 	}
 
 }

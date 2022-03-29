@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.comments.service.CommentsMapper">
+<resultMap type="co.micol.prj.comments.service.CommentsVO" id="commentsMap">
+		<id property="comNo" column="com_no"/>
+		<result property="comAlias" column="com_alias"/>
+		<result property="comCategory" column="com_category"/>
+		<result property="comDate" column="com_date"/>
+		<result property="comContents" column="com_contents"/>
+		<result property="comSeq" column="com_seq"/>
+	</resultMap>
+	
+	<insert id="insertComments" parameterType="co.micol.prj.comments.service.CommentsVO">
+	<selectKey keyProperty="comNo" resultType="int" order="BEFORE">
+			SELECT CASE WHEN MAX(COM_NO) IS NULL THEN 1 ELSE MAX(COM_NO) + 1 END AS COM_NO FROM COMMENTS
+		</selectKey>
+	INSERT INTO COMMENTS VALUES (#{comNo},#{comAlias},#{comCategory},#{comDate},#{comContents},#{comSeq})
+	</insert>
+	
+	<select id="selectCommentsList" resultMap="commentsMap">
+		SELECT * FROM COMMENTS ORDER BY COM_NO DESC
+	</select>
+	
+	<update id="updateComments" parameterType="co.micol.prj.comments.service.CommentsVO">
+		UPDATE COMMENTS SET COM_DATE = #{comDate}, COM_CONTENTS = #{comContents} WHERE COM_NO = #{comNo}
+	</update>
+	
+	<delete id="deleteComments" parameterType="co.micol.prj.comments.service.CommentsVO">
+		DELETE FROM COMMENTS WHERE COM_NO = #{comNo}
+	</delete>
+
+</mapper>

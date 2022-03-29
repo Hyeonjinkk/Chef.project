@@ -16,6 +16,12 @@
 .menu .hide {
 	display: none;
 }
+
+ul{
+   list-style:none;
+   padding-left:0px;
+   }
+
 </style>
 
 </head>
@@ -37,10 +43,10 @@
 								<c:forEach items="${qnaQ }" var="q">
 									<div>
 										<ul>
-											<li class="menu"><a>질문${q.qnaNo} : ${q.qnaTitle}</a>
+											<li class="menu"  ><a>질문${q.qnaNo} : ${q.qnaTitle} </a>
 												<ul class="hide">
 													<li>답변:${q.qnaContents}</li>
-												</ul></li>
+												</ul></li><button type="submit" >수정</button><button type="submit" >삭제</button>
 										</ul>
 									</div>
 								</c:forEach>
@@ -76,13 +82,9 @@
 	</div>
 	<script type="text/javascript">
 	
-	console.log(null);
 	 // html dom 이 다 로딩된 후 실행된다.
     $(document).ready(function(){
-        // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
         $(".menu>a").click(function(){
-            // 현재 클릭한 태그가 a 이기 때문에
-            // a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
             $(this).next("ul").toggleClass("hide");
         });
     });
@@ -113,28 +115,29 @@ function qnaContents(g){
 			}
 		});
 	}
-	
+
 	function searchResult(data){ //json 객체를  html로 변환 후 화면에 적용함.
 		var tb = $("#qnaBody");
 		$("#qnaBody").empty();
 
 		$.each(data, function(index, item) {
-			var html = $("<li />").append(
-
-					
-					
-					$(document).ready(function(){
-			$("<a/>").text(item.qnaTitle).click(function(){
-				$(this).next("a").toggleClass("hide");
-			}
-	        });
-			$("<a/>").text(item.qnaContents),
-			);
+			console.log(item.qnaContents);
+			
+			var html = $("<li class='menu'>");
+			html.append(
+					$("<a/>").text(item.qnaTitle),
+					$("<ul class='hide'/>").text(item.qnaContents),
+					);
 			tb.append(html);
-		});
 		
-	}
-	
+	$(document).ready(function(){
+  	  $(".menu>a").click(function(){
+  	      $(this).next("ul").toggleClass("hide");
+ 	   								});
+								});
+});
+}
+
 	function sortBorder(key){
 		$.ajax({
 			url : "ajaxSortBorder.do",

@@ -21,18 +21,18 @@ public class UserLogin implements Command {
 		vo.setUserId(request.getParameter("userId"));
 		vo.setUserPassword(request.getParameter("userPassword"));
 		vo = userDAO.selectUser(vo);
-		
+	
 		if(vo != null) {
 			session.setAttribute("userId", vo.getUserId());
 			session.setAttribute("userAlias", vo.getUserAlias());
 			session.setAttribute("userAuthor", vo.getUserAuthor());
-			
+			session.setAttribute("userNo", vo.getUserNo());
 			request.setAttribute("message", vo.getUserAlias() + "님 환영합니다.");
 		} else {
 			request.setAttribute("message", "아이디 또는 패스워드가 틀립니다.");
 		}
 		
-		return "user/userLogin";
+		return "main/home";
 	}
 
 }

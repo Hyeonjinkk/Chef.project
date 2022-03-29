@@ -10,30 +10,40 @@ BORDER_TITLE VARCHAR2(200),
 BORDER_CONTENT VARCHAR2(4000),
 BORDER_HIT NUMBER);
 
---질문/답변(QnA) table
+--질문&답변 게시판
+
+CREATE TABLE QUESTION (
+QUESTION_ID NUMBER PRIMARY KEY,
+QUESTION_WRITER VARCHAR2(50),
+QUESTION_DATE DATE,
+QUESTION_TITLE VARCHAR2(200),
+QUESTION_CONTENTS VARCHAR2(4000),
+QUESTION_HIT NUMBER);
+
+--QnA table
 create table qna (
 qna_No int not null,
 qna_Title varchar2(200) not null,
 qna_Contents varchar2(4000) not null);
 
-create table users (
-	user_no        number          primary key,
-	user_id        varchar2(100)   not null,
-	user_password  varchar2(512)   not null,
-	user_name      varchar2(50)    not null,
-	user_alias     varchar2(50),
-	user_address   varchar2(300),
-	user_tel	   varchar2(100),
-	user_subscribe number          default 0,
-	user_author    varchar2(50)    default 'user'
-	
+--사용자(users) table
+CREATE TABLE USERS (
+	USER_NO        NUMBER          PRIMARY KEY,
+	USER_ID        VARCHAR2(100)   NOT NULL,
+	USER_PASSWORD  VARCHAR2(512)   NOT NULL,
+	USER_NAME      VARCHAR2(50)    NOT NULL,
+	USER_ALIAS     VARCHAR2(50),
+	USER_ADDRESS   VARCHAR2(300),
+	USER_TEL	   VARCHAR2(100),
+	USER_SUBSCRIBE NUMBER          DEFAULT 0,
+	USER_AUTHOR    VARCHAR2(50)    DEFAULT 'USER'	
 );
 
-create sequence userno_seq
-start with 1
-increment by 1
-nomaxvalue
-nominvalue;
+CREATE SEQUENCE USERNO_SEQ
+START WITH 1
+INCREMENT BY 1
+NOMAXVALUE
+NOMINVALUE;
 
 
 -- notice(커뮤니티)
@@ -96,7 +106,11 @@ CREATE TABLE "COMMUNITY"
    COMMENT ON COLUMN "BORDER"."BORDER_HIT" IS '조회수';
 
    
-   
+-- 구독하기
+CREATE TABLE SUBSCRIBE (
+	USER_ID        VARCHAR2(100)   NOT NULL,
+	FOLLOWING	   VARCHAR2(100)   DEFAULT 0
+);
    
    
    

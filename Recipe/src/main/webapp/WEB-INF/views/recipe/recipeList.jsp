@@ -46,7 +46,7 @@ td {
 
 
 						<tr
-							onmouseover='this.style.background="#BDBDBD", this.style.fontWeight = "bold";'
+							onmouseover='this.style.background="#BDBDBD", this.style.fontWeight = "bold", this.style.cursor="pointer";'
 							onmouseleave='this.style.backgroundColor = "white", this.style.fontWeight = "normal";'
 							onclick='DefAction("${list.recipeSeq}")'>
 							<td>${list.recipeSeq }</td>
@@ -73,10 +73,17 @@ td {
 	<script>
 		/* 1. 클릭하면 상세 레시피 페이지 이동 */
 		function DefAction(n) {
-			const recipeS = recipeForm.recipeSeq;
-			recipeS.value = n;
-			recipeForm.action = "recipeView.do";
-			recipeForm.submit();
+			if ('${userId}' != null) {
+				const recipeS = recipeForm.recipeSeq;
+				recipeS.value = n;
+				recipeForm.action = "recipeView.do";
+				recipeForm.submit();
+			} else {
+				var check = confirm('로그인이 필요한 서비스입니다.\n' + '로그인 하시겠습니까?');
+				if (check == true) {
+					location.href = "userLoginForm.do";
+				}
+			}
 
 		}
 	</script>
@@ -93,6 +100,13 @@ td {
 				location.href = "recipeInsertForm.do";
 			}
 		};
+		
+		
+		if('${message}' != ''){
+			alert('${message}');
+			window.location = "recipeList.do";
+		}
+		
 	</script>
 
 

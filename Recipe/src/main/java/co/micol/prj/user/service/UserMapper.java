@@ -13,4 +13,7 @@ public interface UserMapper {
 	int deleteUser(UserVO vo);
 	boolean isIdCheck(String str);
 	
+	String pwCheck(UserVO vo); //기존 패스워드 체크
+	int updatePwd(UserVO vo);  //패스워드 변경
+	
 }

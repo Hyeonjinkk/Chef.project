@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +8,50 @@
 
 </head>
 <body>
-<div align="center">
+	<div align="center">
 
-	<div><h1>This is Our Main Page of website!!!!!</h1></div>
+		<div>
+			<h1>This is Our Main Page of website!!!!!</h1>
+		</div>
 
 
-</div>
+	</div>
 </body>
 <script type="text/javascript">
-if('${message}' != '') {
-	alert('${message}');
-	window.location = "home.do";
-}
+	/* 로그인 메세지 */
+	if ('${message}' != '') {
+		alert('${message}');
+		window.location = "home.do";
+	}
 
+
+	if ('${recipeComments}' != '') {
+		alert('${recipeComments}');
+		if ('${recipe.recipeSeq}' != '') {
+			window.location = "recipeView.do?recipeSeq=" + '${recipe.recipeSeq}';
+		}
+	}
+	
+	if ('${noticeComments}' != '') {
+		alert('${noticeComments}');
+		if ('${nt.noticeNo}' != '') {
+			window.location = "noticeView.do?noticeNo=" + '${nt.noticeNo}';
+		}
+	}
+	
+	if ('${inquiryComments}' != '') {
+		alert('${inquiryComments}');
+		if ('${iq.inquiryNo}' != '') {
+			window.location = "inquiryView.do?inquiryNo=" + '${iq.inquiryNo}';
+		}
+	}
+	
+	if ('${borderComments}' != '') {
+		alert('${borderComments}');
+		if ('${border.borderId}' != '') {
+			window.location = "borderView.do?borderId=" + '${border.borderId}';
+		}
+	}
+	
 </script>
 </html>

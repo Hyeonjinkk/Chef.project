@@ -19,24 +19,24 @@
 						<tr>
 							<th width="100">작성자</th>
 							<td width="150">
-								<input type="text" id="userAlias" name="userAlias" required="required">${nt.userAlias }
+								<input type="text" id="userAlias" name="userAlias" value="${nt.userAlias }">
 							</td>
 
 							<th width="100">작성일자</th>
 							<td width="150">
-								<input type="date" id="noticeDate" name="noticeDate" required="required">${nt.noticeDate }
+								<input type="date" id="noticeDate" name="noticeDate" value="${nt.noticeDate }">
 							</td>
 						</tr>
 						<tr>
 							<th>제목</th>
 							<td colspan="3">
-								<input type="text" id="noticeTitle" name="noticeTitle" required="required">${nt.noticeTitle }
+								<input type="text" id="noticeTitle" name="noticeTitle" value="${nt.noticeTitle }">
 							</td>
 						</tr>
 						<tr>
 							<th>내용</th>
 							<td colspan="3">
-								<textarea rows="10" cols="80" name="noticeContent">${nt.noticeContent }</textarea>
+								<textarea rows="10" cols="80" id="noticeContent" name="noticeContent" value="${nt.noticeContent }"></textarea>
 							</td>
 						</tr>
 					</table>

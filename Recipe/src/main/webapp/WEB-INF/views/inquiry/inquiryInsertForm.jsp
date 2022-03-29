@@ -17,7 +17,7 @@
 	<c:if test="${not empty userId }">
 	<div><h1>게시글 작성</h1></div>
 	<div>
-		<form id="frm" action="noticeInsert.do" method="post">
+		<form id="iqInsert" action="inquiryInsert.do" method="post">
 			<div>
 				<table border="1">
 					<tr>
@@ -25,26 +25,45 @@
 						<td width="150"><input type="text" id="userAlias" name="userAlias" value="${userAlias }"></td>
 						
 						<th width="100">작성일자</th>
-						<td width="150"><input type="date" id="noticeDate" name="noticeDate" required="required"></td>
+						<td width="150"><input type="date" id="inquiryDate" name="inquiryDate" required="required"></td>
 					</tr>
 					<tr>
 						<th>제목</th>
 						<td colspan="3">
-							<input type="text" id="noticeTitle" name="noticeTitle" required="required">
+							<input type="text" id="inquiryTitle" name="inquiryTitle" required="required">
+						</td>
+						<th>카테고리</th>
+						<td colspan="5">
+							<select id="inquiryCategory" name="inquiryCategory" required="required">
+								<option value="레시피">레시피</option>
+								<option value="재료">재  료</option>
+							</select>
 						</td>
 					</tr>
 					<tr>
 						<th>내용</th>
 						<td colspan="3">
-							<textarea rows="10" cols="80" name="noticeContent"></textarea>
+							<textarea rows="10" cols="80" name="inquiryContent"></textarea>
 						</td>
+					</tr>
+					<tr>
+						<td>이미지1:</td>
+						<td><input type="file" name="inquiryImage1" id="inquiryImage1"></td>
+					</tr>
+					<tr>
+						<td>이미지2:</td>
+						<td><input type="file" name="inquiryImage2" id="inquiryImage2"></td>
+					</tr>
+					<tr>
+						<td>이미지3:</td>
+						<td><input type="file" name="inquiryImage3" id="inquiryImage3"></td>
 					</tr>
 				</table>
 			</div><br>
 			<div>
 				<button type="submit">글 등록</button>&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;
-				<button type="button" onclick="location.href='noticeList.do'">목 록</button>
+				<button type="button" onclick="location.href='inquiryList.do'">목 록</button>
 			</div>
 		</form>
 	</div>

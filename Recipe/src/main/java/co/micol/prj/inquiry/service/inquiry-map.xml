@@ -27,11 +27,11 @@
 			SELECT CASE WHEN MAX(inquiry_no) IS NULL THEN 1 ELSE MAX(inquiry_no) + 1 END AS ID FROM inquiry
 		</selectKey>
 		INSERT INTO inquiry
-		VALUES (#{inquiryNo}, #{userAlias}, #{inquiryDate}, #{inquiryTitle}, #{inquiryContent}, #{inquiryImage1}, #{inquiryImage2}, #{inquiryImage3}, #{inquiryCategory}, 0)
+		VALUES (#{inquiryNo}, #{userAlias}, #{inquiryDate}, #{inquiryTitle}, #{inquiryContent}, #{inquiryCategory}, #{inquiryImage1}, #{inquiryImage2}, #{inquiryImage3}, 0)
 	</insert>
 	
 	<update id="inquiryUpdate" parameterType="co.micol.prj.inquiry.service.InquiryVO">
-		UPDATE inquiry SET inquiry_title = #{inquiryTitle}, inquiry_content = #{inquiryContent}
+		UPDATE inquiry SET inquiry_title = #{inquiryTitle}, inquiry_content = #{inquiryContent}, inquiry_date = #{inquiryDate}
 		WHERE inquiry_no = #{inquiryNo}
 	</update>
 	

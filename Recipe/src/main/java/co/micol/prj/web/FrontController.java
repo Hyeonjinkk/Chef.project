@@ -20,7 +20,18 @@ import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
+import co.micol.prj.comments.command.DeleteComments;
+import co.micol.prj.comments.command.InsertComments;
+import co.micol.prj.comments.command.UpdateComments;
+import co.micol.prj.inquiry.command.AjaxInquirySearch;
+import co.micol.prj.inquiry.command.AjaxSortInquiry;
+import co.micol.prj.inquiry.command.InquiryDelete;
+import co.micol.prj.inquiry.command.InquiryInsert;
+import co.micol.prj.inquiry.command.InquiryInsertForm;
 import co.micol.prj.inquiry.command.InquiryList;
+import co.micol.prj.inquiry.command.InquiryUpdate;
+import co.micol.prj.inquiry.command.InquiryUpdateForm;
+import co.micol.prj.inquiry.command.InquiryView;
 import co.micol.prj.main.command.HomeCommand;
 import co.micol.prj.notice.command.AjaxNoticeSearch;
 import co.micol.prj.notice.command.AjaxSortNotice;
@@ -30,16 +41,24 @@ import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.notice.command.NoticeUpdate;
 import co.micol.prj.notice.command.NoticeUpdateForm;
-import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
+import co.micol.prj.question.command.AjaxQuestionSearch;
+import co.micol.prj.question.command.AjaxSortQuestion;
+import co.micol.prj.question.command.QuestionDelete;
+import co.micol.prj.question.command.QuestionInsert;
+import co.micol.prj.question.command.QuestionInsertForm;
+import co.micol.prj.question.command.QuestionList;
+import co.micol.prj.question.command.QuestionUpdate;
+import co.micol.prj.question.command.QuestionView;
 import co.micol.prj.recipe.command.DeleteRecipe;
 import co.micol.prj.recipe.command.RecipeInsert;
 import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
+import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.subscribe.command.FollowerList;
@@ -74,9 +93,6 @@ public class FrontController extends HttpServlet {
 
 		map.put("/userJoinForm.do", new UserJoinForm()); // 회원가입폼 호출
 
-		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
-		map.put("/borderList.do", new BorderList()); // 공지사항목록 보기
-		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 
 		map.put("/qnaList.do", new QnaList()); // 자주듣는 질문 페이지 호출
 
@@ -97,6 +113,10 @@ public class FrontController extends HttpServlet {
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
 		map.put("/borderUpdate.do", new BorderUpdate()); // 공지사항 수정
 		map.put("/borderDelete.do", new BorderDelete()); // 공지사항 삭제
+
+		map.put("/borderInsertForm.do", new BorderInsertForm()); // 공지사항 작성폼 호출
+		map.put("/borderList.do", new BorderList()); // 공지사항목록 보기
+		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬
 
@@ -112,7 +132,16 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
 
 ////--------------------------------------		기능처리(inquiry) - 레시피/재료 문의게시판
-		map.put("/inquiryList.do", new InquiryList()); // 목록
+		map.put("/inquiryList.do", 			new InquiryList()); // 목록
+		map.put("/inquiryInsertForm.do", 	new InquiryInsertForm()); // 등록 폼
+		map.put("/inquiryInsert.do", 		new InquiryInsert()); // 등록
+		map.put("/inquiryView.do", 			new InquiryView()); // 보기
+		map.put("/inquiryUpdateForm.do", 	new InquiryUpdateForm()); // 수정폼
+		map.put("/inquiryUpdate.do", 		new InquiryUpdate()); // 수정
+		map.put("/inquiryDelete.do", 		new InquiryDelete()); // 삭제
+		
+		map.put("/ajaxInquirySearch.do", new AjaxInquirySearch()); // 검색
+		map.put("/ajaxSortInquiry.do", new AjaxSortInquiry()); // 정렬
 
 ////--------------------------------------		기능처리(recipe) - 레시피
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
@@ -127,6 +156,21 @@ public class FrontController extends HttpServlet {
 		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
 		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
+		
+//		기능처리(질문&답변)
+		map.put("/questionList.do", new QuestionList()); // 질문 리스트
+		map.put("/questionInsert.do", new QuestionInsert()); // 공지사항 등록
+		map.put("/questionUpdate.do", new QuestionUpdate()); // 공지사항 수정
+		map.put("/questionDelete.do", new QuestionDelete()); // 공지사항 삭제
+		map.put("/ajaxQuestionSearch.do", new AjaxQuestionSearch()); // 공지사항 리스트에서 검색
+		map.put("/ajaxSortQuestion.do", new AjaxSortQuestion()); // 공지사항 정렬
+		map.put("/questionInsertForm.do", new QuestionInsertForm()); // 공지사항 작성폼 호출
+		map.put("/questionView.do", new QuestionView()); // 공지사항 상세보기
+		
+////--------------------------------------		댓글처리(comments)
+		map.put("/insertComments.do", new InsertComments()); // 댓글 등록
+		map.put("/updateComments.do", new UpdateComments()); // 댓글 수정
+		map.put("/deleteComments.do", new DeleteComments()); // 댓글 삭제
 
 ////--------------------------------------		기능처리(Subscribe) - 팔로잉/팔로워 기능
 		map.put("/followingList.do", new FollowingList()); //구독한 유저 리스트 출력

@@ -25,11 +25,12 @@ public class UpdateUserInfo implements Command {
 		int n = userDAO.updateUser(vo);
 		
 		if(n != 0) {
+			request.setAttribute("message", "회원정보가 정상적으로 변경되었습니다.");
 			return "userUpdateForm.do";
 		} else {
 			request.setAttribute("message", "회원정보가 정상적으로 변경되지 않았습니다. 다시 시도해주시기 바랍니다." );
+			return "user/userUpdateForm";
 		}
-		return "user/userLogin";
 	}
 
 }

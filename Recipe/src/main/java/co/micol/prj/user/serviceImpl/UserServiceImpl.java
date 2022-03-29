@@ -52,8 +52,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String pwCheck(UserVO vo) {
-		
+		// 기존 패스워드 확인
 		return map.pwCheck(vo);
+	}
+
+	@Override
+	public int updatePwd(UserVO vo) {
+		// 패스워드 변경
+		return map.updatePwd(vo);
 	}
 
 	

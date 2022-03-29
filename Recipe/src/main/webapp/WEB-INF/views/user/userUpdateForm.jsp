@@ -77,6 +77,8 @@ button: hover {
 
 
 <body>
+
+
 	<div align="center">
 
 		<div>
@@ -109,7 +111,7 @@ button: hover {
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td><input itype="text" value="${userTel }" id="userTel" name="userTel"></td>
+					<td><input type="text" value="${userTel }" id="userTel" name="userTel"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
@@ -125,7 +127,7 @@ button: hover {
 
 	<!-- 패스워드 변경 모달창 -->
 	<div id="changePwdModal" class="modal">
-		<form id="pwdFrm" action="updatePwd.do" onsubmit="oldPwdCheck()" method="post">
+		<form id="pwdFrm" action="updatePwd.do" onsubmit="return pwdCheck()" method="post">
 			<input type="hidden" name="userId" value="${userId }">
 			<div class="modal-content">
 				<span class="close">&times;</span>
@@ -163,7 +165,7 @@ button: hover {
 			}
 		
 		
-		function oldPwdCheck() {
+		function pwdCheck() {
 			
 			$.ajax({
 				url : "ajaxUserOldPwdCheck.do",
@@ -180,11 +182,8 @@ button: hover {
 						$("#oldPwd").focus();
 					};
 				}
-			});
-		}
-		
-		function newpwdCheck() {
-			
+			});		
+						
 			if($("#newpwd1").val() != $("#newpwd2").val()) {
 				alert("새로 입력하신 패스워드가 일치하지 않습니다.");
 				$("#newpwd1").focus();

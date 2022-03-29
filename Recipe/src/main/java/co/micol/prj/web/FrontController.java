@@ -28,7 +28,6 @@ import co.micol.prj.inquiry.command.AjaxSortInquiry;
 import co.micol.prj.inquiry.command.InquiryDelete;
 import co.micol.prj.inquiry.command.InquiryInsert;
 import co.micol.prj.inquiry.command.InquiryInsertForm;
-import co.micol.prj.comments.command.insertRecipeViewComments;
 import co.micol.prj.inquiry.command.InquiryList;
 import co.micol.prj.inquiry.command.InquiryUpdate;
 import co.micol.prj.inquiry.command.InquiryUpdateForm;
@@ -62,12 +61,16 @@ import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
+import co.micol.prj.subscribe.command.FollowerList;
+import co.micol.prj.subscribe.command.FollowingList;
+import co.micol.prj.subscribe.command.Unfollowing;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.AjaxUserOldPwdCheck;
 import co.micol.prj.user.command.UpdatePwd;
 import co.micol.prj.user.command.UpdateUserInfo;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
+import co.micol.prj.user.command.UserList;
 import co.micol.prj.user.command.UserLogin;
 import co.micol.prj.user.command.UserLoginForm;
 import co.micol.prj.user.command.UserLogout;
@@ -104,6 +107,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxUserOldPwdCheck.do", new AjaxUserOldPwdCheck()); // 패스워드 변경 시 패스워드 재확인
 		map.put("/updatePwd.do", new UpdatePwd()); // 패스워드 변경
 		map.put("/updateUserInfo.do", new UpdateUserInfo()); // 회원정보 변경 처리
+		map.put("/userList.do", new UserList()); //관리자용 회원리스트 호출
 
 ////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
@@ -168,6 +172,11 @@ public class FrontController extends HttpServlet {
 		map.put("/updateComments.do", new UpdateComments()); // 댓글 수정
 		map.put("/deleteComments.do", new DeleteComments()); // 댓글 삭제
 
+////--------------------------------------		기능처리(Subscribe) - 팔로잉/팔로워 기능
+		map.put("/followingList.do", new FollowingList()); //구독한 유저 리스트 출력
+		map.put("/followerList.do", new FollowerList());   //나를 구독하는 유저 리스트 출력
+		map.put("/unfollowing.do", new Unfollowing());     //구독취소 처리
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

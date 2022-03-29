@@ -20,6 +20,7 @@ import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
+import co.micol.prj.comments.command.insertRecipeViewComments;
 import co.micol.prj.inquiry.command.InquiryList;
 import co.micol.prj.main.command.HomeCommand;
 import co.micol.prj.notice.command.AjaxNoticeSearch;
@@ -122,6 +123,10 @@ public class FrontController extends HttpServlet {
 		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
 		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
+		
+		
+////--------------------------------------		댓글처리(comments)
+		map.put("/insertRecipeViewComments.do", new insertRecipeViewComments()); // 레시피 댓글 등록
 
 	}
 

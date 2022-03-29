@@ -22,6 +22,11 @@
 		alert('${LoginMessage}');
 		window.location = "home.do";
 	}
+	
+	if ('${LogoutMessage}' != '') {
+		alert('${LogoutMessage}');
+		window.location = "home.do";
+	}
 
 	if ('${recipeComments}' != '') {
 		alert('${recipeComments}');

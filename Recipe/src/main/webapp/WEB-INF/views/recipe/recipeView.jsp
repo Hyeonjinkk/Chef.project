@@ -99,8 +99,20 @@
 </form>
 <script>
 	function insertComments() {
-		recipeViewFrm.action = "insertRecipeViewComments.do";
-		recipeViewFrm.submit();
+		if ('${userAlias}' == '') {
+			let check = confirm('로그인이 필요한 기능입니다.\n' + '로그인 하시겠습니까?');
+			if (check == true) {
+				location.href = "userLoginForm.do";
+			}
+		} else {
+			let value = document.getElementById('comments').value;
+			if (value == '') {
+				alert('댓글을 입력해주세요.');
+			} else {
+				recipeViewFrm.action = "insertComments.do";
+				recipeViewFrm.submit();
+			}
+		}
 	}
 
 	if ('${message}' != '') {

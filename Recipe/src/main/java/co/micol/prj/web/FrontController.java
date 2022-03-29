@@ -20,7 +20,15 @@ import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.comm.Command;
+import co.micol.prj.inquiry.command.AjaxInquirySearch;
+import co.micol.prj.inquiry.command.AjaxSortInquiry;
+import co.micol.prj.inquiry.command.InquiryDelete;
+import co.micol.prj.inquiry.command.InquiryInsert;
+import co.micol.prj.inquiry.command.InquiryInsertForm;
 import co.micol.prj.inquiry.command.InquiryList;
+import co.micol.prj.inquiry.command.InquiryUpdate;
+import co.micol.prj.inquiry.command.InquiryUpdateForm;
+import co.micol.prj.inquiry.command.InquiryView;
 import co.micol.prj.main.command.HomeCommand;
 import co.micol.prj.notice.command.AjaxNoticeSearch;
 import co.micol.prj.notice.command.AjaxSortNotice;
@@ -61,7 +69,7 @@ public class FrontController extends HttpServlet {
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-//		Page 처리
+//--------------------------------------		Page 처리
 		map.put("/home.do", new HomeCommand()); // 처음 들어오는 페이지
 
 		map.put("/userJoinForm.do", new UserJoinForm()); // 회원가입폼 호출
@@ -72,7 +80,7 @@ public class FrontController extends HttpServlet {
 
 		map.put("/qnaList.do", new QnaList()); // 자주듣는 질문 페이지 호출
 
-//		기능처리(user)
+////-------------------------------------- -------------------------------------- 기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
 		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
 		map.put("/userLoginForm.do", new UserLoginForm()); // 로그인폼 호출
@@ -81,14 +89,14 @@ public class FrontController extends HttpServlet {
 		map.put("/userMypage.do", new UserMypage()); // 마이페이지 출력
 		map.put("/userUpdateForm.do", new UserUpdateForm()); // 회원정보수정폼 출력
 
-//		기능처리(border)			
+////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
 		map.put("/borderUpdate.do", new BorderUpdate()); // 공지사항 수정
 		map.put("/borderDelete.do", new BorderDelete()); // 공지사항 삭제
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬
 
-//		기능처리(notice) - 자유게시판
+////--------------------------------------		기능처리(notice) - 자유게시판
 		map.put("/noticeList.do", new NoticeList()); // 목록
 		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
 		map.put("/noticeInsert.do", new NoticeInsert()); // 게시물 등록
@@ -99,22 +107,34 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch()); // 검색
 		map.put("/ajaxSortNotice.do", new AjaxSortNotice()); // 정렬
 
-//		기능처리(inquiry) - 레시피/재료 문의게시판
-		map.put("/inquiryList.do", new InquiryList()); // 목록
+		
+////--------------------------------------		기능처리(inquiry) - 레시피/재료 문의게시판
+		map.put("/inquiryList.do", 			new InquiryList()); // 목록
+		map.put("/inquiryInsertForm.do", 	new InquiryInsertForm()); // 등록 폼
+		map.put("/inquiryInsert.do", 		new InquiryInsert()); // 등록
+		map.put("/inquiryView.do", 			new InquiryView()); // 보기
+		map.put("/inquiryUpdateForm.do", 	new InquiryUpdateForm()); // 수정폼
+		map.put("/inquiryUpdate.do", 		new InquiryUpdate()); // 수정
+		map.put("/inquiryDelete.do", 		new InquiryDelete()); // 삭제
+		
+		map.put("/ajaxInquirySearch.do", new AjaxInquirySearch()); // 검색
+		map.put("/ajaxSortInquiry.do", new AjaxSortInquiry()); // 정렬
 
-//		기능처리(recipe) - 레시피
+		
+////--------------------------------------		기능처리(recipe) - 레시피
 		map.put("/recipeList.do", new RecipeList()); // 레시피 페이지
 		map.put("/recipeView.do", new RecipeView()); // 레시피 상세 과정 보기
 		map.put("/recipeInsertForm.do", new RecipeInsertForm()); // 레시피 등록 페이지
-		map.put("/recipeInsert.do", new RecipeInsert());	// 레시피 등록처리
+		map.put("/recipeInsert.do", new RecipeInsert()); // 레시피 등록처리
 		map.put("/updateRecipeForm.do", new UpdateRecipeForm()); // 레시피 수정폼
-		map.put("/recipeUpdate.do", new RecipeUpdate());	// 레시피 수정처리
+		map.put("/recipeUpdate.do", new RecipeUpdate()); // 레시피 수정처리
 		
-//		기능처리(QnA)
-		map.put("/qnaInsertForm.do", new qnaInsertForm());	// QnA 작성폼 호출
-		map.put("/qnaInsert.do", new qnaInsert());			// QnA 등록
-		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch());	// 검색
-		
+
+////--------------------------------------		기능처리(QnA)
+		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
+		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
+		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

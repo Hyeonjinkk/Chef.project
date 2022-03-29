@@ -8,6 +8,7 @@ import co.micol.prj.notice.service.NoticeService;
 import co.micol.prj.notice.service.NoticeVO;
 import co.micol.prj.notice.serviceImpl.NoticeServiceImpl;
 
+
 public class NoticeUpdateForm implements Command {
 
 	@Override
@@ -16,7 +17,7 @@ public class NoticeUpdateForm implements Command {
 		NoticeVO vo = new NoticeVO();
 		
 		vo.setNoticeNo(Integer.parseInt(request.getParameter("noticeNo")));
-		request.setAttribute("nt", noticeDao.noticeSelect(vo);
+		request.setAttribute("nt", noticeDao.noticeSelect(vo));
 		return "notice/noticeUpdateForm";
 
 	}

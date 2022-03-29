@@ -21,5 +21,13 @@ if('${message}' != '') {
 	window.location = "home.do";
 }
 
+if ('${recipeComments}' != '') {
+	alert('${recipeComments}');
+	window.location = "recipeView.do?recipeSeq=" + ${recipe.recipeSeq};
+}
+
+
+
+
 </script>
 </html>

@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+input[type=date]:focus {
+	outline: none;
+	
+} 
+
+</style>
 </head>
 <body>
 <div align="center">

@@ -46,5 +46,12 @@
 		}
 	}
 	
+	if ('${borderComments}' != '') {
+		alert('${borderComments}');
+		if ('${border.borderId}' != '') {
+			window.location = "borderView.do?borderId=" + '${border.borderId}';
+		}
+	}
+	
 </script>
 </html>

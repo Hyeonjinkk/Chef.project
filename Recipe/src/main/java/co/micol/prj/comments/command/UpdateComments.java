@@ -5,6 +5,9 @@ import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.micol.prj.border.service.BorderService;
+import co.micol.prj.border.service.BorderVO;
+import co.micol.prj.border.serviceImpl.BorderServiceImpl;
 import co.micol.prj.comm.Command;
 import co.micol.prj.comments.service.CommentsService;
 import co.micol.prj.comments.service.CommentsVO;
@@ -74,6 +77,18 @@ public class UpdateComments implements Command {
 
 				break;
 			case 4:
+				request.setAttribute("borderComments", "댓글이 성공적으로 수정되었습니다!");
+
+				BorderService borderDao = new BorderServiceImpl();
+
+				BorderVO borderVO = new BorderVO();
+
+				borderVO.setBorderId(vo.getComSeq());
+
+				request.setAttribute("border", borderDao.borderSelect(borderVO));
+
+				break;
+
 			case 5:
 			}
 			return "main/home";

@@ -50,7 +50,7 @@
 														<li><a href="inquiryList.do">레시피/재료 문의</a>
 														<li><a href="./#">후기게시판</a>
 													</ul>
-												<li><a href="./#">나의 냉장고</a>
+												<li><a href="myBasketList.do">나의 냉장고</a>
 													<ul class="dropdonw">
 														<li><a href="./#">재료</a>
 													</ul>

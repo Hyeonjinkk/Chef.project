@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.micol.prj.basket.command.AjaxBasketInCheck;
+import co.micol.prj.basket.command.DeleteAll;
+import co.micol.prj.basket.command.InsertBasket;
+import co.micol.prj.basket.command.MyBasketList;
 import co.micol.prj.border.command.AjaxBorderSearch;
 import co.micol.prj.border.command.AjaxSortBorder;
 import co.micol.prj.border.command.BorderDelete;
@@ -176,6 +180,14 @@ public class FrontController extends HttpServlet {
 		map.put("/followingList.do", new FollowingList()); //구독한 유저 리스트 출력
 		map.put("/followerList.do", new FollowerList());   //나를 구독하는 유저 리스트 출력
 		map.put("/unfollowing.do", new Unfollowing());     //구독취소 처리
+
+////--------------------------------------		기능처리(basket) - 나의 냉장고 
+		map.put("/myBasketList.do", new MyBasketList());  //나의 냉장고 리스트 출력
+		map.put("/insertBasket.do", new InsertBasket());  //냉장고에 식재료 입력 처리
+		map.put("/ajaxBasketInCheck.do", new AjaxBasketInCheck()); //냉장고 재료 중복체크
+		map.put("/deleteAll.do", new DeleteAll()); //냉장고 전체 비우기
+		//냉장고 재료 선택 삭제
+		//냉장고 레시피 검색
 		
 	}
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.basket.service.BasketMapper">
+	<resultMap type="co.micol.prj.basket.service.BasketVO" id="BasketMap">
+		<id property="userId" column="user_id"/>
+		<result property="ingredient" column="ingredient"/>
+	</resultMap>
+	
+	<select id="basketList" parameterType="co.micol.prj.basket.service.BasketVO" resultMap="BasketMap">
+		SELECT * FROM BASKET WHERE USER_ID = #{userId}
+	</select>
+	
+	<insert id="insertBasket" parameterType="co.micol.prj.basket.service.BasketVO">
+		INSERT INTO BASKET
+		VALUES(#{userId}, #{ingredient})
+	</insert>
+	
+	<delete id="deleteBasket" parameterType="co.micol.prj.basket.service.BasketVO">
+		DELETE FROM BASKET WHERE USER_ID = #{userId} AND INGREDIENT = #{ingredient}
+	</delete>
+	
+	<delete id="emptyBasket" parameterType="co.micol.prj.basket.service.BasketVO">
+		DELETE FROM BASKET WHERE USER_ID = #{userId}
+	</delete>
+	
+	<select id="bkCheck" parameterType="String" resultType="boolean">
+		SELECT CASE WHEN COUNT(INGREDIENT) = 1 THEN 1 ELSE 0 END 
+		FROM BASKET WHERE USER_ID = #{str1} AND INGREDIENT = #{str2}
+	</select>
+	
+	
+</mapper>

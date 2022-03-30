@@ -22,7 +22,7 @@ public class UpdatePwd implements Command {
 		  vo.setUserId(request.getParameter("userId"));
 		  vo.setUserPassword(request.getParameter("userPassword"));
 
-		  int n = userDAO.updateUser(vo);
+		  int n = userDAO.updatePwd(vo);
 		  System.out.println(n);
 		  if(n != 0) { 
 			  session.removeAttribute("userId");
@@ -31,16 +31,14 @@ public class UpdatePwd implements Command {
 			  session.invalidate(); // 세션삭제 
 			  
 			  request.setAttribute("message", "패스워드가 변경되었습니다. 변경된 패스워드로 다시 로그인 해주시기 바랍니다."); 
-			  
-			  
+			  		  
 		  } 
 		  	else {
 		  	  request.setAttribute("message", "정상적으로 변경 처리되지 않았습니다."); 
 		  	  
 		  	}
-		 
-		
-		return "user/userLogin";
+		 		
+		return "main/home";
 	
 	}
 

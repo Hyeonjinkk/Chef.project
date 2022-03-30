@@ -40,6 +40,9 @@
                                     </ul>
                                 </li>
                                 <li><a href="qnaList.do" style="font-family: 'Noto Sans KR', sans-serif;">고객센터</a></li>
+                                <c:if test="${not empty userId and userAuthor eq 'ADMIN'}">
+                                <li><a href="userList.do" style="font-family: 'Noto Sans KR', sans-serif;">회원리스트</a></li>
+                                </c:if>
                             </ul>
                         </nav>
                     </div>
@@ -68,5 +71,5 @@
         
         
         
-        
+       
 </body>

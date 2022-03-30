@@ -11,6 +11,25 @@
 		<result property="borderHit" column="border_hit"/>
 	</resultMap>
 	
+	<!-- 총 게시글 갯수 출력 -->
+<select id="countBoard" resultType="int" >
+	SELECT COUNT(*) FROM BORDER
+</select>
+
+<!-- 페이징 처리 후 게시글 조회 -->
+<select id="selectBoard" resultType="co.micol.prj.border.service.BorderVO" >
+	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM BORDER 
+						ORDER BY BORDER_ID DESC 
+						) A
+				)
+	WHERE RN BETWEEN #{start} AND #{end}
+</select>
+	
 	
 	<select id="borderSelectList" resultMap="borderMap">
 		SELECT*FROM BORDER ORDER BY BORDER_ID DESC

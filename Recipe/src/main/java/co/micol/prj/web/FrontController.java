@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import co.micol.prj.border.command.AjaxBorderSearch;
 import co.micol.prj.border.command.AjaxSortBorder;
 import co.micol.prj.border.command.BorderDelete;
@@ -19,6 +23,8 @@ import co.micol.prj.border.command.BorderInsertForm;
 import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
+import co.micol.prj.border.service.BorderService;
+import co.micol.prj.border.service.PagingVO;
 import co.micol.prj.comm.Command;
 import co.micol.prj.comments.command.DeleteComments;
 import co.micol.prj.comments.command.InsertComments;
@@ -61,12 +67,16 @@ import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.recipe.command.RecipeView;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
+import co.micol.prj.subscribe.command.FollowerList;
+import co.micol.prj.subscribe.command.FollowingList;
+import co.micol.prj.subscribe.command.Unfollowing;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.AjaxUserOldPwdCheck;
 import co.micol.prj.user.command.UpdatePwd;
 import co.micol.prj.user.command.UpdateUserInfo;
 import co.micol.prj.user.command.UserJoin;
 import co.micol.prj.user.command.UserJoinForm;
+import co.micol.prj.user.command.UserList;
 import co.micol.prj.user.command.UserLogin;
 import co.micol.prj.user.command.UserLoginForm;
 import co.micol.prj.user.command.UserLogout;
@@ -103,6 +113,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxUserOldPwdCheck.do", new AjaxUserOldPwdCheck()); // 패스워드 변경 시 패스워드 재확인
 		map.put("/updatePwd.do", new UpdatePwd()); // 패스워드 변경
 		map.put("/updateUserInfo.do", new UpdateUserInfo()); // 회원정보 변경 처리
+		map.put("/userList.do", new UserList()); //관리자용 회원리스트 호출
 
 ////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록
@@ -114,7 +125,7 @@ public class FrontController extends HttpServlet {
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬
-
+		//map.put("/borderListPaging.do", new BorderListPaging()); // 공지사항 목록
 ////--------------------------------------		기능처리(notice) - 자유게시판
 		map.put("/noticeList.do", new NoticeList()); // 목록
 		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
@@ -167,6 +178,11 @@ public class FrontController extends HttpServlet {
 		map.put("/updateComments.do", new UpdateComments()); // 댓글 수정
 		map.put("/deleteComments.do", new DeleteComments()); // 댓글 삭제
 
+////--------------------------------------		기능처리(Subscribe) - 팔로잉/팔로워 기능
+		map.put("/followingList.do", new FollowingList()); //구독한 유저 리스트 출력
+		map.put("/followerList.do", new FollowerList());   //나를 구독하는 유저 리스트 출력
+		map.put("/unfollowing.do", new Unfollowing());     //구독취소 처리
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -194,6 +210,29 @@ public class FrontController extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+	}
+	
+	
+	@SuppressWarnings("null")
+	@RequestMapping("boardList")
+	public String boardList(PagingVO vo, Model model
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		BorderService borderService = null;
+		int total = borderService.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", borderService.selectBoard(vo));
+		return "border/borderList";
 	}
 
 }

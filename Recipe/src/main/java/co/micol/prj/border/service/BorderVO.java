@@ -1,17 +1,11 @@
 package co.micol.prj.border.service;
 
-
-
-
-
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.Setter;
-
-
 
 @Setter
 @Getter

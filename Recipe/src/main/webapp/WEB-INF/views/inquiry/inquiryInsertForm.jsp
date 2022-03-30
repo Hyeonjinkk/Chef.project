@@ -22,7 +22,7 @@
 				<table border="1">
 					<tr>
 						<th width="100">작성자</th>
-						<td width="150"><input type="text" id="userAlias" name="userAlias" required="required"></td>
+						<td width="150"><input type="text" id="userAlias" name="userAlias" value="${userAlias }"></td>
 						
 						<th width="100">작성일자</th>
 						<td width="150"><input type="date" id="inquiryDate" name="inquiryDate" required="required"></td>
@@ -34,9 +34,9 @@
 						</td>
 						<th>카테고리</th>
 						<td colspan="5">
-							<select id="inquiryCategory" name="inquiryCategory">
-								<option value="1">레시피</option>
-								<option value="2">재  료</option>
+							<select id="inquiryCategory" name="inquiryCategory" required="required">
+								<option value="레시피">레시피</option>
+								<option value="재료">재  료</option>
 							</select>
 						</td>
 					</tr>
@@ -46,12 +46,24 @@
 							<textarea rows="10" cols="80" name="inquiryContent"></textarea>
 						</td>
 					</tr>
+					<tr>
+						<td>이미지1:</td>
+						<td><input type="file" name="inquiryImage1" id="inquiryImage1"></td>
+					</tr>
+					<tr>
+						<td>이미지2:</td>
+						<td><input type="file" name="inquiryImage2" id="inquiryImage2"></td>
+					</tr>
+					<tr>
+						<td>이미지3:</td>
+						<td><input type="file" name="inquiryImage3" id="inquiryImage3"></td>
+					</tr>
 				</table>
 			</div><br>
 			<div>
 				<button type="submit">글 등록</button>&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;
-				<button type="button" onclick="location.href='noticeList.do'">목 록</button>
+				<button type="button" onclick="location.href='inquiryList.do'">목 록</button>
 			</div>
 		</form>
 	</div>

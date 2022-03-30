@@ -56,7 +56,6 @@ span {
 				 가지고 있는 식재료를 냉장고에 담아주세요.<br>
 				<input type="text" id="insertIn" name="ingredient" required="required">&nbsp;
 				<button type="button" onclick="isInCheck()">담기</button>
-				<button type="submit"></button>
 			</form>
 
 		

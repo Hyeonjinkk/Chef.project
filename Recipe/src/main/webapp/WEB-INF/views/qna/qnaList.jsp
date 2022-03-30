@@ -46,7 +46,8 @@ ul{
 											<li class="menu"  ><a>질문${q.qnaNo} : ${q.qnaTitle} </a>
 												<ul class="hide">
 													<li>답변:${q.qnaContents}</li>
-												</ul></li><button type="submit" >수정</button><button type="submit" >삭제</button>
+												</ul></li>
+												<c:if test="${user_no == 1}"><button type="submit" onclick="qnaUpdate()" >수정</button><button type="submit" >삭제</button></c:if>
 										</ul>
 									</div>
 								</c:forEach>
@@ -89,7 +90,10 @@ ul{
         });
     });
 
+function qnaUpdate(){
 	
+}
+	 
 function qnaContents(g){
 		
 		console.log(g);

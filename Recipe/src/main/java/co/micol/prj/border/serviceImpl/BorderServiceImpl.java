@@ -1,5 +1,6 @@
 package co.micol.prj.border.serviceImpl;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import co.micol.prj.border.service.BorderMapper;
 import co.micol.prj.border.service.BorderService;
 import co.micol.prj.border.service.BorderVO;
+import co.micol.prj.border.service.PagingVO;
 import co.micol.prj.comm.DataSource;
 
 public class BorderServiceImpl implements BorderService {
@@ -61,4 +63,14 @@ public class BorderServiceImpl implements BorderService {
 		return map.borderSortList(key);
 	}
 
+	
+	@Override
+	public int countBoard() {
+		return map.countBoard();
+	}
+
+	@Override
+	public List<BorderVO> selectBoard(PagingVO vo) {
+		return map.selectBoard(vo);
+	}
 }

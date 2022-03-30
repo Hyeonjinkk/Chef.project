@@ -213,13 +213,13 @@ public class FrontController extends HttpServlet {
 	}
 	
 	
-	@SuppressWarnings("null")
+	
 	@RequestMapping("boardList")
 	public String boardList(PagingVO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		BorderService borderService = null;
+		BorderService borderService;
 		int total = borderService.countBoard();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -231,6 +231,7 @@ public class FrontController extends HttpServlet {
 		}
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", vo);
+		
 		model.addAttribute("viewAll", borderService.selectBoard(vo));
 		return "border/borderList";
 	}

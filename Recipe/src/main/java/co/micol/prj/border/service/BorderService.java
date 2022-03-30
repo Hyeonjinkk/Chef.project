@@ -12,5 +12,11 @@ public interface BorderService {
 	int borderUpdateHit(int id);
 	List<BorderVO> borderSelectSearchList(String key, String val); //검색할 항목, 검색할 내용
 	List<BorderVO> borderSortList(String key);
-	
-}
+
+	// 게시물 총 갯수
+	public int countBoard();
+
+	// 페이징 처리 게시글 조회
+	public List<BorderVO> selectBoard(PagingVO vo);
+	}
+

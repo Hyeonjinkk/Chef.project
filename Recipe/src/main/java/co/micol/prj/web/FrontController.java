@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import co.micol.prj.border.command.AjaxBorderSearch;
 import co.micol.prj.border.command.AjaxSortBorder;
 import co.micol.prj.border.command.BorderDelete;
@@ -19,6 +23,8 @@ import co.micol.prj.border.command.BorderInsertForm;
 import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
+import co.micol.prj.border.service.BorderService;
+import co.micol.prj.border.service.PagingVO;
 import co.micol.prj.comm.Command;
 import co.micol.prj.comments.command.DeleteComments;
 import co.micol.prj.comments.command.InsertComments;
@@ -119,7 +125,7 @@ public class FrontController extends HttpServlet {
 		map.put("/borderView.do", new BorderView()); // 공지사항 상세보기
 		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 공지사항 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 공지사항 정렬
-
+		//map.put("/borderListPaging.do", new BorderListPaging()); // 공지사항 목록
 ////--------------------------------------		기능처리(notice) - 자유게시판
 		map.put("/noticeList.do", new NoticeList()); // 목록
 		map.put("/noticeInsertForm.do", new NoticeInsertForm()); // 작성폼 호출
@@ -204,6 +210,29 @@ public class FrontController extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+	}
+	
+	
+	@SuppressWarnings("null")
+	@RequestMapping("boardList")
+	public String boardList(PagingVO vo, Model model
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		BorderService borderService = null;
+		int total = borderService.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", borderService.selectBoard(vo));
+		return "border/borderList";
 	}
 
 }

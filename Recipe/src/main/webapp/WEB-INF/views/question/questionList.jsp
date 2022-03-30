@@ -67,8 +67,8 @@
 			</div>
 			<br>
 			<div>
-			<button type="button" onclick="location.href='questionInsertForm.do'">글쓰기</button>
-				<c:if test="${user_no == 1}">
+			
+				<c:if test="${user_no eq 1 }">
 					<button type="button" onclick="location.href='questionInsertForm.do'">글쓰기</button>
 				</c:if>
 			</div>
@@ -136,6 +136,8 @@
 			}
 		});
 	}
+	
+	
 	</script>
 </body>
 </html>

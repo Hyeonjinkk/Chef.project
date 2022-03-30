@@ -1,13 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery.min.js"></script>
+
+<style>
+	h2 {
+		text-align: center;
+	}
+	table {
+		width: 100%;
+	}
+	#outter {
+		display: block;
+		width: 60%;
+		margin: auto;
+	}
+	a {
+		text-decoration: none;
+	}
+</style>
 </head>
 <body>
 	<div align="center">
@@ -28,7 +45,18 @@
 					type="button" onclick="searchList()" value="검색">
 				</span>
 			</div>
-			<div>
+			<div><div style="float: right;">
+		<select id="cntPerPage" name="sel" onchange="selChange()">
+			<option value="5"
+				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+			<option value="10"
+				<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+			<option value="15"
+				<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
+			<option value="20"
+				<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
+		</select>
+	</div> <!-- 옵션선택 끝 -->
 				<table border="1">
 					<thead>
 						<tr>
@@ -73,10 +101,41 @@
 				</c:if>
 			</div>
 			<input type="hidden" id="borderId" name="borderId">
+			<div style="display: block; text-align: center;">
+				<c:if test="${paging.startPage != 1 }">
+					<a
+						href="/borderList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+				</c:if>
+				<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+					var="p">
+					<c:choose>
+						<c:when test="${p == paging.nowPage }">
+							<b>${p }</b>
+						</c:when>
+						<c:when test="${p != paging.nowPage }">
+							<a
+								href="/borderList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${paging.endPage != paging.lastPage}">
+					<a
+						href="/borderList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+				</c:if>
+			</div>
 		</form>
 
 	</div>
 	<script type="text/javascript">
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="borderList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+	
+	function goPage(page) {
+		location.href = "noticeListPaging.do?page=" + page;
+	}
+	
 	function borderContents(n){
 		
 		console.log(n);

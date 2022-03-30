@@ -52,6 +52,12 @@ public class ReicpeServiceImpl implements RecipeService {
 		return map.updateHit(recipeSeq);
 	}
 
+	@Override
+	public int countRecipeList() {
+		// TODO Auto-generated method stub
+		return map.countRecipeList();
+	}
+
 
 
 	

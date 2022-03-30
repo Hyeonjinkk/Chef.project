@@ -20,6 +20,11 @@
 		SELECT * FROM notice WHERE notice_no = #{noticeNo}
 	</select>
 	
+	<select id="noticeCount" resultType="int">
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+	
+	
 	<insert id="noticeInsert" parameterType="co.micol.prj.notice.service.NoticeVO">
 		<selectKey keyProperty="noticeNo" resultType="int" order="BEFORE">
 			SELECT CASE WHEN MAX(notice_no) IS NULL THEN 1 ELSE MAX(notice_no) + 1 END AS ID FROM notice

@@ -11,11 +11,17 @@ public interface RecipeService {
 	
 
 	
+	
 	int insertRecipe(RecipeVO vo);			// 레시피 등록
 	int updateRecipe(RecipeVO vo);			// 레시피 수정
 	int deleteRecipe(RecipeVO vo);			// 레시피 삭제
 	
 	int updateHit(int recipeSeq);			// 조회수 증가
+	
+	
+	
+//	게시글 전체 수 조회
+	int countRecipeList();
 	
 
 }

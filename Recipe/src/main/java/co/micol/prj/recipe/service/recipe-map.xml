@@ -184,7 +184,9 @@
 
 	</update>
 
-
+	<select id="countRecipeList" resultType="int">
+	SELECT COUNT(*) AS COUNT FROM RECIPE
+	</select>
 
 	<!-- 레시피 상세 과정 조회 -->
 	<select id="selectRecipe" resultMap="recipeMap"

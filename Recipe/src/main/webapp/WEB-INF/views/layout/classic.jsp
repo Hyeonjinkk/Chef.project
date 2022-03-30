@@ -43,7 +43,7 @@
 	rel="stylesheet">
 
 
-
+ <link rel="shortcut icon" type="image/x-icon" href="https://ifh.cc/g/avqnr3.png">
 
 <style>
 h1, h2, h3, h4, h5, h6, p {
@@ -54,6 +54,12 @@ h1, h2, h3, h4, h5, h6, p {
 
 </head>
 <body>
+  <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+
 	<div class="humberger__menu__overlay"></div>
 	 <div class="humberger__menu__wrapper" style="background: slategray;">
         <div class="humberger__menu__logo">
@@ -63,22 +69,22 @@ h1, h2, h3, h4, h5, h6, p {
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li><a href="#" style="font-family: 'Oswald', sans-serif; font-size: 20px;">Home</a></li>
-                <li><a href="#" style="font-family: 'Oswald', sans-serif; font-size: 20px;">Sign in</a></li>
-                <li><a href="#" style="font-family: 'Oswald', sans-serif;font-size: 20px;">sign out</a></li>
-                <li><a href="#" style="font-family: 'Oswald', sans-serif;font-size: 20px;">Sign up</a></li>
+                <li><a href="home.do" style="font-family: 'Oswald', sans-serif; font-size: 20px;">Home</a></li>
+                <li><a href="userLoginForm.do" style="font-family: 'Oswald', sans-serif; font-size: 20px;">Sign in</a></li>
+                <li><a href="userLogout.do" style="font-family: 'Oswald', sans-serif;font-size: 20px;">sign out</a></li>
+                <li><a href="userJoinForm.do" style="font-family: 'Oswald', sans-serif;font-size: 20px;">Sign up</a></li>
 
                 <li class="dropdown"><a href="#"
                         style="font-family: 'Oswald', sans-serif;font-size: 20px;">community</a>
                     <ul class="dropdown__menu" style="padding-left: 30px;">
-                        <li><a href="#" style="font-family: 'Oswald', sans-serif;">Free</a></li>
-                        <li><a href="#" style="font-family: 'Oswald', sans-serif;">life</a></li>
-                        <li><a href="#" style="font-family: 'Oswald', sans-serif;">Cooking Tip</a></li>
+                        <li><a href="noticeList.do" style="font-family: 'Oswald', sans-serif;">Free</a></li>
+                        <li><a href="qnaList.do" style="font-family: 'Oswald', sans-serif;">life</a></li>
+                        <li><a href="inquiryList.do" style="font-family: 'Oswald', sans-serif;">Cooking Tip</a></li>
                     </ul>
                 </li>
-                <li><a href="#" style="font-family: 'Oswald', sans-serif;font-size: 20px;">My Page</a></li>
+                <li><a href="userMyPage.do" style="font-family: 'Oswald', sans-serif;font-size: 20px;">My Page</a></li>
 
-                <li><a href="./about.html" style="font-family: 'Oswald', sans-serif;font-size: 15px;">"My Team"</a></li>
+                <li><a href="#" style="font-family: 'Oswald', sans-serif;font-size: 15px;">"My Team"</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -98,7 +104,10 @@ h1, h2, h3, h4, h5, h6, p {
 	
 	<tiles:insertAttribute name="header" />
 	
-	<tiles:insertAttribute name="body" />
+        <tiles:insertAttribute name="body" />
+	
+	
+	
 	<tiles:insertAttribute name="footer" />
 	
 	 <!-- Js Plugins -->

@@ -18,4 +18,9 @@ public interface RecipeMapper {
 	int deleteRecipe(RecipeVO vo); // 레시피 삭제
 
 	int updateHit(int recipeSeq);
+	
+	
+//	게시글 전체 수 조회
+	int countRecipeList();
+	
 }

@@ -25,49 +25,44 @@ td {
 </head>
 
 <body id="body">
-
-	<div align="center">
-		<form id="recipeForm" name="recipeForm" method="post">
-
-			<table>
-				<thead>
-					<label><h1>레시피</h1></label>
-				</thead>
-				<tbody>
-					<tr>
-						<th width="150px">일련번호</th>
-						<th width="200px" colspan="2">제목</th>
-						<th width="100px">작성자</th>
-						<th width="100px">등록일자</th>
-						<th width="100px">조회수</th>
-					</tr>
-					<c:forEach items="${recipes }" var="list">
-
-
-						<tr
-							onmouseover='this.style.background="#BDBDBD", this.style.fontWeight = "bold", this.style.cursor="pointer";'
-							onmouseleave='this.style.backgroundColor = "white", this.style.fontWeight = "normal";'
-							onclick='DefAction("${list.recipeSeq}")'>
-							<td>${list.recipeSeq }</td>
-							<td><img src=${list.recipeImageSm } width="130px"
-								height="100%"></td>
-							<td width="350px">${list.recipeName }</td>
-							<td>${list.userAlias }</td>
-							<td>${list.recipeDate}</td>
-							<td>${list.recipeHit}</td>
-
-						</tr>
-
-					</c:forEach>
-				</tbody>
-			</table>
-			<div>
-				<button type="button" onclick="checkLogin('${userId}')">레시피
-					등록</button>
-				<input type="hidden" id="recipeSeq" name="recipeSeq">
+	<form id="recipeForm" name="recipeForm" method="post">
+		<div class="container">
+			<div class="single-post__quote"
+				style="margin-top: 70px; margin-bottom: 55px;">
+				<h3 style="padding-top: 3px;">레시피</h3>
+				<span>모두 함께 가꿔나가요!</span>
 			</div>
-		</form>
-	</div>
+			<div class="row">
+				<c:forEach items="${recipes }" var="list">
+					<div class="col-lg-3">
+						<div class="categories__item set-bg"
+							data-setbg="${list.recipeImageSm }"
+							style="background-image: url();"
+							onmouseover="this.style.cursor='pointer';"
+							onclick='DefAction("${list.recipeSeq}")'>
+							<div class="categories__hover__text"
+								style="text-align: center; opacity: 0.8;"
+								onmouseover="this.style.cursor='pointer';"
+								onclick='DefAction("${list.recipeSeq}")'>
+								<h5>${list.recipeName }</h5>
+								<h6>"${list.userAlias }"</h6>
+								<p>조회수 ${list.recipeHit}회</p>
+								<p>${list.recipeDate}</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div align="center">
+			<button type="button" onclick="checkLogin('${userId}')"
+				class="site-btn">레시피 등록</button>
+		</div>
+	</form>
+
+
+
+
 	<script>
 		/* 1. 클릭하면 상세 레시피 페이지 이동 */
 		function DefAction(n) {

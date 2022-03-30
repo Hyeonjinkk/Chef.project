@@ -21,6 +21,12 @@
 	<select id="inquirySelect" parameterType="co.micol.prj.inquiry.service.InquiryVO" resultMap="inquiryMap">
 		SELECT * FROM inquiry WHERE inquiry_no = #{inquiryNo}
 	</select>
+	
+	
+	<select id="inquiryCount" resultType="int">
+		SELECT COUNT(*) FROM INQUIRY
+	</select>
+	
 	<insert id="inquiryInsert" parameterType="co.micol.prj.inquiry.service.InquiryVO">
 	
 		<selectKey keyProperty="inquiryNo" resultType="int" order="BEFORE">

@@ -28,7 +28,7 @@
     <mapper resource="co/micol/prj/subscribe/service/subs-map.xml" />
     <mapper resource="co/micol/prj/question/service/question-map.xml" />
     <mapper resource="co/micol/prj/comments/service/comments-map.xml"/>
-    
+    <mapper resource="co/micol/prj/basket/service/basket-map.xml"/>  
   </mappers>
 </configuration>
 

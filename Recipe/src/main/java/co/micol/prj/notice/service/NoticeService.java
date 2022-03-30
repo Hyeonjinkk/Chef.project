@@ -13,5 +13,6 @@ public interface NoticeService {
 	List<NoticeVO> noticeSelectSearchList(String key, String val);
 	List<NoticeVO> noticeSortList(String key);
 	
-	
+//	notice 게시물 수
+	int noticeCount();
 }

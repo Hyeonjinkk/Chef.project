@@ -105,21 +105,21 @@
 							</div>
 							<ul>
 								<li><a href="#"
-									style="font-family: 'Noto Sans KR', sans-serif;">모든 게시물 <span>128</span></a></li>
-								<li><a href="#"
-									style="font-family: 'Noto Sans KR', sans-serif;">레시피 <span>32</span></a></li>
-								<li><a href="#"
-									style="font-family: 'Noto Sans KR', sans-serif;">커뮤니티 <span>86</span></a></li>
-								<li class="p-left"><a href="#"
-									style="font-family: 'Noto Sans KR', sans-serif;">자유 갤러리 <span>25</span></a></li>
-								<li class="p-left"><a href="#"
+									style="font-family: 'Noto Sans KR', sans-serif;">모든 게시물 <span>${recipeCnt + inquiryCnt + noticeCnt + borderCnt }</span></a></li>
+								<li><a href="recipeList.do"
+									style="font-family: 'Noto Sans KR', sans-serif;">레시피 <span>${recipeCnt}</span></a></li>
+								<li><a href="noticeList.do"
+									style="font-family: 'Noto Sans KR', sans-serif;">커뮤니티 <span>${inquiryCnt + noticeCnt  }</span></a></li>
+								<li class="p-left"><a href="noticeList.do"
+									style="font-family: 'Noto Sans KR', sans-serif;">자유 갤러리 <span>${noticeCnt }</span></a></li>
+								<li class="p-left"><a href="inquiryList.do"
 									style="font-family: 'Noto Sans KR', sans-serif;">Cooking
-										Tip 갤러리 <span>36</span>
+										Tip 갤러리 <span>${inquiryCnt}</span>
 								</a></li>
-								<li class="p-left"><a href="#"
+								<li class="p-left"><a href="qnaList.do"
 									style="font-family: 'Noto Sans KR', sans-serif;">생활팁 갤러리 <span>15</span></a></li>
-								<li><a href="#"
-									style="font-family: 'Noto Sans KR', sans-serif;">공지사항 <span>63</span></a></li>
+								<li><a href="borderList.do"
+									style="font-family: 'Noto Sans KR', sans-serif;">공지사항 <span>${borderCnt }</span></a></li>
 							</ul>
 						</div>
 					</div>

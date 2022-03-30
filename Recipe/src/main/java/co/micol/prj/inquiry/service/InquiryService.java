@@ -13,4 +13,6 @@ public interface InquiryService {
 	int inquiryUpdateHit(int id);
 	List<InquiryVO> inquirySelectSearchList(String key, String val);
 	List<InquiryVO> inquirySortList(String key);
+//	inquiry 게시판 count
+	int inquiryCount();
 }

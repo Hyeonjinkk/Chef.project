@@ -13,4 +13,7 @@ public interface InquiryMapper {
 	int inquiryUpdateHit(int id);
 	List<InquiryVO> inquirySelectSearchList(@Param("key")String key, @Param("val")String val);
 	List<InquiryVO> inquirySortList(String key);
+	
+//	inquiry 게시판 count
+	int inquiryCount();
 }

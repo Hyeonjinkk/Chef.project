@@ -26,8 +26,8 @@
                                 <li id="recipe"><a href="recipeList.do" style="font-family: 'Noto Sans KR', sans-serif;">레시피</a></li>
                                 <li id="board"><a href="borderList.do" style="font-family: 'Noto Sans KR', sans-serif;">공지사항</a>
                                 </li>
-                                <li class="dropdown"><a href="#" style="font-family: 'Noto Sans KR', sans-serif;">커뮤니티</a>
-                                <li class="dropdown"><a href="myBasketList.do" style="font-family: 'Noto Sans KR', sans-serif;">커뮤니티</a>
+                                <li class="dropdown"><a href="myBasketList.do" style="font-family: 'Noto Sans KR', sans-serif;">나의 냉장고</a>
+                                <li class="dropdown"><a href="noticeList.do" style="font-family: 'Noto Sans KR', sans-serif;">커뮤니티</a>
                                     <ul class="dropdown__menu" style="width: 200px;">
                                         <!-- 자유게시판 -->
                                         <li><a href="noticeList.do" style="font-family: 'Noto Sans KR', sans-serif;">자유 갤러리</a></li>

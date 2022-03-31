@@ -45,10 +45,10 @@ a {
 
 				<div>
 					<select id="searchKey" name="searchKey" onmouseover="this.style.cursor='pointer';">
-						<option value="전체">전체</option>
-						<option value="작성자">작성자</option>
-						<option value="제목">제목</option>
-						<option value="내용">내용</option>
+						<option value="1">선택</option>
+						<option value="2">작성자</option>
+						<option value="3">제목</option>
+						<option value="4">내용</option>
 					</select> <span> <input type="text" id="searchVal">&nbsp; <input
 						type="button" onclick="searchList()" value="검색">
 					</span>

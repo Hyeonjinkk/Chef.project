@@ -6,12 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 <script src="js/jquery-3.3.1.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
 
 </head>
 <body>
@@ -25,10 +22,11 @@
 			<form id="notice" method="post">
 				<div align="center">
 
-					<select id="searchVal" name="searchKey" style="width: 100px; border: none;">
-						<option value="작성자">작성자</option>
-						<option value="제목">제목</option>
-						<option value="내용">내용</option>
+					<select id="searchKey" name="searchKey" style="width: 100px; border: none;">
+						<option value="1">선택</option>
+						<option value="2">작성자</option>
+						<option value="3">제목</option>
+						<option value="4">내용</option>
 					</select>
 
 

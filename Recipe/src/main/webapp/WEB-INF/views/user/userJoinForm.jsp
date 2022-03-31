@@ -42,14 +42,15 @@
 
 
 
+                       
                     <div class="signin__form__text">
 
 
 
-                      <form action="#">
+                      <form action="userJoin.do" method="post">
                       <!-- 회원가입 폼 -->
-                        <input type="email" id="userId" name="userId" required="required" placeholder="이메일 주소를 입력해주세요">
-                        
+                      <font size="2" id="checkValue" name="checkValue"></font>
+                       <input type="email" id="userId" name="userId" required="required" placeholder="이메일 주소를 입력해주세요"> 
                         <input type="password" id="userPassword" placeholder="사용할 비밀번호를 입력해주세요." name="userPassword" required="required">
 
                         <input type="password" id="userPassword1" placeholder="입력한 비밀번호와 일치한 암호를 입력해주세요." name="userPassword1" required="required">
@@ -81,6 +82,9 @@
 
 
 	<script type="text/javascript">
+	document.getElementById('userId').addEventListener('focusout', isIdCheck);
+	const checkValue = document.getElementById('checkValue');
+	
 		function isIdCheck() {
 			$.ajax({
 				url : "ajaxUserIdCheck.do",
@@ -91,12 +95,14 @@
 				
 				success : function(result) {
 					if(result == '1') {
-						alert("사용 가능한 아이디입니다.");
+						/* alert("사용 가능한 아이디입니다."); */
+						checkValue.innerHTML =	"사용 가능한 아이디입니다."; 
 						$("#checkId").val('Yes');
 						$("#checkId").attr("disabled", "disabled");
 						$("#userPassword").focus();
 					} else {
-						alert("이미 사용 중인 아이디입니다.");
+						/* alert("이미 사용 중인 아이디입니다."); */
+						checkValue.innerHTML =	"이미 사용 중인 아이디입니다.";
 						$("#userId").val('');
 						$("#userId").focus();
 					};
@@ -122,10 +128,7 @@
 			
 			return true;
 		}
-		/* 
-		document.getElementById('userId').addEventListener('focusout', function (){
-			alert('성공');
-		}); */
+
 	</script>
 </body>
 </html>

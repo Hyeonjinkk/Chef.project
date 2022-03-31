@@ -1,6 +1,7 @@
 package co.micol.prj.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -13,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.micol.prj.basket.command.AjaxBasketInCheck;
 import co.micol.prj.basket.command.DeleteAll;
+import co.micol.prj.basket.command.DeleteIngrdnt;
 import co.micol.prj.basket.command.InsertBasket;
 import co.micol.prj.basket.command.MyBasketList;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,6 +73,7 @@ import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.recipe.command.RecipeView;
+import co.micol.prj.recipe.command.SearchBkRecipe;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.subscribe.command.FollowerList;
 import co.micol.prj.subscribe.command.FollowingList;
@@ -192,8 +196,8 @@ public class FrontController extends HttpServlet {
 		map.put("/insertBasket.do", new InsertBasket());  //냉장고에 식재료 입력 처리
 		map.put("/ajaxBasketInCheck.do", new AjaxBasketInCheck()); //냉장고 재료 중복체크
 		map.put("/deleteAll.do", new DeleteAll()); //냉장고 전체 비우기
-		//냉장고 재료 선택 삭제
-		//냉장고 레시피 검색
+		map.put("/deleteIngrdnt.do", new DeleteIngrdnt()); //냉장고 재료 선택 삭제
+		map.put("/searchBkRecipe.do", new SearchBkRecipe());   //냉장고 레시피 검색
 		
 	}
 

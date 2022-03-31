@@ -27,6 +27,5 @@
 		SELECT CASE WHEN COUNT(INGREDIENT) = 1 THEN 1 ELSE 0 END 
 		FROM BASKET WHERE USER_ID = #{str1} AND INGREDIENT = #{str2}
 	</select>
-	
-	
+		
 </mapper>

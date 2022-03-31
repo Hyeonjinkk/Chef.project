@@ -9,5 +9,7 @@ public class BasketVO {
 	
 	private String userId;
 	private String ingredient;
+		
+	}
 	
-}
+

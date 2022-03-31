@@ -18,7 +18,7 @@ public class RecipeVO {
 	private String recipeWay; // 조리방식
 	private String recipeKind; // 메뉴종류
 	private String recipeWgt; // 중량
-	private int recipeEng; // 열량
+	private int recipeLike; // 열량
 	private int recipeCar; // 탄수화물
 	private int recipePro; // 단백질
 	private int recipeFat; // 지방

@@ -58,6 +58,12 @@ public class ReicpeServiceImpl implements RecipeService {
 		return map.countRecipeList();
 	}
 
+	@Override
+	public List<RecipeVO> selectLikeList() {
+		// TODO Auto-generated method stub
+		return map.selectLikeList();
+	}
+
 
 
 	

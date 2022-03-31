@@ -39,7 +39,7 @@ td {
 							data-setbg="${list.recipeImageSm }"
 							style="background-image: url();"
 							onmouseover="this.style.cursor='pointer';"
-							onclick='DefAction("${list.recipeSeq}")'>
+							>
 							<div class="categories__hover__text"
 								style="text-align: center; opacity: 0.8;"
 								onmouseover="this.style.cursor='pointer';"
@@ -48,6 +48,8 @@ td {
 								<h6>"${list.userAlias }"</h6>
 								<p>조회수 ${list.recipeHit}회</p>
 								<p>${list.recipeDate}</p>
+								<input type="hidden" id="recipeSeq" name="recipeSeq"/>
+								
 							</div>
 						</div>
 					</div>
@@ -66,19 +68,22 @@ td {
 	<script>
 		/* 1. 클릭하면 상세 레시피 페이지 이동 */
 		function DefAction(n) {
-			if ('${userId}' != null) {
-				const recipeS = recipeForm.recipeSeq;
-				recipeS.value = n;
+			if ('${userId}' != '') {
+				const recipeNum = document.getElementById('recipeSeq');
+				recipeNum.value = n;
 				recipeForm.action = "recipeView.do";
 				recipeForm.submit();
 			} else {
 				var check = confirm('로그인이 필요한 서비스입니다.\n' + '로그인 하시겠습니까?');
 				if (check == true) {
 					location.href = "userLoginForm.do";
+				} else {
+					
+				return false;
 				}
 			}
 
-		}
+		};
 	</script>
 
 	<script>

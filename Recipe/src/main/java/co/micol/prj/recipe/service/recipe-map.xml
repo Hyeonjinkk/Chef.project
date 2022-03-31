@@ -9,7 +9,7 @@
 		<result property="recipeWay" column="r_way" />
 		<result property="recipeKind" column="r_kind" />
 		<result property="recipeWgt" column="r_wgt" />
-		<result property="recipeEng" column="r_eng" />
+		<result property="recipeLike" column="r_like" />
 		<result property="recipeCar" column="r_car" />
 		<result property="recipePro" column="r_pro" />
 		<result property="recipeFat" column="r_fat" />
@@ -201,7 +201,13 @@
 		</if>
 
 	</select>
-
+	<select id="selectLikeList" resultMap="recipeMap">
+		SELECT R.*, U.USER_ALIAS
+		FROM RECIPE R, USERS U
+		WHERE U.USER_NO = R.USER_NO
+		ORDER BY R_LIKE DESC
+	</select>
+	
 
 
 

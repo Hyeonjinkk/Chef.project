@@ -17,10 +17,9 @@ input[type=date]:focus {
 	<section class="single-post spad" style="padding-top: 180px;">
 		<form id="frr" name="frr" method="post">
 
-			<input type="hidden" id="comSeq" name="comSeq"
-				value="${border.borderId}"> <input type="hidden"
-				id="borderId" name="borderId" value="${border.borderId}"> <input
-				type="hidden" id="comCategory" name="comCategory" value="4">
+			<input type="hidden" id="comSeq" name="comSeq"value="${border.borderId}">
+			<input type="hidden" id="borderId" name="borderId" value="${border.borderId}"> 
+			<input type="hidden" id="comCategory" name="comCategory" value="4">
 
 
 			<div class="container">

@@ -173,6 +173,8 @@
 </body>
 
 <script>
+
+
 		/* 1. 클릭하면 상세 레시피 페이지 이동 */
 		function DefAction(n) {
 			if ('${userId}' != '') {
@@ -200,6 +202,9 @@
 		window.location = "home.do";
 	}
 
+	
+	
+	
 	if ('${recipeComments}' != '') {
 		alert('${recipeComments}');
 		if ('${recipe.recipeSeq}' != '') {
@@ -228,5 +233,7 @@
 			window.location = "borderView.do?borderId=" + '${border.borderId}';
 		}
 	}
+	
+	
 </script>
 </html>

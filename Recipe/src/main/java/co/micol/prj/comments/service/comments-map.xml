@@ -26,7 +26,10 @@
 	</update>
 	
 	<delete id="deleteComments" parameterType="co.micol.prj.comments.service.CommentsVO">
-		DELETE FROM COMMENTS WHERE COM_NO = #{comNo}
+		DELETE FROM COMMENTS WHERE
+		<if test="comNo != ''">
+		COM_NO = #{comNo}
+		</if>
 	</delete>
 
 </mapper>

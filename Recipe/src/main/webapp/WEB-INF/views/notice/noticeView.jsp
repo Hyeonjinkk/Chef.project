@@ -21,6 +21,10 @@ input[type=date]:focus {
 		</div>
 		<div>
 			<form id="ntView" name="ntView" method="post">
+			<input type="hidden" name="comSeq" value="${nt.noticeNo}" />
+			<input type="hidden" name="noticeNo" value="${nt.noticeNo}" />
+			
+			
 			<div>
 				<table border="1">
 					<tr>
@@ -110,7 +114,7 @@ input[type=date]:focus {
 				<td  width="150px"><b>${userAlias}</b></td>
 				<td><input type='date' id='currentDate' name="comDate" readOnly style="border:none;" /> 
 					<input type="hidden" name="comCategory" value="2" />
-					<input type="hidden" name="comSeq" value="${nt.noticeNo}" />
+					
 				</td>
 			</tr>
 			<tr id="asd">

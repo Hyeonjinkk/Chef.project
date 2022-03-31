@@ -10,11 +10,6 @@
 		<result property="borderContents" column="border_contents"/>
 		<result property="borderHit" column="border_hit"/>
 	</resultMap>
-	
-	<!-- 총 게시글 갯수 출력 -->
-<select id="countBoard" resultType="int" >
-	SELECT COUNT(*) FROM BORDER
-</select>
 
 <!-- 페이징 처리 후 게시글 조회 -->
 <select id="selectBoard" resultType="co.micol.prj.border.service.BorderVO" >
@@ -46,6 +41,9 @@
 		INSERT INTO BORDER 
 		VALUES(#{borderId},#{borderWriter},#{borderDate},#{borderTitle},#{borderContents},0)
 	</insert>
+	<select id="countBoard" resultType="int">
+	SELECT COUNT(*) FROM BORDER
+	</select>
 	
 	<update id="borderUpdate" parameterType="co.micol.prj.border.service.BorderVO" >
 		UPDATE BORDER SET BORDER_WRITER = #{borderWriter} ,BORDER_DATE =#{borderDate} , BORDER_TITLE =#{borderTitle} ,
@@ -60,7 +58,7 @@
 	<select id="borderSelectSearchList" resultMap="borderMap">
 		SELECT*FROM BORDER
 		WHERE 
-		<if test='key == "1"'>1 = 1</if>
+		<if test='key == "1"'>BORDER_WRITER LIKE '%'||#{val}||'%' or BORDER_WRITER LIKE '%'||#{val}||'%' or BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>
 		<if test='key == "2"'>BORDER_WRITER LIKE '%'||#{val}||'%'</if>
 		<if test='key == "3"'>BORDER_TITLE LIKE '%'||#{val}||'%'</if>
 		<if test='key == "4"'>BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>

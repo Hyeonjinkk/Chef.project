@@ -11,7 +11,7 @@
 <body>
 	<div align="center">
 		<div>
-			<h1>자유게시판</h1>
+			<h2>자유게시판</h2><br>
 		</div>
 		<div>
 			<form id="notice" method="post" >

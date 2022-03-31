@@ -35,7 +35,7 @@
     /* padding-top: 74px; */
 ">
 
-                <a href="index.html" style="
+                <a href="./home.do" style="
 "><img src="https://apksos.com/storage/images/com/rbksoft/neangjanggo/com.rbksoft.neangjanggo_1.png" alt="footer__logo"
                     style="
     height: 80px;

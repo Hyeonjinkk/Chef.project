@@ -49,10 +49,12 @@ input[type=date]:focus {
 		<div>
 			<button type="button" onclick="location.href='inquiryList.do'">목록가기</button>
 			&nbsp;&nbsp;
+			<c:if test="${iq.userAlias == userAlias }">
 			<button type="button" onclick="inquiryUpdate(${iq.inquiryNo})">수정</button>
 			&nbsp;&nbsp;
 			<button type="button" onclick="inquiryDelete(${iq.inquiryNo})">삭제</button>
 			&nbsp;&nbsp;
+			</c:if>
 			<input type="hidden" id="inquiryNo" name="inquiryNo">
 		</div>
 		<!-- 댓글창 -->

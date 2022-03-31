@@ -13,7 +13,7 @@
 	<div align="center">
 
 		<div>
-			<h1>게시글 목록</h1>
+			<h2>생활 Tip</h2><br>
 		</div>
 
 		<form id="fmm" method="post">
@@ -32,10 +32,12 @@
 				<table border="1">
 					<thead>
 						<tr>
-							<th width="150"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
-											<span style="color:red" onclick="sortBorder('D')"> D </span></th>
-							<th width="150">작성자</th>
+							<th width="70">글번호 <br>
+									<span style="color: red" onclick="sortNotice('A')">A</span> 
+									<span style="color: red" onclick="sortNotice('B')">B</span>
+								</th>
 							<th width="300">제목</th>
+							<th width="150">작성자</th>
 							<th width="150">작성일자</th>
 							<th width="70">조회수</th>
 						</tr>

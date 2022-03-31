@@ -13,10 +13,10 @@
     /* padding-top: 68px; */
 ">
                 <p>고객센터
-                  C/S Center
-                  전화 : 010.3829.0975
-                  이메일 : guswls0975@naver.com
-                  카카오톡 ID : ilhj1228
+                  C/S Center<br>
+                  전화 : 010.3829.0975<br>
+                  이메일 : guswls0975@naver.com<br>
+                  카카오톡 ID : ilhj1228<br>
                   오전 9시부터 오후 6시까지 상담가능합니다.<br></p>
               </div>
               <div class="col-lg-5" style="

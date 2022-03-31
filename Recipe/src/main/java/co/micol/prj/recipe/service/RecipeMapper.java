@@ -8,6 +8,8 @@ public interface RecipeMapper {
 
 	List<RecipeVO> selectRecipeList(); // 레시피 전체조회
 
+	List<RecipeVO> selectLikeList(); // 레시피 좋아요 순
+	
 	RecipeVO selectRecipe(RecipeVO vo); // 레시피 상세조회
 	
 

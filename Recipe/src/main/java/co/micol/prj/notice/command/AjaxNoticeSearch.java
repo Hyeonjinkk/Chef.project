@@ -20,8 +20,8 @@ public class AjaxNoticeSearch implements Command {
 		NoticeService noticeDao = new NoticeServiceImpl();
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
-		System.out.println(val);
 		List<NoticeVO> list = noticeDao.noticeSelectSearchList(key, val);
+		System.out.println(list);
 		String data = null;
 		
 		try {

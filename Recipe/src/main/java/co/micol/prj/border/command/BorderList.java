@@ -16,7 +16,6 @@ public class BorderList implements Command {
 		
 
 		request.setAttribute("borders", borderDao.borderSelectList());
-		
 		return "border/borderList";
 	}
 

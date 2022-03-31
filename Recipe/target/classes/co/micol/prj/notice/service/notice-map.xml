@@ -49,7 +49,7 @@
 	<select id="noticeSelectSearchList" resultMap="noticeMap">
 		SELECT * FROM notice
 		WHERE
-			<if test='key == "1"'>1 = 1</if>
+			<if test='key == "1"'>user_alias LIKE '%'|| #{val} ||'%' or user_alias LIKE '%'|| #{val} ||'%' or notice_title LIKE '%'|| #{val} ||'%' or notice_content LIKE '%'|| #{val} ||'%'</if>
 			<if test='key == "2"'>user_alias LIKE '%'|| #{val} ||'%'</if>
 			<if test='key == "3"'>notice_title LIKE '%'|| #{val} ||'%'</if>
 			<if test='key == "4"'>notice_content LIKE '%'|| #{val} ||'%'</if>

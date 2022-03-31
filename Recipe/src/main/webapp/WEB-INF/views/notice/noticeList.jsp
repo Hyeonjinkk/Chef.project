@@ -23,7 +23,7 @@
 				<div align="center">
 
 					<select id="searchKey" name="searchKey" style="width: 100px; border: none;">
-						<option value="1">선택</option>
+						<option value="1">전체</option>
 						<option value="2">작성자</option>
 						<option value="3">제목</option>
 						<option value="4">내용</option>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 
 
 
-
+<form id="recipeForm" name="recipeForm" method="post">
 	<div class="container">
 		<div class="row">
 
@@ -76,12 +77,14 @@
 									<h6 style="font-family: 'Noto Sans KR', sans-serif;">최고의
 										레시피</h6>
 								</div>
-								<img src="img/sidebar/sidebar-about.jpg" alt="">
+								<c:forEach items="${recipeLike}" var="r" end="0">
+								<img src="${r.recipeImageSm }" style="height: 250px;width: 250px;">
 								<h6 style="font-family: 'Noto Sans KR', sans-serif;">
 									안녕! 여러분. 가장 <span>좋아요</span>가 많은
 								</h6>
 								<p>레시피를 여려분들께 선보입니다! 모두 한 번씩 시도해보세요!</p>
-								<a href="#" class="primary-btn">자세히 보기</a>
+								<a  class="primary-btn" onclick='DefAction("${r.recipeSeq}")' onmouseover="this.style.cursor='pointer';">자세히 보기</a>
+								</c:forEach>
 							</div>
 
 
@@ -131,27 +134,65 @@
 		<!-- Section 3 -->
 		<div class="container">
 			<div class="row">
-
-
+				<h2>
+					<span class="material-icons" style="font-size: 30px;">label_important&nbsp;</span>인기레시피
+				</h2><span style="font-family: 'Noto Sans KR', sans-serif; padding-top: 17px; font-size: 15px">&nbsp;좋아요를 가장 많이 받은 레시피를 만나보세요!</span>
+			</div>
+			<p></p>
+			<div class="row">
+			<c:forEach items="${recipeLike}" var="r" end="5">
 				<div class="col-lg-2 col-md-6 col-sm-6">
 					<div class="categories__item set-bg"
-						data-setbg="img/categories/cat-1.jpg"
-						style="background-image: url(&quot;img/categories/cat-1.jpg&quot;);">
-						<div class="categories__hover__text" style="text-align: center;">
-							<h6>레시피 이름</h6>
-							<p>조회수 28회</p>
+							data-setbg="${r.recipeImageSm }"
+							style="background-image: url();"
+							onmouseover="this.style.cursor='pointer';"
+							>
+							<div class="categories__hover__text"
+								style="text-align: center; opacity: 0.8;"
+								onmouseover="this.style.cursor='pointer';"
+								onclick='DefAction("${r.recipeSeq}")'>
+								<h5>${r.recipeName }</h5>
+								<h6>"${r.userAlias }"</h6>
+								<p>조회수 ${r.recipeHit}회</p>
+								<p>좋아요 수 ${r.recipeLike}</p>
+								<p>${r.recipeDate}</p>
+								<input type="hidden" id="recipeSeq" name="recipeSeq"/>
+								
+							</div>
 						</div>
-					</div>
 				</div>
 
-
+		</c:forEach>
 
 
 			</div>
 		</div>
 	</section>
+	</form>
 	<!-- Categories Section End -->
 </body>
+
+<script>
+		/* 1. 클릭하면 상세 레시피 페이지 이동 */
+		function DefAction(n) {
+			if ('${userId}' != '') {
+				const recipeNum = document.getElementById('recipeSeq');
+				recipeNum.value = n;
+				recipeForm.action = "recipeView.do";
+				recipeForm.submit();
+			} else {
+				var check = confirm('로그인이 필요한 서비스입니다.\n' + '로그인 하시겠습니까?');
+				if (check == true) {
+					location.href = "userLoginForm.do";
+				} else {
+					
+				return false;
+				}
+			}
+
+		};
+	</script>
+
 <script type="text/javascript">
 	/* 로그인 메세지 */
 	if ('${message}' != '') {

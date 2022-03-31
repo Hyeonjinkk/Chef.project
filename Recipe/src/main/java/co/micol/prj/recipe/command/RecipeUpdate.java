@@ -23,7 +23,7 @@ public class RecipeUpdate implements Command {
 		vo.setRecipeKind(request.getParameter("recipeKinds"));
 		vo.setRecipeDate(Date.valueOf(request.getParameter("rDate")));
 		vo.setRecipeParts(request.getParameter("recipeParts"));
-
+		vo.setRecipeContent(request.getParameter("recipeContent"));
 		vo.setUserNo(Integer.parseInt(request.getParameter("userNo")));
 		vo.setRecipeSeq(Integer.parseInt(request.getParameter("recipeSeq")));
 		vo.setRecipeWay(request.getParameter("recipeWay"));

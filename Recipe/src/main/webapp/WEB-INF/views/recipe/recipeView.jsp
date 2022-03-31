@@ -5,48 +5,197 @@
 <style>
 input[type=date]:focus {
 	outline: none;
-	
-} 
-
+}
 </style>
 <form id="recipeViewFrm" name="recipeViewFrm" method="post">
 
-	<div align="center">
-		<h1>${recipe.userAlias }</h1>
-		<input type="hidden" name="recipeSeq" value="${recipe.recipeSeq}">
-		<c:forEach var="i" begin="1" end="20">
-			<!-- manual 1~20까지 출력 -->
-			<c:set var="manual" value="manual${i }" />
 
-			<!-- manualImage 1~20까지 출력 -->
-			<c:set var="image" value="manualImage${i }" />
 
-			<!-- EL문안에 EL문 입력 -->
-			<c:if test="${not empty recipe[manual] }">
-				<c:if test="${'' ne recipe[manual]}">
-					<h4>${recipe[manual] }</h4>
-				</c:if>
 
-			</c:if>
 
-			<c:if test="${not empty recipe[image] }">
-				<c:if test="${'' ne recipe[image]}">
-					<img src="${recipe[image]}" style="width: 350px;">
-				</c:if>
-			</c:if>
 
-		</c:forEach>
+	<input type="hidden" name="recipeSeq" value="${recipe.recipeSeq}">
+	<section class="single-post spad">
+		<div class="single-post__hero set-bg"
+			data-setbg="${recipe.recipeImageLg }"
+			style="background-image: url(&quot;img/categories/single-post/single-post-hero.jpg&quot;); background-size: 55% 99%;"></div>
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-8">
+					<div class="single-post__title">
 
-		<h1>완성</h1>
-		<img src="${recipe.recipeImageLg }" style="width: 450px;">
+						<div class="single-post__title__text">
+							<h4>${recipe.recipeName }</h4>
+							<ul class="widget">
+								<li>by ${recipe.userAlias }</li>
+								<li>${recipe.recipeDate }</li>
+								<li>조회수 ${recipe.recipeHit }</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="single-post__top__text">
+						<p style="text-align: center;">${recipe.recipeContent }</p>
+					</div>
+					<div class="single-post__recipe__details">
+						<div class="single-post__recipe__details__option"
+							style="padding-left: 130px;">
+							<ul>
+								<li>
+									<h5>
+										<i class="fa fa-user-o"></i> 회원명
+									</h5> <span>${recipe.userAlias }</span>
+								</li>
+								<li>
+									<h5>
+										<i class="fa fa-clock-o"></i> 등록일자
+									</h5> <span>${recipe.recipeDate }</span>
+								</li>
+								<li>
+									<h5>
+										<span class="material-icons">thumb_up</span> 좋아요 수 :
+										${recipe.recipeLike }
+									</h5>
+
+								</li>
+
+							</ul>
+						</div>
+						<div class="single-post__recipe__details__indegradients">
+							<h5>준비 재료</h5>
+							<ul>
+								<li>${recipe.recipeParts }</li>
+
+							</ul>
+						</div>
+						<div class="single-post__recipe__details__direction">
+							<h5>간략 설명</h5>
+
+							<!-- manual 1~20까지 출력 -->
+
+
+
+							<ul>
+								<c:forEach var="i" begin="1" end="20">
+									<c:set var="manual" value="manual${i }" />
+									<c:if test="${not empty recipe[manual] }">
+										<c:if test="${'' ne recipe[manual]}">
+											<li><span>${i }</span> ${recipe[manual] }</li>
+										</c:if>
+									</c:if>
+								</c:forEach>
+
+							</ul>
+						</div>
+					</div>
+
+
+
+					<div class="single-post__more__details"
+						style="margin-bottom: 70px;">
+						<div class="row">
+							<c:forEach var="i" begin="1" end="20">
+								<c:set var="manual" value="manual${i }" />
+								<!-- manualImage 1~20까지 출력 -->
+								<c:set var="image" value="manualImage${i }" />
+								<c:if test="${not empty recipe[image] }">
+									<c:if test="${'' ne recipe[image]}">
+										<div class="col-lg-6 col-md-6">
+											<img src="${recipe[image]}" alt="">
+										</div>
+									</c:if>
+								</c:if>
+								<c:if test="${not empty recipe[manual] }">
+									<c:if test="${not empty recipe[image]}">
+										<c:if test="${'' ne recipe[manual]}">
+											<div class="col-lg-6 col-md-6">
+												<p>${recipe[manual] }</p>
+											</div>
+										</c:if>
+									</c:if>
+									<c:if test="${empty recipe[image]}">
+										<c:if test="${'' ne recipe[manual]}">
+											<div class="col-lg-12 ">
+												<p style="text-align: center;">${recipe[manual] }</p>
+											</div>
+										</c:if>
+									</c:if>
+								</c:if>
+							</c:forEach>
+
+						</div>
+
+					</div>
+
+
+
+					<div class="single-post__author__profile">
+						<div class="single-post__author__profile__pic"></div>
+						<div class="single-post__author__profile__text">
+							<h4>"${recipe.userAlias }"</h4>
+							<p>${recipe.recipeContent }</p>
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
 		<c:if test="${userAlias eq recipe.userAlias }">
 			<div align="center">
-				<button type="submit" onclick="update()">수정하기</button>
-				<button type="submit" onclick="delete1()">삭제하기</button>
+				<button type="button" onclick="update()"
+				class="site-btn">레시피 수정</button>
+				<button type="button" onclick="delete1()"
+				class="site-btn">레시피 삭제</button>
 			</div>
 		</c:if>
+	</section>
 
-	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	<!-- 댓글창 -->
@@ -57,32 +206,41 @@ input[type=date]:focus {
 				<c:if test="${c.comSeq eq recipe.recipeSeq}">
 					<c:if test="${c.comCategory == '1' }">
 
-					
-                    <tr>
-                        
-                        <td width="150px">${c.comAlias}<input type="hidden" id="comNo" name="comNo" value="${c.comNo }" /></td>
-                        <td><input type="date" id="updateDate" name="updateDate" value="${c.comDate }" style="border:none;" readonly ></td>
 
-                    </tr>
-                    <tr id="asd">
-                        <td colspan="4">
-                                <!-- 기존 내용 -->
-                                <pre style="height: 50px; width: 500px;" id="beforeContents${c.comNo }">${c.comContents}</pre>
-                                <!-- 수정 버튼 클릭시 수정 text area 생성 -->
-                                <textarea style="height: 50px; width: 500px; display: none;" id="afterContents${c.comNo }" name="afterValue">
-                                </textarea></td>
+						<tr>
 
-                        <td><c:if test="${userAlias eq c.comAlias }">
-                                <!-- 수정버튼 -->
-                                <button type="button" onclick="updateButton(${c.comNo })" id="updateBtn${c.comNo }" name="updateBtn" style="border: 0px; cursor: pointer;">수정</button>
-                                <br>
-                                <!-- 수정 버튼 클릭시 생성 -->
-                                <button type="button" onclick="cancelButton(${c.comNo })" id="cancel${c.comNo }" name="cancel" style="display: none; border: 0px; cursor: pointer;">취소</button>
-                                <!-- 삭제 버튼 -->
-                                <button type="button" onclick="deleteDo(${c.comNo })" id="deleteBtn${c.comNo }" name="deleteBtn" style="border: 0px; cursor: pointer;">삭제</button>
-                            </c:if></td>
+							<td width="150px">${c.comAlias}<input type="hidden"
+								id="comNo" name="comNo" value="${c.comNo }" /></td>
+							<td><input type="date" id="updateDate" name="updateDate"
+								value="${c.comDate }" style="border: none;" readonly></td>
 
-                    </tr>
+						</tr>
+						<tr id="asd">
+							<td colspan="4">
+								<!-- 기존 내용 --> <pre style="height: 50px; width: 500px;"
+									id="beforeContents${c.comNo }">${c.comContents}</pre> <!-- 수정 버튼 클릭시 수정 text area 생성 -->
+								<textarea style="height: 50px; width: 500px; display: none;"
+									id="afterContents${c.comNo }" name="afterValue">
+                                </textarea>
+							</td>
+
+							<td><c:if test="${userAlias eq c.comAlias }">
+									<!-- 수정버튼 -->
+									<button type="button" onclick="updateButton(${c.comNo })"
+										id="updateBtn${c.comNo }" name="updateBtn"
+										style="border: 0px; cursor: pointer;">수정</button>
+									<br>
+									<!-- 수정 버튼 클릭시 생성 -->
+									<button type="button" onclick="cancelButton(${c.comNo })"
+										id="cancel${c.comNo }" name="cancel"
+										style="display: none; border: 0px; cursor: pointer;">취소</button>
+									<!-- 삭제 버튼 -->
+									<button type="button" onclick="deleteDo(${c.comNo })"
+										id="deleteBtn${c.comNo }" name="deleteBtn"
+										style="border: 0px; cursor: pointer;">삭제</button>
+								</c:if></td>
+
+						</tr>
 					</c:if>
 				</c:if>
 			</c:forEach>
@@ -98,9 +256,9 @@ input[type=date]:focus {
 			<tr>
 				<td width="150px">작성자</td>
 				<td><b>${userAlias}</b></td>
-				<td><input type='date' id='currentDate' name="comDate" readOnly style="border:none;"
-					 /> <input type="hidden" name="comCategory"
-					value="1" /> <input type="hidden" name="comSeq"
+				<td><input type='date' id='currentDate' name="comDate" readOnly
+					style="border: none;" /> <input type="hidden"
+					name="comCategory" value="1" /> <input type="hidden" name="comSeq"
 					value="${recipe.recipeSeq}" /></td>
 			</tr>
 			<tr id="asd">

@@ -26,6 +26,8 @@ public class HomeCommand implements Command {
 		
 		request.removeAttribute("message");
 		
+		request.setAttribute("recipeLike", recipeDao.selectLikeList());
+		
 		request.setAttribute("recipeCnt", recipeDao.countRecipeList());
 		request.setAttribute("noticeCnt", noticeDao.noticeCount());
 		request.setAttribute("inquiryCnt", inquiryDao.inquiryCount());

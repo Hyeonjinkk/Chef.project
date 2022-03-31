@@ -11,11 +11,12 @@ input[type=date]:focus {
 
 
 
-
-
-
 	<input type="hidden" name="recipeSeq" value="${recipe.recipeSeq}">
 	<input type="hidden" name="comSeq" value="${recipe.recipeSeq}">
+	
+	
+	
+	
 	<section class="single-post spad">
 		<div class="single-post__hero set-bg"
 			data-setbg="${recipe.recipeImageLg }"
@@ -73,9 +74,6 @@ input[type=date]:focus {
 							<h5>간략 설명</h5>
 
 							<!-- manual 1~20까지 출력 -->
-
-
-
 							<ul>
 								<c:forEach var="i" begin="1" end="20">
 									<c:set var="manual" value="manual${i }" />
@@ -156,7 +154,6 @@ input[type=date]:focus {
 						<div class="widget__title">
 							<h4>Comment</h4>
 						</div>
-
 						<c:forEach items="${comments}" var="c">
 							<c:if test="${c.comSeq eq recipe.recipeSeq}">
 								<c:if test="${c.comCategory == '1' }">

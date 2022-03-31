@@ -39,7 +39,7 @@ public class InsertComments implements Command {
 		vo.setComDate(Date.valueOf(request.getParameter("comDate")));
 		vo.setComCategory(Integer.parseInt(request.getParameter("comCategory")));
 		vo.setComSeq(Integer.parseInt(request.getParameter("comSeq")));
-		vo.setComContents(request.getParameter("comContents"));
+		vo.setComContents(request.getParameter("comContents").trim());
 		int result = commentsDao.insertComments(vo);
 
 		if (result != 0) {

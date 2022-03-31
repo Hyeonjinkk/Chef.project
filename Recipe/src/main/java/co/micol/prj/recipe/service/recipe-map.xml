@@ -9,7 +9,7 @@
 		<result property="recipeWay" column="r_way" />
 		<result property="recipeKind" column="r_kind" />
 		<result property="recipeWgt" column="r_wgt" />
-		<result property="recipeEng" column="r_eng" />
+		<result property="recipeLike" column="r_like" />
 		<result property="recipeCar" column="r_car" />
 		<result property="recipePro" column="r_pro" />
 		<result property="recipeFat" column="r_fat" />
@@ -22,6 +22,7 @@
 		<result property="recipeDate" column="rdate" />
 		<result property="recipeHit" column="r_hit" />
 		<result property="userAlias" column="user_alias" />
+		<result property="recipeContent" column="r_content" />
 
 		<!-- 요리과정 -->
 		<result property="manual1" column="manual01" />
@@ -88,7 +89,7 @@
 		(R_SEQ,R_NAME,R_WAY,R_KIND,R_PARTS,R_IMAGE_SM,
 		R_IMAGE_LG,
 		MANUAL01,MANUAL02,MANUAL03,MANUAL04,MANUAL05,MANUAL06,MANUAL07,MANUAL08,MANUAL09,MANUAL10,MANUAL11,MANUAL12,MANUAL13,MANUAL14,MANUAL15,MANUAL16,MANUAL17,MANUAL18,MANUAL19,MANUAL20,USER_NO,RDATE,R_HIT,
-		MANUAL_IMG01,MANUAL_IMG02,MANUAL_IMG03,MANUAL_IMG04,MANUAL_IMG05,MANUAL_IMG06,MANUAL_IMG07,MANUAL_IMG08,MANUAL_IMG09,MANUAL_IMG10,MANUAL_IMG11,MANUAL_IMG12,MANUAL_IMG13,MANUAL_IMG14,MANUAL_IMG15,MANUAL_IMG16,MANUAL_IMG17,MANUAL_IMG18,MANUAL_IMG19,MANUAL_IMG20)
+		MANUAL_IMG01,MANUAL_IMG02,MANUAL_IMG03,MANUAL_IMG04,MANUAL_IMG05,MANUAL_IMG06,MANUAL_IMG07,MANUAL_IMG08,MANUAL_IMG09,MANUAL_IMG10,MANUAL_IMG11,MANUAL_IMG12,MANUAL_IMG13,MANUAL_IMG14,MANUAL_IMG15,MANUAL_IMG16,MANUAL_IMG17,MANUAL_IMG18,MANUAL_IMG19,MANUAL_IMG20, R_CONTENT)
 		values (#{recipeSeq}, #{recipeName}, #{recipeWay}, #{recipeKind},
 		#{recipeParts},#{recipeImageSm}, #{recipeImageLg} ,#{manual1},
 		#{manual2}, #{manual3},
@@ -103,7 +104,7 @@
 		#{manualImage13}, #{manualImage14}, #{manualImage15},
 		#{manualImage16},
 		#{manualImage17}, #{manualImage18}, #{manualImage19},
-		#{manualImage20})
+		#{manualImage20}, #{recipeContent})
 	</insert>
 
 	<update id="updateRecipe"
@@ -179,12 +180,15 @@
 		#{manualImage18},
 		MANUAL_IMG19 = #{manualImage19},
 		MANUAL_IMG20 =
-		#{manualImage20}
+		#{manualImage20},
+		R_CONTENT = #{recipeContent}
 		WHERE USER_NO = #{userNo} AND R_SEQ = #{recipeSeq}
 
 	</update>
 
-
+	<select id="countRecipeList" resultType="int">
+	SELECT COUNT(*) AS COUNT FROM RECIPE
+	</select>
 
 	<!-- 레시피 상세 과정 조회 -->
 	<select id="selectRecipe" resultMap="recipeMap"
@@ -199,7 +203,13 @@
 		</if>
 
 	</select>
-
+	<select id="selectLikeList" resultMap="recipeMap">
+		SELECT R.*, U.USER_ALIAS
+		FROM RECIPE R, USERS U
+		WHERE U.USER_NO = R.USER_NO
+		ORDER BY R_LIKE DESC
+	</select>
+	
 
 
 
@@ -214,5 +224,12 @@
 	</delete>
 
 
+	<!-- 냉장고 재료로 만들 수 있는 레시피 검색 -->
+	<select id="searchBkRecipe" parameterType="java.util.ArrayList" resultMap="recipeMap">
+		SELECT * FROM RECIPE WHERE 
+		    <foreach collection="array" item="recipeParts" index="index" separator=" OR ">
+				R_PARTS LIKE '%'|| #{recipeParts} ||'%' 
+			</foreach>
+	</select>
 
 </mapper>

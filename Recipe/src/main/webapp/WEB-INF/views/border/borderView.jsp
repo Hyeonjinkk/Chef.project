@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -9,124 +9,157 @@
 <style>
 input[type=date]:focus {
 	outline: none;
-	
-} 
-
+}
 </style>
 </head>
 <body>
-	<div align="center">
-		<div>
-			<h1>게시글 상세보기</h1>
-		</div>
-		<div>
-			<form id="frr" name="frr"  method="post">
-				<div>
-					<table border="1">
-						<tr>
-							<th width="100">작성자</th>
-							<td width="150"><input type="text" name="borderWriter" value="${border.borderWriter}" ></td>
-							<th width="100">작성일자</th>
-							<th width="150"><input type="date" name="borderDate" required="required" value="${border.borderDate}"></th>
-						</tr>
-						<tr>
-							<th>제목</th>
-							<td colspan="3"><input type="text" name="borderTitle" required="required" value="${border.borderTitle}"></td>
-						</tr>
-						<tr>
-							<th>내용</th>
-							<td><textarea rows="15" cols="50" name="borderContents" required="required">${border.borderContents }</textarea></td>
-						</tr>
-					</table>
-				</div>
-				<br>
-				<div>
-					<button type="button" onclick="location.href='borderList.do'">목록가기</button>
-					&nbsp;&nbsp;
-					<button type="submit"  onclick="borderUpdate(${border.borderId})">수정완료</button>
-					&nbsp;&nbsp;
-					<button type="button" onclick="borderDelete(${border.borderId})">삭제</button>
-					
-					<c:if test="${user_no == 1}">
-					<button type="submit"  onclick="borderUpdate(${border.borderId})">수정완료</button>
-					&nbsp;&nbsp;
-					<button type="button" onclick="borderDelete(${border.borderId})">삭제</button>
-					</c:if>
-					<input type="hidden" id="borderId" name="borderId">
 
-				</div>
+	<section class="single-post spad" style="padding-top: 180px;">
+		<form id="frr" name="frr" method="post">
+
+			<input type="hidden" id="comSeq" name="comSeq"
+				value="${border.borderId}"> <input type="hidden"
+				id="borderId" name="borderId" value="${border.borderId}"> <input
+				type="hidden" id="comCategory" name="comCategory" value="4">
+
+
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-12">
+						<div>
+							<div>
+								<table class="table table-hover">
+									<tr>
+										<th width="100">작성자</th>
+										<td width="150"><input type="text" name="borderWriter" value="${border.borderWriter}" readonly="readonly" style="border: none; background: none;"></td>
+										<th width="100">작성일자</th>
+										<th width="150"><input type="date" name="borderDate" readonly="readonly" style="border: none; background: none;" value="${border.borderDate}"></th>
+									</tr>
+									<tr>
+										<th>제목</th>
+										<td colspan="3"><input type="text" name="borderTitle"
+											style="border: none; background: none;" readonly="readonly" value="${border.borderTitle}"></td>
+									</tr>
+									<tr>
+										<th>내용</th>
+										<td colspan="3"><pre style="height: 150px;">${border.borderContents }</pre></td>
+									</tr>
+								</table>
+							</div>
+							<br>
+							<div align="center">
+								<button type="button" class="site-btn" onclick="location.href='borderList.do'">목록가기</button>
+								&nbsp;&nbsp;
+								<c:if test="${userAlias eq border.borderWriter || '관리자' eq userAlias}">
+								<button type="submit" class="site-btn" onclick="borderUpdate(${border.borderId})">게시물 수정</button>
+								
+								&nbsp;&nbsp;
+								<button type="button" class="site-btn" onclick="borderDelete(${border.borderId})">삭제</button>
+								</c:if>
+							</div>
+						</div>
+
+
 						<!-- 댓글창 -->
 
-	<div align="center">
-		<table id="tbl">
-			<c:forEach items="${comments}" var="c">
-				<c:if test="${c.comSeq eq border.borderId}">
-					<c:if test="${c.comCategory == '4' }">
 
-					
-                    <tr>
-                        
-                        <td width="150px">${c.comAlias}<input type="hidden" id="comNo" name="comNo" value="${c.comNo }" /></td>
-                        <td><input type="date" id="updateDate" name="updateDate" value="${c.comDate }" style="border:none;" readonly ></td>
+						<div class="single-post__comment">
+							<div class="widget__title">
+								<h4>Comment</h4>
+							</div>
+							<c:forEach items="${comments}" var="c">
+								<c:if test="${c.comSeq eq border.borderId}">
+									<c:if test="${c.comCategory == '4' }">
 
-                    </tr>
-                    <tr id="asd">
-                        <td colspan="4">
-                                <!-- 기존 내용 -->
-                                <pre style="height: 50px; width: 500px;" id="beforeContents${c.comNo }">${c.comContents}</pre>
-                                <!-- 수정 버튼 클릭시 수정 text area 생성 -->
-                                <textarea style="height: 50px; width: 500px; display: none;" id="afterContents${c.comNo }" name="afterValue">
-                                </textarea></td>
+										<div class="single-post__comment__item">
 
-                        <td><c:if test="${userAlias eq c.comAlias }">
-                                <!-- 수정버튼 -->
-                                <button type="button" onclick="updateButton(${c.comNo })" id="updateBtn${c.comNo }" name="updateBtn" style="border: 0px; cursor: pointer;">수정</button>
-                                <br>
-                                <!-- 수정 버튼 클릭시 생성 -->
-                                <button type="button" onclick="cancelButton(${c.comNo })" id="cancel${c.comNo }" name="cancel" style="display: none; border: 0px; cursor: pointer;">취소</button>
-                                <!-- 삭제 버튼 -->
-                                <button type="button" onclick="deleteDo(${c.comNo })" id="deleteBtn${c.comNo }" name="deleteBtn" style="border: 0px; cursor: pointer;">삭제</button>
-                            </c:if></td>
+											<div class="single-post__comment__item__text">
 
-                    </tr>
-					</c:if>
-				</c:if>
-			</c:forEach>
+												<h5>${c.comAlias}<input type="hidden" id="comNo"
+														name="comNo" value="${c.comNo }" />
+												</h5>
 
-		</table>
-	</div>
+												<span> <input type="date" id="updateDate"
+													name="updateDate" value="${c.comDate }"
+													style="border: none;" readonly>
+												</span>
+
+												<!-- 기존 내용 -->
+												<pre
+													style="height: 50px; width: 500px; font-family: 'Noto Sans KR', sans-serif;"
+													id="beforeContents${c.comNo }">${c.comContents}
+										</pre>
+
+												<!-- 수정 버튼 클릭시 수정 text area 생성 -->
+												<textarea style="height: 50px; width: 500px; display: none;"
+													id="afterContents${c.comNo }" name="afterValue"></textarea>
+
+												<c:if test="${userAlias eq c.comAlias }">
+													<ul>
+														<li>
+															<button type="button" onclick="updateButton(${c.comNo })"
+																id="updateBtn${c.comNo }" name="updateBtn"
+																style="border: 0px; cursor: pointer;">수정</button>
+
+															<button type="button" onclick="cancelButton(${c.comNo })"
+																id="cancel${c.comNo }" name="cancel"
+																style="display: none; border: 0px; cursor: pointer;">취소</button>
+														</li>
+														<li>
+															<button type="button" onclick="deleteDo(${c.comNo })"
+																id="deleteBtn${c.comNo }" name="deleteBtn"
+																style="border: 0px; cursor: pointer;">삭제</button>
+														</li>
+													</ul>
+												</c:if>
+											</div>
+										</div>
+									</c:if>
+								</c:if>
+							</c:forEach>
 
 
-	<!-- 댓글 등록 -->
+							<div class="single-post__recipe__details">
+								<div class="single-post__recipe__details__option"
+									style="padding-left: 28px;">
+									<ul>
+										<li>
+											<h5>
+												<i class="fa fa-user-o" style="margin-right: 22px;">${userAlias }</i>
+											</h5>
+										</li>
+										<li>
+											<h5>
+												<i class="fa fa-clock-o"></i> 등록일자
+											</h5> <span><input type="date" id="currentDate"
+												name="comDate" readonly="readonly" style="border: none; background: none;"></span>
+										</li>
+										<li>
+											<button type="button" onclick="insertComments()"
+												style="border: 0px; cursor: pointer; margin-left: 44em;" class="site-btn">등록</button>
+											<input type="hidden" id="comCategory" name="comCategory"
+											value="4">
+										</li>
+									</ul>
+									<div align="center" style="padding-top: 14px;">
+										<textarea id="comments" name="comContents"
+											style="width: 100%; border: -3px; border-color: antiquewhite;"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
 
-	<div align="center">
-		<table id="tbl">
-			<tr>
-				<td width="150px">작성자</td>
-				<td><b>${userAlias}</b></td>
-				<td><input type='date' id='currentDate' name="comDate" readOnly style="border:none;"
-					 /> <input type="hidden" name="comCategory"
-					value="4" /> <input type="hidden" name="comSeq"
-					value="${border.borderId}" /></td>
-			</tr>
-			<tr id="asd">
-				<td colspan="4"><textarea id="comments" name="comContents"
-						style="width: 100%;"></textarea></td>
-				<td>
-					<button type="button" onclick="insertComments()"
-						style="border: 0px; cursor: pointer;">등록</button>
-				</td>
 
-			</tr>
 
-		</table>
-	</div>
-		
-		
-			</form>
-		</div>
-</div>
-		<script type="text/javascript">
+
+
+	<!-- Java Script -->
+	<script type="text/javascript">
 			function borderDelete(a) {
 				frr.borderId.value = a;
 				frr.action = "borderDelete.do";

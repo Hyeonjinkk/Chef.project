@@ -20,6 +20,11 @@
 		SELECT * FROM notice WHERE notice_no = #{noticeNo}
 	</select>
 	
+	<select id="noticeCount" resultType="int">
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+	
+	
 	<insert id="noticeInsert" parameterType="co.micol.prj.notice.service.NoticeVO">
 		<selectKey keyProperty="noticeNo" resultType="int" order="BEFORE">
 			SELECT CASE WHEN MAX(notice_no) IS NULL THEN 1 ELSE MAX(notice_no) + 1 END AS ID FROM notice
@@ -44,7 +49,7 @@
 	<select id="noticeSelectSearchList" resultMap="noticeMap">
 		SELECT * FROM notice
 		WHERE
-			<if test='key == "1"'>1 = 1</if>
+			<if test='key == "1"'>user_alias LIKE '%'|| #{val} ||'%' or user_alias LIKE '%'|| #{val} ||'%' or notice_title LIKE '%'|| #{val} ||'%' or notice_content LIKE '%'|| #{val} ||'%'</if>
 			<if test='key == "2"'>user_alias LIKE '%'|| #{val} ||'%'</if>
 			<if test='key == "3"'>notice_title LIKE '%'|| #{val} ||'%'</if>
 			<if test='key == "4"'>notice_content LIKE '%'|| #{val} ||'%'</if>

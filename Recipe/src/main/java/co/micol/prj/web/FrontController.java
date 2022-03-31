@@ -1,6 +1,7 @@
 package co.micol.prj.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import co.micol.prj.basket.command.AjaxBasketInCheck;
+import co.micol.prj.basket.command.DeleteAll;
+import co.micol.prj.basket.command.DeleteIngrdnt;
+import co.micol.prj.basket.command.InsertBasket;
+import co.micol.prj.basket.command.MyBasketList;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +32,7 @@ import co.micol.prj.border.command.BorderUpdate;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.border.service.BorderService;
 import co.micol.prj.border.service.PagingVO;
+import co.micol.prj.border.serviceImpl.BorderServiceImpl;
 import co.micol.prj.comm.Command;
 import co.micol.prj.comments.command.DeleteComments;
 import co.micol.prj.comments.command.InsertComments;
@@ -66,6 +74,7 @@ import co.micol.prj.recipe.command.RecipeInsertForm;
 import co.micol.prj.recipe.command.RecipeList;
 import co.micol.prj.recipe.command.RecipeUpdate;
 import co.micol.prj.recipe.command.RecipeView;
+import co.micol.prj.recipe.command.SearchBkRecipe;
 import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.subscribe.command.FollowerList;
 import co.micol.prj.subscribe.command.FollowingList;
@@ -182,6 +191,14 @@ public class FrontController extends HttpServlet {
 		map.put("/followingList.do", new FollowingList()); //구독한 유저 리스트 출력
 		map.put("/followerList.do", new FollowerList());   //나를 구독하는 유저 리스트 출력
 		map.put("/unfollowing.do", new Unfollowing());     //구독취소 처리
+
+////--------------------------------------		기능처리(basket) - 나의 냉장고 
+		map.put("/myBasketList.do", new MyBasketList());  //나의 냉장고 리스트 출력
+		map.put("/insertBasket.do", new InsertBasket());  //냉장고에 식재료 입력 처리
+		map.put("/ajaxBasketInCheck.do", new AjaxBasketInCheck()); //냉장고 재료 중복체크
+		map.put("/deleteAll.do", new DeleteAll()); //냉장고 전체 비우기
+		map.put("/deleteIngrdnt.do", new DeleteIngrdnt()); //냉장고 재료 선택 삭제
+		map.put("/searchBkRecipe.do", new SearchBkRecipe());   //냉장고 레시피 검색
 		
 	}
 
@@ -214,12 +231,12 @@ public class FrontController extends HttpServlet {
 	
 	
 	
-	@RequestMapping("boardList")
+	@RequestMapping("boardList.do")
 	public String boardList(PagingVO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		BorderService borderService;
+		BorderService borderService = new BorderServiceImpl();
 		int total = borderService.countBoard();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";

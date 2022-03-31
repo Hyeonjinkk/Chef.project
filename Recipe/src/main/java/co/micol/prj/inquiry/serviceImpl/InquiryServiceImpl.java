@@ -63,4 +63,10 @@ public class InquiryServiceImpl implements InquiryService {
 		return map.inquirySortList(key);
 	}
 
+	@Override
+	public int inquiryCount() {
+		// TODO Auto-generated method stub
+		return map.inquiryCount();
+	}
+
 }

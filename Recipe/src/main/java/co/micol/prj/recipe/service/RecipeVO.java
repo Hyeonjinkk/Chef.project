@@ -2,6 +2,7 @@ package co.micol.prj.recipe.service;
 
 import java.sql.Date;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import co.micol.prj.user.service.UserVO;
@@ -18,7 +19,7 @@ public class RecipeVO {
 	private String recipeWay; // 조리방식
 	private String recipeKind; // 메뉴종류
 	private String recipeWgt; // 중량
-	private int recipeEng; // 열량
+	private int recipeLike; // 열량
 	private int recipeCar; // 탄수화물
 	private int recipePro; // 단백질
 	private int recipeFat; // 지방
@@ -30,6 +31,7 @@ public class RecipeVO {
 	private int userNo; // 유저NO
 	private int recipeHit;	// 조회수
 	private String userAlias;	// 별칭
+	private String recipeContent;
 
 	@JsonFormat(pattern = "yy-MM-dd", timezone = "Asia/Seoul")
 	private Date recipeDate; // 등록일자

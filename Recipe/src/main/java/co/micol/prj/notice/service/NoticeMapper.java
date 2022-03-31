@@ -13,4 +13,8 @@ public interface NoticeMapper {
 	int noticeUpdateHit(int id);
 	List<NoticeVO> noticeSelectSearchList(@Param("key")String key, @Param("val")String val);
 	List<NoticeVO> noticeSortList(String key);
+	
+	
+//	notice 게시물 수
+	int noticeCount();
 }

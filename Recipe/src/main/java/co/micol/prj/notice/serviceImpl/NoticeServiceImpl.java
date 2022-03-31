@@ -53,6 +53,11 @@ public class NoticeServiceImpl implements NoticeService {
 		// TODO Auto-generated method stub
 		return map.noticeSortList(key);
 	}
+	@Override
+	public int noticeCount() {
+		// TODO Auto-generated method stub
+		return map.noticeCount();
+	}
 
 	
 

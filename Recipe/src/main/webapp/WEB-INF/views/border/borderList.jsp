@@ -1,67 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/jquery.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 
 <style>
-	h2 {
-		text-align: center;
-	}
-	table {
-		width: 100%;
-	}
-	#outter {
-		display: block;
-		width: 60%;
-		margin: auto;
-	}
-	a {
-		text-decoration: none;
-	}
+h2 {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+#outter {
+	display: block;
+	width: 60%;
+	margin: auto;
+}
+
+a {
+	text-decoration: none;
+}
 </style>
 </head>
 <body>
-	<div align="center">
-
-		<div>
-			<h1>게시글 목록</h1>
+	<div class="container">
+		<div class="single-post__quote"
+			style="margin-top: 70px; margin-bottom: 55px;">
+			<h3 style="padding-top: 3px;">공지사항</h3>
+			<span>관리자 전용 공지사항입니다!</span>
 		</div>
 
-		<form id="fmm" method="post">
 
-			<div>
-				<select id="searchKey" name="searchKey">
-					<option value="전체">전체</option>
-					<option value="작성자">작성자</option>
-					<option value="제목">제목</option>
-					<option value="내용">내용</option>
-				</select> <span> <input type="text" id="searchVal">&nbsp; <input
-					type="button" onclick="searchList()" value="검색">
-				</span>
+
+
+		<form id="fmm" method="post">
+			<div align="center">
+
+				<div>
+					<select id="searchKey" name="searchKey" onmouseover="this.style.cursor='pointer';">
+						<option value="1">선택</option>
+						<option value="2">작성자</option>
+						<option value="3">제목</option>
+						<option value="4">내용</option>
+					</select> <span> <input type="text" id="searchVal">&nbsp; <input
+						type="button" onclick="searchList()" value="검색">
+					</span>
+				</div>
 			</div>
-			<div><div style="float: right;">
-		<select id="cntPerPage" name="sel" onchange="selChange()">
-			<option value="5"
-				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
-			<option value="10"
-				<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
-			<option value="15"
-				<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
-			<option value="20"
-				<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
-		</select>
-	</div> <!-- 옵션선택 끝 -->
-				<table border="1">
+			<div>
+				<div style="float: right;">
+					<select id="cntPerPage" name="sel" onchange="selChange()">
+						<option value="5"
+							<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
+							보기</option>
+						<option value="10"
+							<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
+							보기</option>
+						<option value="15"
+							<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
+							보기</option>
+						<option value="20"
+							<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
+							보기</option>
+					</select>
+				</div>
+				<!-- 옵션선택 끝 -->
+				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th width="150"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
-											<span style="color:red" onclick="sortBorder('D')"> D </span></th>
+							<th width="150">글번호</th>
 							<th width="150">작성자</th>
 							<th width="300">제목</th>
 							<th width="150">작성일자</th>
@@ -77,8 +91,7 @@
 						<c:if test="${not empty borders }">
 							<tr>
 								<c:forEach items="${borders }" var="b">
-									<tr onmouseover='this.style.background="#fcecae";'
-										onmouseleave='this.style.background="#FFFFFF";'
+									<tr onmouseover="this.style.cursor='pointer';"
 										onclick="borderContents(${b.borderId})">
 										<td>${b.borderId}</td>
 										<td>${b.borderWriter}</td>
@@ -94,42 +107,44 @@
 				</table>
 			</div>
 			<br>
-			<div>
-			<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
-				<c:if test="${user_no == 1}">
-					<button type="button" onclick="location.href='borderInsertForm.do'">글쓰기</button>
+			<div align="center" style="padding-bottom: 65px;">
+				<c:if test="${'관리자' eq userAlias }">
+					<button type="button" class="site-btn" onclick="location.href='borderInsertForm.do'">공지사항 작성</button>
 				</c:if>
 			</div>
 			<input type="hidden" id="borderId" name="borderId">
 			<div style="display: block; text-align: center;">
 				<c:if test="${paging.startPage != 1 }">
-					<a
-						href="/borderList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+					<a href="borderList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 				</c:if>
 				<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
 					var="p">
-					<c:choose>
+					<c:choose>	
 						<c:when test="${p == paging.nowPage }">
 							<b>${p }</b>
 						</c:when>
 						<c:when test="${p != paging.nowPage }">
 							<a
-								href="/borderList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+								href="borderList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 						</c:when>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${paging.endPage != paging.lastPage}">
 					<a
-						href="/borderList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+						href="borderList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 				</c:if>
 			</div>
 		</form>
 
+
+
 	</div>
+
+
 	<script type="text/javascript">
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
-		location.href="borderList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+		location.href="borderList.do?nowPage=${paging.nowPage}&cntPerPage="+sel;
 	}
 	
 	function goPage(page) {

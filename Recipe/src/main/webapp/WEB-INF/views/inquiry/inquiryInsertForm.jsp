@@ -22,19 +22,19 @@
 				<table border="1">
 					<tr>
 						<th width="100">작성자</th>
-						<td width="150"><input type="text" id="userAlias" name="userAlias" value="${userAlias }"></td>
+						<td width="150"><input type="text" id="userAlias" name="userAlias" value="${userAlias }" readonly style="border:none;"></td>
 						
 						<th width="100">작성일자</th>
 						<td width="150"><input type="date" id="inquiryDate" name="inquiryDate" required="required"></td>
 					</tr>
 					<tr>
-						<th>제목</th>
-						<td colspan="3">
-							<input type="text" id="inquiryTitle" name="inquiryTitle" required="required">
+						<th width="100">제목</th>
+						<td width="150">
+							<input type="text" id="inquiryTitle" name="inquiryTitle" required="required" style="border:nene;">
 						</td>
 						<th>카테고리</th>
 						<td colspan="5">
-							<select id="inquiryCategory" name="inquiryCategory" required="required">
+							<select id="inquiryCategory" name="inquiryCategory">
 								<option value="레시피">레시피</option>
 								<option value="재료">재  료</option>
 							</select>
@@ -43,20 +43,20 @@
 					<tr>
 						<th>내용</th>
 						<td colspan="3">
-							<textarea rows="10" cols="80" name="inquiryContent"></textarea>
+							<textarea rows="10" cols="80" name="inquiryContent" style="border:none;"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<td>이미지1:</td>
-						<td><input type="file" name="inquiryImage1" id="inquiryImage1"></td>
+						<td><input type="file" name="inquiryImage1" id="inquiryImage1" style="border:none;"></td>
 					</tr>
 					<tr>
 						<td>이미지2:</td>
-						<td><input type="file" name="inquiryImage2" id="inquiryImage2"></td>
+						<td><input type="file" name="inquiryImage2" id="inquiryImage2" style="border:none;"></td>
 					</tr>
 					<tr>
 						<td>이미지3:</td>
-						<td><input type="file" name="inquiryImage3" id="inquiryImage3"></td>
+						<td><input type="file" name="inquiryImage3" id="inquiryImage3" style="border:none;"></td>
 					</tr>
 				</table>
 			</div><br>

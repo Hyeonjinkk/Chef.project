@@ -60,10 +60,10 @@
 	<select id="borderSelectSearchList" resultMap="borderMap">
 		SELECT*FROM BORDER
 		WHERE 
-		<if test='key == "전체"'>1 = 1</if>
-		<if test='key == "작성자"'>BORDER_WRITER LIKE '%'||#{val}||'%'</if>
-		<if test='key == "제목"'>BORDER_TITLE LIKE '%'||#{val}||'%'</if>
-		<if test='key == "내용"'>BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>
+		<if test='key == "1"'>BORDER_WRITER LIKE '%'||#{val}||'%' or BORDER_WRITER LIKE '%'||#{val}||'%' or BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>
+		<if test='key == "2"'>BORDER_WRITER LIKE '%'||#{val}||'%'</if>
+		<if test='key == "3"'>BORDER_TITLE LIKE '%'||#{val}||'%'</if>
+		<if test='key == "4"'>BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>
 		ORDER BY BORDER_ID DESC
 	</select>
 	

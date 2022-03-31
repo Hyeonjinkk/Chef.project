@@ -35,10 +35,6 @@
 				<br>
 				<div>
 					<button type="button" onclick="location.href='questionList.do'">목록가기</button>
-					&nbsp;&nbsp;
-					<button type="submit"  onclick="questionUpdate(${question.questionId})">수정완료</button>
-					&nbsp;&nbsp;
-					<button type="button" onclick="questionDelete(${question.questionId})">삭제</button>
 					<c:if test="${user_no == 1}">
 					<button type="submit"  onclick="questionUpdate(${question.questionId})">수정완료</button>
 					&nbsp;&nbsp;

@@ -1,39 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/jquery.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-	<div align="center">
-
-		<div>
-			<h1>게시글 목록</h1>
+	<div class="container">
+		<div class="single-post__quote"
+			style="margin-top: 70px; margin-bottom: 55px;">
+			<h3 style="padding-top: 3px;">생활팁 갤러리</h3>
+			<span>생활팁이나 자유소통 갤러리입니다.</span>
 		</div>
 
 		<form id="fmm" method="post">
-
-			<div>
-				<select id="searchKey" name="searchKey">
-					<option value="전체">전체</option>
+			<div align= "center">
+				<select id="searchKey" name="searchKey"
+					style="width: 100px; border: none;">
 					<option value="작성자">작성자</option>
 					<option value="제목">제목</option>
 					<option value="내용">내용</option>
-				</select> <span> <input type="text" id="searchVal">&nbsp; <input
-					type="button" onclick="searchList()" value="검색">
+				</select> <span> <input type="text" id="searchVal"
+					style="height: 47px;">&nbsp; <input type="button"
+					class="site-btn" onclick="searchList()" value="검색">
 				</span>
 			</div>
 			<div>
-				<table border="1">
+				<table id="contents" class="table table-hover">
 					<thead>
 						<tr>
-							<th width="150"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
-											<span style="color:red" onclick="sortBorder('D')"> D </span></th>
+							<th width="150">글번호 </th>
 							<th width="150">작성자</th>
 							<th width="300">제목</th>
 							<th width="150">작성일자</th>
@@ -49,8 +49,7 @@
 						<c:if test="${not empty questions }">
 							<tr>
 								<c:forEach items="${questions }" var="b">
-									<tr onmouseover='this.style.background="#fcecae";'
-										onmouseleave='this.style.background="#FFFFFF";'
+									<tr onmouseover='this.style.cursor="pointer";'
 										onclick="questionContents(${b.questionId})">
 										<td>${b.questionId}</td>
 										<td>${b.questionWriter}</td>
@@ -66,16 +65,28 @@
 				</table>
 			</div>
 			<br>
-			<div>
-			
-				<c:if test="${user_no eq 1 }">
-					<button type="button" onclick="location.href='questionInsertForm.do'">글쓰기</button>
+			<div align="center" style="padding-bottom: 65px;">
+
+				<c:if test="${not empty userId}">
+					<button type="button" class="site-btn"
+						onclick="location.href='questionInsertForm.do'">글쓰기</button>
 				</c:if>
 			</div>
 			<input type="hidden" id="questionId" name="questionId">
 		</form>
+	</div>
+
+
+
+
 
 	</div>
+
+
+
+
+
+
 	<script type="text/javascript">
 	function questionContents(n){
 		

@@ -28,17 +28,15 @@
 						</select> <span> <input type="text" id="searchVal"
 							style="height: 47px;"> <input class="site-btn"
 							type="button" onclick="searchList()" value="검색">
-						</span><br>
-					</div>
+						</span>
+					</div><br>
 
 					<div>
 						<table class="table table-hover" id="contents">
 							<thead>
 								<tr>
 
-									<th width="100">
-									<span style="color: red" onclick="sortNotice('A')">A</span> 글번호 
-									<span style="color: red" onclick="sortNotice('B')">B</span></th>
+									<th width="100">글번호 </th>
 									<th width="300">제목</th>
 									<th width="70">분류</th>
 									<th width="150">작성자</th>
@@ -55,7 +53,7 @@
 								<c:if test="${not empty inquiry }">
 									<c:forEach items="${inquiry }" var="i">
 										<tr onmouseover="this.style.cursor='pointer';"
-											onclick="inquiryContent('${i.inquiryNo }')">
+											onclick="inquiryContent('${i.inquiryNo}')">
 											<td>${i.inquiryNo }</td>
 											<td>${i.inquiryTitle }</td>
 											<td>${i.inquiryCategory }</td>

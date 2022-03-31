@@ -49,7 +49,7 @@ input[type=date]:focus {
 		<div>
 			<button type="button" onclick="location.href='noticeList.do'">목록가기</button>
 			&nbsp;&nbsp;
-			<c:if test="${iq.userAlias == userAlias }">
+			<c:if test="${nt.userAlias == userAlias }">
 			<button type="button" onclick="noticeUpdate(${nt.noticeNo})">수정</button>
 			&nbsp;&nbsp;
 			<button type="button" onclick="noticeDelete(${nt.noticeNo})">삭제</button>

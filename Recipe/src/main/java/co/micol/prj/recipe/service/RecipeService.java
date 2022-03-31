@@ -23,5 +23,6 @@ public interface RecipeService {
 //	게시글 전체 수 조회
 	int countRecipeList();
 	
-
+// 냉장고 레시피 검색
+	List<RecipeVO> searchBkRecipe(String[] keywords);
 }

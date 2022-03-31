@@ -18,78 +18,63 @@
 		</div>
 
 		<form id="fmm" method="post">
-			<div align="center">
-
-				<div>
-					<select id="searchKey" name="searchKey">
-						<option value="전체">전체</option>
-						<option value="작성자">작성자</option>
-						<option value="제목">제목</option>
-						<option value="내용">내용</option>
-					</select> <span> <input type="text" id="searchVal">&nbsp; <input
-						type="button" onclick="searchList()" value="검색">
-					</span>
-				</div>
-				<div></div>
-				<div>
-					<select id="searchKey" name="searchKey"
-						style="width: 100px; border: none;">
-						<option value="작성자">작성자</option>
-						<option value="제목">제목</option>
-						<option value="내용">내용</option>
-					</select> <span> <input type="text" id="searchVal"
-						style="height: 47px;">&nbsp; <input type="button"
-						class="site-btn" onclick="searchList()" value="검색">
-					</span>
-				</div>
-				<div>
-					<table id="contents" class="table table-hover">
-						<thead>
-							<tr>
-								<th width="150"><span style="color: red"
-									onclick="sortBorder('A')">A </span>글번호 <span style="color: red"
-									onclick="sortBorder('D')"> D </span></th>
-								<th width="150">작성자</th>
-								<th width="300">제목</th>
-								<th width="150">작성일자</th>
-								<th width="70">조회수</th>
-							</tr>
-						</thead>
-						<tbody id="questionBody">
-							<c:if test="${empty questions }">
-								<tr>
-									<td colspan="5">게시글이 존재하지 않습니다.</td>
-								</tr>
-							</c:if>
-							<c:if test="${not empty questions }">
-								<tr>
-									<c:forEach items="${questions }" var="b">
-										<tr onmouseover='this.style.cursor="pointer";'
-											onclick="questionContents(${b.questionId})">
-											<td>${b.questionId}</td>
-											<td>${b.questionWriter}</td>
-											<td>${b.questionTitle}</td>
-											<td>${b.questionDate}</td>
-											<td>${b.questionHit}</td>
-										</tr>
-									</c:forEach>
-								</tr>
-							</c:if>
-						</tbody>
-
-					</table>
-				</div>
-				<br>
-				<div align="center" style="padding-bottom: 65px;">
-
-					<c:if test="${not empty userId}">
-						<button type="button" class="site-btn"
-							onclick="location.href='questionInsertForm.do'">글쓰기</button>
-					</c:if>
-				</div>
-				<input type="hidden" id="questionId" name="questionId">
+			<div align= "center">
+				<select id="searchKey" name="searchKey"
+					style="width: 100px; border: none;">
+					<option value="작성자">작성자</option>
+					<option value="제목">제목</option>
+					<option value="내용">내용</option>
+				</select> <span> <input type="text" id="searchVal"
+					style="height: 47px;">&nbsp; <input type="button"
+					class="site-btn" onclick="searchList()" value="검색">
+				</span>
 			</div>
+			<div>
+				<table id="contents" class="table table-hover">
+					<thead>
+						<tr>
+							<th width="150">글번호 </th>
+							<th width="150">작성자</th>
+							<th width="300">제목</th>
+							<th width="150">작성일자</th>
+							<th width="70">조회수</th>
+						</tr>
+					</thead>
+					<tbody id="questionBody">
+						<c:if test="${empty questions }">
+							<tr>
+								<td colspan="5">게시글이 존재하지 않습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${not empty questions }">
+							<tr>
+								<c:forEach items="${questions }" var="b">
+									<tr onmouseover='this.style.cursor="pointer";'
+										onclick="questionContents(${b.questionId})">
+										<td>${b.questionId}</td>
+										<td>${b.questionWriter}</td>
+										<td>${b.questionTitle}</td>
+										<td>${b.questionDate}</td>
+										<td>${b.questionHit}</td>
+									</tr>
+								</c:forEach>
+							</tr>
+						</c:if>
+					</tbody>
+
+				</table>
+			</div>
+			<br>
+			<div align="center" style="padding-bottom: 65px;">
+
+				<c:if test="${not empty userId}">
+					<button type="button" class="site-btn"
+						onclick="location.href='questionInsertForm.do'">글쓰기</button>
+				</c:if>
+			</div>
+			<input type="hidden" id="questionId" name="questionId">
 		</form>
+	</div>
 
 
 

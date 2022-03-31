@@ -9,6 +9,9 @@ import co.micol.prj.border.service.BorderService;
 import co.micol.prj.border.service.BorderVO;
 import co.micol.prj.border.serviceImpl.BorderServiceImpl;
 import co.micol.prj.comm.Command;
+import co.micol.prj.comments.service.CommentsService;
+import co.micol.prj.comments.service.CommentsVO;
+import co.micol.prj.comments.serviceImpl.CommentsServiceImpl;
 
 
 public class BorderDelete implements Command {
@@ -21,6 +24,10 @@ public class BorderDelete implements Command {
 				System.out.println(Integer.parseInt(request.getParameter("borderId")));
 				vo.setBorderId(Integer.parseInt(request.getParameter("borderId")));
 				
+				CommentsService commentDao = new CommentsServiceImpl();
+				CommentsVO Cvo = new CommentsVO();
+				Cvo.setComSeq(vo.getBorderId());
+				commentDao.deleteComments(Cvo);
 				int n = borderDao.borderDelete(vo);
 				if(n != 0) {
 					return "borderList.do";

@@ -38,7 +38,7 @@ public class InsertComments implements Command {
 		vo.setComAlias((String) session.getAttribute("userAlias"));
 		vo.setComDate(Date.valueOf(request.getParameter("comDate")));
 		vo.setComCategory(Integer.parseInt(request.getParameter("comCategory")));
-		vo.setComSeq(Integer.parseInt(request.getParameter("recipeSeq")));
+		vo.setComSeq(Integer.parseInt(request.getParameter("comSeq")));
 		vo.setComContents(request.getParameter("comContents"));
 		int result = commentsDao.insertComments(vo);
 

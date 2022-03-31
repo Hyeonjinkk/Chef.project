@@ -15,6 +15,7 @@ input[type=date]:focus {
 
 
 	<input type="hidden" name="recipeSeq" value="${recipe.recipeSeq}">
+	<input type="hidden" name="comSeq" value="${recipe.recipeSeq}">
 	<section class="single-post spad">
 		<div class="single-post__hero set-bg"
 			data-setbg="${recipe.recipeImageLg }"

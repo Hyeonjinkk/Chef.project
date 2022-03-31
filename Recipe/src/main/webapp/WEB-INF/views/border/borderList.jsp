@@ -139,8 +139,11 @@ a {
 
 
 
-	</div>
+		<script type="text/javascript">
 
+
+
+</script>
 
 	<script type="text/javascript">
 	function selChange() {

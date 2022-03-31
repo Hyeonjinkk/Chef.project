@@ -28,7 +28,7 @@ public class UserJoin implements Command {
 		} else {
 			request.setAttribute("message", "회원가입이 정상적으로 이루어지지 않았습니다.");
 		}
-		return "user/userJoin";
+		return "main/home";
 	}
 
 }

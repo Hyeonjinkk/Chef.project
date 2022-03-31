@@ -60,7 +60,7 @@
 	<select id="borderSelectSearchList" resultMap="borderMap">
 		SELECT*FROM BORDER
 		WHERE 
-		<if test='key == "1"'>1 = 1</if>
+		<if test='key == "1"'>BORDER_WRITER LIKE '%'||#{val}||'%' or BORDER_WRITER LIKE '%'||#{val}||'%' or BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>
 		<if test='key == "2"'>BORDER_WRITER LIKE '%'||#{val}||'%'</if>
 		<if test='key == "3"'>BORDER_TITLE LIKE '%'||#{val}||'%'</if>
 		<if test='key == "4"'>BORDER_CONTENTS LIKE '%'||#{val}||'%'</if>

@@ -235,5 +235,9 @@
 	}
 	
 	
+	if ('${loginComments}' != '') {
+		alert('${loginComments}');
+		window.location = "userLoginForm.do";
+	}
 </script>
 </html>

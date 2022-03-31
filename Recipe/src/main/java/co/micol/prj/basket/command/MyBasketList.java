@@ -19,16 +19,14 @@ public class MyBasketList implements Command {
 		HttpSession session = request.getSession();
 		
 		vo.setUserId((String)session.getAttribute("userId"));
-		basketDAO.basketList(vo);
 		
-		String a = (String)session.getAttribute("userId");
-		
-		if(a != null) {
+		if(vo.getUserId() != null) {
 			//session.setAttribute("userId", vo.getUserId());
 			request.setAttribute("basket", basketDAO.basketList(vo));			
 			return "basket/myBasket";
 		} else {
-			request.setAttribute("message", "로그인이 필요한 서비스입니다.");
+			request.setAttribute("loginComments", "로그인이 필요한 서비스입니다. "
+					+ "로그인 페이지로 이동합니다.");
 			return "main/home";
 		}
 		

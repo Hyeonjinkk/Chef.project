@@ -33,7 +33,7 @@ public class UpdateComments implements Command {
 		vo.setComDate(Date.valueOf(request.getParameter("updateDate")));
 		vo.setComContents(request.getParameter("afterValue"));
 		vo.setComCategory(Integer.parseInt(request.getParameter("comCategory")));
-		vo.setComSeq(Integer.parseInt(request.getParameter("comSeq")));
+		vo.setComSeq(Integer.parseInt(request.getParameter("recipeSeq")));
 		int result = commentDao.updateComments(vo);
 
 		if (result != 0) {

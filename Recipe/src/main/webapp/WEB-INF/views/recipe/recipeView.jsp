@@ -140,143 +140,118 @@ input[type=date]:focus {
 
 
 
+					<c:if test="${userAlias eq recipe.userAlias }">
+						<div align="center">
+							<button type="button" onclick="update()" class="site-btn">레시피
+								수정</button>
+							<button type="button" onclick="delete1()" class="site-btn">레시피
+								삭제</button>
+						</div>
+					</c:if>
+
+
+
+					<div class="single-post__comment">
+						<div class="widget__title">
+							<h4>Comment</h4>
+						</div>
+
+						<c:forEach items="${comments}" var="c">
+							<c:if test="${c.comSeq eq recipe.recipeSeq}">
+								<c:if test="${c.comCategory == '1' }">
+
+									<div class="single-post__comment__item">
+
+										<div class="single-post__comment__item__text">
+											<h5>${c.comAlias}<input type="hidden" id="comNo"
+													name="comNo" value="${c.comNo }" />
+											</h5>
+											<span><input type="date" id="updateDate"
+												name="updateDate" value="${c.comDate }"
+												style="border: none;" readonly></span>
+											<!-- 기존 내용 -->
+											<pre
+												style="height: 50px; width: 500px; font-family: 'Noto Sans KR', sans-serif;"
+												id="beforeContents${c.comNo }">${c.comContents}</pre>
+											<!-- 수정 버튼 클릭시 수정 text area 생성 -->
+											<textarea style="height: 50px; width: 500px; display: none;"
+												id="afterContents${c.comNo }" name="afterValue"></textarea>
+
+											<c:if test="${userAlias eq c.comAlias }">
+												<ul>
+													<li>
+														<button type="button" onclick="updateButton(${c.comNo })"
+															id="updateBtn${c.comNo }" name="updateBtn"
+															style="border: 0px; cursor: pointer;">수정</button> <input
+														type="hidden" id="comCategory" name="comCategory"
+														value="1">
+														<button type="button" onclick="cancelButton(${c.comNo })"
+															id="cancel${c.comNo }" name="cancel"
+															style="display: none; border: 0px; cursor: pointer;">취소</button>
+													</li>
+													<li>
+														<button type="button" onclick="deleteDo(${c.comNo })"
+															id="deleteBtn${c.comNo }" name="deleteBtn"
+															style="border: 0px; cursor: pointer;">삭제</button>
+													</li>
+												</ul>
+											</c:if>
+										</div>
+									</div>
+								</c:if>
+							</c:if>
+						</c:forEach>
+						<div class="single-post__recipe__details">
+							<div class="single-post__recipe__details__option"
+								style="padding-left: 10px;">
+								<ul>
+									<li>
+										<h5>
+											<i class="fa fa-user-o"></i>${userAlias }
+										</h5>
+									</li>
+									<li>
+										<h5>
+											<i class="fa fa-clock-o"></i> 등록일자
+										</h5> <span><input type='date' id='currentDate'
+											name="comDate" readOnly style="border: none;" /></span>
+									</li>
+									<li>
+										<button type="button" onclick="insertComments()"
+											style="border: 0px; cursor: pointer;">등록</button>
+
+									</li>
+								</ul>
+								<div align="center">
+									<textarea id="comments" name="comContents" style="width: 100%;"></textarea>
+								</div>
+
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<c:if test="${userAlias eq recipe.userAlias }">
-			<div align="center">
-				<button type="button" onclick="update()"
-				class="site-btn">레시피 수정</button>
-				<button type="button" onclick="delete1()"
-				class="site-btn">레시피 삭제</button>
-			</div>
-		</c:if>
+
+
+		</div>
 	</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- 댓글창 -->
-
-	<div align="center">
-		<table id="tbl">
-			<c:forEach items="${comments}" var="c">
-				<c:if test="${c.comSeq eq recipe.recipeSeq}">
-					<c:if test="${c.comCategory == '1' }">
-
-
-						<tr>
-
-							<td width="150px">${c.comAlias}<input type="hidden"
-								id="comNo" name="comNo" value="${c.comNo }" /></td>
-							<td><input type="date" id="updateDate" name="updateDate"
-								value="${c.comDate }" style="border: none;" readonly></td>
-
-						</tr>
-						<tr id="asd">
-							<td colspan="4">
-								<!-- 기존 내용 --> <pre style="height: 50px; width: 500px;"
-									id="beforeContents${c.comNo }">${c.comContents}</pre> <!-- 수정 버튼 클릭시 수정 text area 생성 -->
-								<textarea style="height: 50px; width: 500px; display: none;"
-									id="afterContents${c.comNo }" name="afterValue">
-                                </textarea>
-							</td>
-
-							<td><c:if test="${userAlias eq c.comAlias }">
-									<!-- 수정버튼 -->
-									<button type="button" onclick="updateButton(${c.comNo })"
-										id="updateBtn${c.comNo }" name="updateBtn"
-										style="border: 0px; cursor: pointer;">수정</button>
-									<br>
-									<!-- 수정 버튼 클릭시 생성 -->
-									<button type="button" onclick="cancelButton(${c.comNo })"
-										id="cancel${c.comNo }" name="cancel"
-										style="display: none; border: 0px; cursor: pointer;">취소</button>
-									<!-- 삭제 버튼 -->
-									<button type="button" onclick="deleteDo(${c.comNo })"
-										id="deleteBtn${c.comNo }" name="deleteBtn"
-										style="border: 0px; cursor: pointer;">삭제</button>
-								</c:if></td>
-
-						</tr>
-					</c:if>
-				</c:if>
-			</c:forEach>
-
-		</table>
-	</div>
-
-
-	<!-- 댓글 등록 -->
-
-	<div align="center">
-		<table id="tbl">
-			<tr>
-				<td width="150px">작성자</td>
-				<td><b>${userAlias}</b></td>
-				<td><input type='date' id='currentDate' name="comDate" readOnly
-					style="border: none;" /> <input type="hidden"
-					name="comCategory" value="1" /> <input type="hidden" name="comSeq"
-					value="${recipe.recipeSeq}" /></td>
-			</tr>
-			<tr id="asd">
-				<td colspan="4"><textarea id="comments" name="comContents"
-						style="width: 100%;"></textarea></td>
-				<td>
-					<button type="button" onclick="insertComments()"
-						style="border: 0px; cursor: pointer;">등록</button>
-				</td>
-
-			</tr>
-
-		</table>
-	</div>
-
-
 </form>
+<!-- 댓글창 -->
+
+
+
+
+
+
+
+
+
 <script>
+
+
+
 	/* 댓글 등록 */
 	function insertComments() {
 		if ('${userAlias}' == '') {
@@ -312,7 +287,7 @@ input[type=date]:focus {
          before.style.display = "none";
 
          // pre 태그 내용 Text Area에 innerHTML & Display 초기화
-         after.innerHTML = before.innerHTML;
+         after.value = before.innerHTML;
          after.style.display = "";
 		
          // 삭제버튼 숨기기 & 수정취소버튼 Display 초기화
@@ -385,11 +360,7 @@ input[type=date]:focus {
 	/* 레시피 수정 시 처리 */
 	if ('${message}' != '') {
 		alert('${message}');
-		window.location = "recipeView.do?recipeSeq=" + $
-		{
-			recipe.recipeSeq
-		}
-		;
+		window.location = "recipeView.do?recipeSeq=" + ${recipe.recipeSeq};
 	}
 
 	/* 레시피 수정 버튼 Action */

@@ -29,8 +29,9 @@ public class DeleteComments implements Command {
 		CommentsVO vo = new CommentsVO();
 		vo.setComNo(Integer.parseInt(request.getParameter("comNo")));
 		vo.setComCategory(Integer.parseInt(request.getParameter("comCategory")));
-		vo.setComSeq(Integer.parseInt(request.getParameter("comSeq")));
+		vo.setComSeq(Integer.parseInt(request.getParameter("recipeSeq")));
 		int result = commentsDao.deleteComments(vo);
+		System.out.println(vo.getComNo());
 
 		if (result != 0) {
 			switch (vo.getComCategory()) {

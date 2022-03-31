@@ -56,7 +56,7 @@ td {
 				</c:forEach>
 			</div>
 		</div>
-		<div align="center">
+		<div align="center"  style="padding-bottom: 65px;">
 			<button type="button" onclick="checkLogin('${userId}')"
 				class="site-btn">레시피 등록</button>
 		</div>

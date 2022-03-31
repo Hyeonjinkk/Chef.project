@@ -1,7 +1,6 @@
 package co.micol.prj.user.command;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
 
 import co.micol.prj.comm.Command;

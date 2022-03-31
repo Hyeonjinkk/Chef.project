@@ -28,13 +28,13 @@
 						<td width="150"><input type="date" id="inquiryDate" name="inquiryDate" required="required"></td>
 					</tr>
 					<tr>
-						<th>제목</th>
-						<td colspan="3">
+						<th width="100">제목</th>
+						<td width="150">
 							<input type="text" id="inquiryTitle" name="inquiryTitle" required="required">
 						</td>
 						<th>카테고리</th>
 						<td colspan="5">
-							<select id="inquiryCategory" name="inquiryCategory" required="required">
+							<select id="inquiryCategory" name="inquiryCategory">
 								<option value="레시피">레시피</option>
 								<option value="재료">재  료</option>
 							</select>

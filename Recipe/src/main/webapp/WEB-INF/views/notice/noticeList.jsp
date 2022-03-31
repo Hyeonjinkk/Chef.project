@@ -15,7 +15,6 @@
 
 </head>
 <body>
-	
 	<div class="container">
 		<div class="single-post__quote"
 			style="margin-top: 70px; margin-bottom: 55px;">

@@ -21,12 +21,25 @@
 			<div align="center">
 
 				<div>
-					<select id="searchKey" name="searchKey" style="width: 100px; border: none;">
+					<select id="searchKey" name="searchKey">
+						<option value="전체">전체</option>
 						<option value="작성자">작성자</option>
 						<option value="제목">제목</option>
 						<option value="내용">내용</option>
-					</select> <span> <input type="text" id="searchVal"  style="height: 47px;">&nbsp; <input
-						type="button" class="site-btn" onclick="searchList()" value="검색">
+					</select> <span> <input type="text" id="searchVal">&nbsp; <input
+						type="button" onclick="searchList()" value="검색">
+					</span>
+				</div>
+				<div></div>
+				<div>
+					<select id="searchKey" name="searchKey"
+						style="width: 100px; border: none;">
+						<option value="작성자">작성자</option>
+						<option value="제목">제목</option>
+						<option value="내용">내용</option>
+					</select> <span> <input type="text" id="searchVal"
+						style="height: 47px;">&nbsp; <input type="button"
+						class="site-btn" onclick="searchList()" value="검색">
 					</span>
 				</div>
 				<div>

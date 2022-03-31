@@ -10,7 +10,7 @@
 <body>
 	<div align="center">
 		<div>
-			<h1>레시피/재료 문의 게시판</h1>
+			<h2>Cooking Tip</h2><br>
 		</div>
 		<div>
 			<form id="inquiry" method="post">

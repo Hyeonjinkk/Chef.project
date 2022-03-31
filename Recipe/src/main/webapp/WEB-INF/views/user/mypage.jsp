@@ -9,10 +9,9 @@
 </head>
 <body>
 	<div align="center">
-		<div><h3>마이페이지</h3></div>
 		<div>
 			<form id="mypage" name="mypage"  method="GET">
-				<div><h3>${message }</h3></div>
+				<div><h3>${message }</h3></div><br>
 				<div>
 					<c:if test="${empty userId }">
 						<a href="userLoginForm.do" class="button alt">로그인하기</a>

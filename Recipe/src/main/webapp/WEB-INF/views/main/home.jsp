@@ -119,7 +119,7 @@
 									style="font-family: 'Noto Sans KR', sans-serif;">Cooking
 										Tip 갤러리 <span>${inquiryCnt}</span>
 								</a></li>
-								<li class="p-left"><a href="qnaList.do"
+								<li class="p-left"><a href="questionList.do"
 									style="font-family: 'Noto Sans KR', sans-serif;">생활팁 갤러리 <span>15</span></a></li>
 								<li><a href="borderList.do"
 									style="font-family: 'Noto Sans KR', sans-serif;">공지사항 <span>${borderCnt }</span></a></li>

@@ -36,7 +36,7 @@
 		parameterType="co.micol.prj.user.service.UserVO">
 		UPDATE USERS SET 
 			USER_ALIAS = #{userAlias}, 
-			USER_ADDRESS = #{userAddress}, 
+			USER_ADDRESS = #{userAddress + addressDetail}, 
 			USER_TEL = #{userTel} 
 		WHERE USER_ID = #{userId}
 	</update>

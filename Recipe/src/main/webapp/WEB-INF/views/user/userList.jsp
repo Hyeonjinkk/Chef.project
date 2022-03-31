@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/jquery.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 
 <div align="center">
 	<div><h4>회원 리스트</h4></div>
 	<br/>
-<form id="userFrm" action="">
+<form id="userFrm" name="userFrm" action="" method="post">
 	<table>
 		<thead>
 			<tr>
@@ -24,12 +24,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${users }" var="user">
-				<tr onclick="userDetailView(${user.userId})">
-					<td>${user.userId }</td>
-					<td>${user.userName }</td>
-					<td>${user.userAlias }</td>
-					<td>${user.userAuthor }</td>
+			<c:forEach items="${users }" var="u">
+				<tr onclick="userDetailView(${u.userId})">
+					<td>${u.userId }</td>
+					<td>${u.userName }</td>
+					<td>${u.userAlias }</td>
+					<td>${u.userAuthor }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

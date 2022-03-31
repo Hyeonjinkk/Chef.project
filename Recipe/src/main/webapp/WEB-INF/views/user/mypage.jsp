@@ -22,7 +22,7 @@
 						<button id="myFollowerListBtn" type="button" onclick="myFollowerList()">나를 구독한 회원</button>
 						내가 등록한 레시피
 						내가 찜한 레시피
-				
+						<button id="deleteUserBtn" onclick="deleteUser()">회원탈퇴</button>
 					</c:if>
 				</div>
 			</form>
@@ -45,6 +45,24 @@
 	function myFollowerList() {
 		mypage.action = "followerList.do";
 		mypage.submit();
+	}
+	
+	function deleteUser() {
+		//탈퇴의사 묻기
+		var q = confirm("정말로 탈퇴하시겠습니까?");
+		
+		if(q == true) {
+			//YES -> 비밀번호 재확인
+			
+			//탈퇴 처리
+			mypage.action = "deleteUser.do";
+			mypage.submit();
+		} else {
+			//NO -> 되돌아오기
+			
+		}
+		
+		
 	}
 	
 </script>

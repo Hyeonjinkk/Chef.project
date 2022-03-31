@@ -2,13 +2,13 @@ package co.micol.prj.recipe.serviceImpl;
 
 import java.util.List;
 
+
 import org.apache.ibatis.session.SqlSession;
 
 import co.micol.prj.comm.DataSource;
 import co.micol.prj.recipe.service.RecipeMapper;
 import co.micol.prj.recipe.service.RecipeService;
 import co.micol.prj.recipe.service.RecipeVO;
-import co.micol.prj.user.service.UserVO;
 
 public class ReicpeServiceImpl implements RecipeService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
@@ -62,6 +62,11 @@ public class ReicpeServiceImpl implements RecipeService {
 	public List<RecipeVO> selectLikeList() {
 		// TODO Auto-generated method stub
 		return map.selectLikeList();
+	}
+
+	public List<RecipeVO> searchBkRecipe(String[] keywords) {
+		// TODO Auto-generated method stub
+		return map.searchBkRecipe(keywords);
 	}
 
 

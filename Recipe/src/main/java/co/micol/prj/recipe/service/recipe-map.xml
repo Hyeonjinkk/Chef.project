@@ -224,5 +224,12 @@
 	</delete>
 
 
+	<!-- 냉장고 재료로 만들 수 있는 레시피 검색 -->
+	<select id="searchBkRecipe" parameterType="java.util.ArrayList" resultMap="recipeMap">
+		SELECT * FROM RECIPE WHERE 
+		    <foreach collection="array" item="recipeParts" index="index" separator=" OR ">
+				R_PARTS LIKE '%'|| #{recipeParts} ||'%' 
+			</foreach>
+	</select>
 
 </mapper>

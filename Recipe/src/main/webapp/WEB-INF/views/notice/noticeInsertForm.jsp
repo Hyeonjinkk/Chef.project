@@ -22,21 +22,21 @@
 				<table border="1">
 					<tr>
 						<th width="100">작성자</th>
-						<td width="150"><input type="text" id="userAlias" name="userAlias" value="${userAlias }"></td>
+						<td width="150"><input type="text" id="userAlias" name="userAlias" value="${userAlias }" readonly style="border:none;"></td>
 						
 						<th width="100">작성일자</th>
-						<td width="150"><input type="date" id="noticeDate" name="noticeDate" required="required"></td>
+						<td width="150"><input type="date" id="noticeDate" name="noticeDate"  style="border:none;"></td>
 					</tr>
 					<tr>
 						<th>제목</th>
 						<td colspan="3">
-							<input type="text" id="noticeTitle" name="noticeTitle" required="required">
+							<input type="text" id="noticeTitle" name="noticeTitle" required="required" style="border:none;">
 						</td>
 					</tr>
 					<tr>
 						<th>내용</th>
 						<td colspan="3">
-							<textarea rows="10" cols="80" name="noticeContent"></textarea>
+							<textarea rows="10" cols="80" name="noticeContent"  style="border:none;"></textarea>
 						</td>
 					</tr>
 				</table>

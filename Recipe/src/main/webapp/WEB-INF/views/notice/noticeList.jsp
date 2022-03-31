@@ -40,10 +40,7 @@
 						<thead>
 							<tr> 
 							<th width="70">
-							<span style="color: red"
-									onclick="sortNotice('A')">A</span>
-								글번호 <span style="color: red"
-									onclick="sortNotice('B')">B</span>
+								글번호
 								</th>
 								<th width="300">제목</th>
 								<th width="150">작성자</th>

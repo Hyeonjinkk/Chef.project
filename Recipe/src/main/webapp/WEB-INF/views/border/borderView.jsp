@@ -125,7 +125,7 @@ input[type=date]:focus {
 									<ul>
 										<li>
 											<h5>
-												<i class="fa fa-user-o" style="margin-right: 22px;"></i>관리자
+												<i class="fa fa-user-o" style="margin-right: 22px;">${userAlias }</i>
 											</h5>
 										</li>
 										<li>

@@ -18,7 +18,7 @@
 		</div>
 
 		<form id="fmm" method="post">
-			<div>
+			<div align= "center">
 				<select id="searchKey" name="searchKey"
 					style="width: 100px; border: none;">
 					<option value="작성자">작성자</option>
@@ -33,9 +33,7 @@
 				<table id="contents" class="table table-hover">
 					<thead>
 						<tr>
-							<th width="150"><span style="color: red"
-								onclick="sortBorder('A')">A </span>글번호 <span style="color: red"
-								onclick="sortBorder('D')"> D </span></th>
+							<th width="150">글번호 </th>
 							<th width="150">작성자</th>
 							<th width="300">제목</th>
 							<th width="150">작성일자</th>

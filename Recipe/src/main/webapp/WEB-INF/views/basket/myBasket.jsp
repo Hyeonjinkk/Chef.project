@@ -21,7 +21,7 @@ span {
 </style>
 <body>
 	<div align="center">
-		<h4>나의 냉장고</h4>
+		<br><h2>나의 냉장고</h2><br>
 		
 		<c:if test="${empty basket }">
 			<br><br><br>
@@ -34,6 +34,7 @@ span {
 		
 			
 			
+
 			<form id="myBk" action="searchBkRecipe.do"  method="post">
 				<button type="submit" onclick="bkArray()">레시피 검색</button><br>
 				<br>
@@ -41,6 +42,7 @@ span {
 				<br>
 				<div class="inside">
 				<c:forEach items="${basket }" var="bk">
+
 					<span><label>
 						<input type="checkbox" id="haveIn" name="ingredient" value="${bk.ingredient}">${bk.ingredient}
 						<input type="hidden" name="ingredient" value="${bk.ingredient}">

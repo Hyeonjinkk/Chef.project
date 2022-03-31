@@ -9,4 +9,6 @@ public interface CommentsMapper {
 	int insertComments(CommentsVO vo);
 	int updateComments(CommentsVO vo);
 	int deleteComments(CommentsVO vo);
+	int cascadeComments(CommentsVO vo);
+	
 }

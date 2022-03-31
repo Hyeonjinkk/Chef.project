@@ -44,4 +44,10 @@ public class CommentsServiceImpl implements CommentsService {
 		return map.deleteComments(vo);
 	}
 
+	@Override
+	public int cascadeComments(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.cascadeComments(vo);
+	}
+
 }

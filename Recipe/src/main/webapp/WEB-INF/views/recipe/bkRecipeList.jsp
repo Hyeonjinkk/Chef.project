@@ -31,8 +31,8 @@ td {
 		<div class="container">
 			<div class="single-post__quote"
 				style="margin-top: 70px; margin-bottom: 55px;">
-				<h3 style="padding-top: 3px;">레시피</h3>
-				<span>모두 함께 가꿔나가요!</span>
+				<h3 style="padding-top: 3px;">냉장고를 열었습니다!</h3>
+				<span>냉장고에 등록된 재료가 포함된 레시피 결과입니다.</span>
 			</div>
 			<div class="row">
 				<c:forEach items="${recipes }" var="list">

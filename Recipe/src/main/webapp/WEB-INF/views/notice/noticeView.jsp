@@ -15,8 +15,8 @@ input[type=date]:focus {
 <body>
 	<section class="single-post spad" style="padding-top: 180px;">
 		<form id="ntView" name="ntView" method="post">
-			<input type="hidden" name="comSeq" value="${nt.noticeNo}" /> 
-			<input type="hidden" name="noticeNo" value="${nt.noticeNo}" /> 
+			<input type="hidden" name="comSeq" value="${nt.noticeNo}" /> <input
+				type="hidden" name="noticeNo" value="${nt.noticeNo}" />
 
 			<div class="container">
 				<div class="row d-flex justify-content-center">
@@ -34,7 +34,7 @@ input[type=date]:focus {
 									<tr>
 										<th>제목</th>
 										<td colspan="3">${nt.noticeTitle }</td>
-									</tr> 
+									</tr>
 									<tr>
 										<th>내용</th>
 										<td colspan="3"><pre style="height: 150px;">

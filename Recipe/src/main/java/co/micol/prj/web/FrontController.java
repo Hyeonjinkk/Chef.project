@@ -113,7 +113,7 @@ public class FrontController extends HttpServlet {
 
 
 		map.put("/qnaList.do", new QnaList()); // 자주듣는 질문 페이지 호출
-
+		//map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
 ////-------------------------------------- -------------------------------------- 기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
 		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크

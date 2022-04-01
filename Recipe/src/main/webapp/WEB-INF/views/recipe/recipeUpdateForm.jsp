@@ -29,153 +29,163 @@ td {
 
 <body>
 	<div align="center">
-		<form action="recipeUpdate.do" method="POST">
-			<table>
-				<thead>
-					<h1>레시피 등록부분!</h1>
-				</thead>
-				<tbody>
-					<tr>
-						<th>작성자</th>
-						<td width="250px">${recipe.userAlias}<input type="hidden"
-							id="userNo" name="userNo" value="${recipe.userNo}"> <input
-							type="hidden" id="recipeSeq" name="recipeSeq"
-							value="${recipe.recipeSeq}">
-						</td>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<form action="recipeUpdate.do" method="POST">
+						<table>
+							<thead>
+								<h1>레시피 등록부분!</h1>
+							</thead>
+							<tbody>
+								<tr>
+									<th><h3>작성자</h3></th>
+									<td width="250px"><h3>${recipe.userAlias}</h3> <input
+										type="hidden" id="userNo" name="userNo"
+										value="${recipe.userNo}"> <input type="hidden"
+										id="recipeSeq" name="recipeSeq" value="${recipe.recipeSeq}">
+									</td>
 
-						<th width="350px">등록일자</th>
-						<td width="150px"><input type='date' id='currentDate'
-							name="rDate" readOnly style="border: none;" /></td>
-					</tr>
+									<th width="350px"><h3>등록일자</h3></th>
+									<td width="150px"><h3>
+											<input type='date' id='currentDate' name="rDate" readOnly
+												style="border: none;" />
+										</h3></td>
+								</tr>
 
-					<tr>
-						<th colspan="2" width="30%">
-							<h2>제목</h2>
-						</th>
-						<td colspan="2" width="70%"><input type="text"
-							id="recipeName" name="recipeName" value="${recipe.recipeName }"></td>
-					</tr>
-					<tr>
-						<th colspan="2" width="30%">
-							<h3>재료</h3>
-						</th>
-						<td colspan="2" width="70%"><input type="text"
-							id="recipeParts" name="recipeParts" value="${recipe.recipeParts}"></td>
-					</tr>
-					<tr>
-						<th colspan="2" width="30%">
-							<h3>종류</h3>
-						</th>
-						<td colspan="2" width="70%"><input type="text"
-							id="recipeKinds" name="recipeKinds" value="${recipe.recipeKind}"></td>
-					</tr>
-					<tr>
-						<th colspan="2" width="30%">
-							<h3>조리방식</h3>
-						</th>
-						<td colspan="2" width="70%"><input type="text" id="recipeWay"
-							name="recipeWay" value="${recipe.recipeWay}"></td>
-					</tr>
+								<tr>
+									<th colspan="2" width="30%">
+										<h3>제목</h3>
+									</th>
+									<td colspan="2" width="70%"><input type="text"
+										id="recipeName" name="recipeName"
+										value="${recipe.recipeName }" style="border:none;"></td>
+								</tr>
+								<tr>
+									<th colspan="2" width="30%">
+										<h3>재료</h3>
+									</th>
+									<td colspan="2" width="70%"><input type="text"
+										id="recipeParts" name="recipeParts"
+										value="${recipe.recipeParts}"></td>
+								</tr>
+								<tr>
+									<th colspan="2" width="30%">
+										<h3>종류</h3>
+									</th>
+									<td colspan="2" width="70%"><input type="text"
+										id="recipeKinds" name="recipeKinds"
+										value="${recipe.recipeKind}"></td>
+								</tr>
+								<tr>
+									<th colspan="2" width="30%">
+										<h3>조리방식</h3>
+									</th>
+									<td colspan="2" width="70%"><input type="text"
+										id="recipeWay" name="recipeWay" value="${recipe.recipeWay}"></td>
+								</tr>
 
 
 
 
-				</tbody>
+							</tbody>
 
-				<!-- 메인 메뉴 이미지 -->
-				<tr>
-					<th colspan="2" width="30%">
-						<h3>
-							메인 메뉴 이미지 <input type="file" onchange='ReaderMainImg(event, 1)'>
-						</h3>
-					</th>
+							<!-- 메인 메뉴 이미지 -->
+							<tr>
+								<th colspan="2" width="30%">
+									<h3>
+										메인 메뉴 이미지 <input type="file"
+											onchange='ReaderMainImg(event, 1)'>
+									</h3>
+								</th>
 
-					<td colspan="2">
-						<div align="left">
-							<img id='mainImg1' style="width: 180px;"
-								src="${recipe.recipeImageSm}"> <input type="hidden"
-								id="mainImgV1" name="recipeImgSm"
-								value="${recipe.recipeImageSm}">
+								<td colspan="2">
+									<div align="left">
+										<img id='mainImg1' style="width: 180px;"
+											src="${recipe.recipeImageSm}"> <input type="hidden"
+											id="mainImgV1" name="recipeImgSm"
+											value="${recipe.recipeImageSm}">
+									</div>
+								</td>
+
+							</tr>
+
+
+							<!-- 완성 레시피 이미지 -->
+							<tr>
+								<th colspan="2" width="30%">
+									<h3>
+										완성 메인 이미지 <input type="file"
+											onchange='ReaderMainImg(event, 2)'>
+									</h3>
+								</th>
+
+								<td colspan="2">
+									<div align="left">
+										<img id='mainImg2' style="width: 350px;"
+											src="${recipe.recipeImageLg}"> <input type="hidden"
+											id="mainImgV2" name="recipeImgLg"
+											value="${recipe.recipeImageLg}">
+									</div>
+								</td>
+
+							</tr>
+
+
+							<!---내용 등록 -->
+
+
+							<!-- 추가하면 input 생겨나게 하기 -->
+
+							<c:forEach var="i" begin="1" end="20">
+								<c:set var="insert" value="insert${i}" />
+
+								<c:set var="manual" value="manual${i}" />
+								<c:set var="manualImage" value="manualImage${i}" />
+
+
+
+								<tr style="display: none;" id="${insert}" name="${insert}"
+									class="updateTr">
+									<th colspan="2" width="30%">
+										<h3>
+											<input type="file" onchange='Reader(event, ${i})'><input
+												type="hidden" id="manualImage${i}" class="updateSrc"
+												name="manualImage${i}" value="${recipe[manualImage]}">
+										</h3>
+									</th>
+									<td><img id='output${i}' style="width: 100px;"
+										class="updateImg" src="${recipe[manualImage]}"></td>
+
+									<td colspan="2">
+										<div align="left">
+											<input type="text" id="manual${i}" name="manual${i}"
+												class="updateText" value="${recipe[manual]}"
+												style="font-size: 2em">
+										</div>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<div>
+							<input type="hidden" value="1" id="insertNo" name="insertNo">
+							<br>
 						</div>
-					</td>
-
-				</tr>
-
-
-				<!-- 완성 레시피 이미지 -->
-				<tr>
-					<th colspan="2" width="30%">
-						<h3>
-							완성 메인 이미지 <input type="file" onchange='ReaderMainImg(event, 2)'>
-						</h3>
-					</th>
-
-					<td colspan="2">
-						<div align="left">
-							<img id='mainImg2' style="width: 350px;"
-								src="${recipe.recipeImageLg}"> <input type="hidden"
-								id="mainImgV2" name="recipeImgLg"
-								value="${recipe.recipeImageLg}">
-						</div>
-					</td>
-
-				</tr>
-
-
-			</table>
-			<p></p>
-
-			<!---내용 등록 -->
-			<table id="isnertTbl" name="isnertTbl">
-
-
-				<!-- 추가하면 input 생겨나게 하기 -->
-
-				<c:forEach var="i" begin="1" end="20">
-					<c:set var="insert" value="insert${i}" />
-
-					<c:set var="manual" value="manual${i}" />
-					<c:set var="manualImage" value="manualImage${i}" />
-
-
-
-					<tr style="display: none;" id="${insert}" name="${insert}"
-						class="updateTr">
-						<th colspan="2" width="30%">
-							<h3>
-								<input type="file" onchange='Reader(event, ${i})'><input
-									type="hidden" id="manualImage${i}" class="updateSrc"
-									name="manualImage${i}" value="${recipe[manualImage]}">
-							</h3>
-						</th>
-						<td><img id='output${i}' style="width: 350px;"
-							class="updateImg" src="${recipe[manualImage]}"></td>
-
-						<td colspan="2">
-							<div align="left">
-								<input type="text" id="manual${i}" name="manual${i}"
-									class="updateText" value="${recipe[manual]}"
-									style="font-size: 2em">
-							</div>
-						</td>
-
-					</tr>
-				</c:forEach>
-				<div>
-					<input type="hidden" value="1" id="insertNo" name="insertNo">
-					<button type="submit">수정하기</button>
-					<button type="button" onclick="home()">취소하기</button>
-					<br> <input type="button" value="+" onclick="plusInsert()"
-						id="btnClick">
+						<button type="button" value="+" onclick="plusInsert()"
+							id="btnClick">사진추가</button>
+						<button type="submit">수정하기</button>
+						<button type="button" onclick="home()">취소하기</button>
+					</form>
 				</div>
-			</table>
-			<button type="submit">수정하기</button>
-			<button type="button" onclick="home()">취소하기</button>
-		</form>
+			</div>
+		</div>
 	</div>
 
 
-
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 </body>
 <script>
 	function plusInsert() {

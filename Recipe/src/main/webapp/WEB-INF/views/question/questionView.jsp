@@ -53,7 +53,7 @@ input[type=date]:focus {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 
 		</form>
 	</section>
 	<script type="text/javascript">

@@ -37,7 +37,7 @@
                                                 갤러리</a></li>
 
                                         <!-- 질문 & 답변 게시판 -->
-                                        <li><a href="questionList.do" style="font-family: 'Noto Sans KR', sans-serif;">생활팁 갤러리</a>
+                                        <li><a href="questionList.do" style="font-family: 'Noto Sans KR', sans-serif;">소통 갤러리</a>
                                         </li>
                                     </ul>
                                 </li>

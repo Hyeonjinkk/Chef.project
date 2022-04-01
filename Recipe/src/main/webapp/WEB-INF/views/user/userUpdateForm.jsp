@@ -102,45 +102,46 @@ button: hover {
 
 
 										<hr>
-										<form id="userInfoFrm" action="updateUserInfo.do" method="get">
-											<input type="hidden" name="userId" value="${userId }">
+									<hr>
+		<form id="userInfoFrm" action="updateUserInfo.do" method="get">
+			<input type="hidden" name="userId" value="${userId }">
 
-											<table>
-												<tr>
-													<th width="100">아이디</th>
-													<td width="500">${userId }
-													<td>
-												</tr>
-												<tr>
-													<th>이름</th>
-													<td>${userName }</td>
-												</tr>
-												<tr>
-													<th>닉네임</th>
-													<td><input type="text" id="userAlias" name="userAlias"
-														value="${userAlias }">
-												</tr>
-												<tr>
-													<th>패스워드</th>
-													<td>
-														<button class="site-btn" type="button" id="modalBtn">비밀번호
-															변경</button>
-													</td>
-												</tr>
-												<tr>
-													<th>전화번호</th>
-													<td><input type="text" value="${userTel }"
-														id="userTel" name="userTel"></td>
-												</tr>
-												<tr>
-													<th>주소</th>
-													<td><input type="text" value="${userAddress }"
-														id="userAddress" name="userAddress"></td>
-												</tr>
-											</table>
+			<table>
+				<tr>
+					<th width="100">아이디</th>
+					<td width="500">${userId }
+					<td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td>${userName }</td>
+				</tr>
+				<tr>
+					<th>닉네임</th>
+					<td><input type="text" id="userAlias" name="userAlias"
+						value="${userAlias }"> <span class="inpAlias">10자
+							이내로 입력해주세요.</span></td>
+				</tr>
+				<tr>
+					<th>패스워드</th>
+					<td>
+						<button type="button" id="modalBtn">비밀번호 변경</button>
+					</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td><input type="text" value="${userTel }" id="userTel"
+						name="userTel"></td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td><input type="text" value="${userAddress }"
+						id="userAddress" name="userAddress"></td>
+				</tr>
+			</table>
 
-											<button class="site-btn" type="submit">변경하기</button>
-										</form>
+			<button type="submit">변경하기</button>
+		</form>
 									</div>
 								</div>
 							</div>
@@ -151,6 +152,9 @@ button: hover {
 			</div>
 			</div>
 		
+		</div>
+
+	</div>
 
 
 
@@ -223,6 +227,44 @@ button: hover {
 				return true;
 			}
 		}
+
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		window.onload = function() {
+			document
+					.getElementById("userAddress")
+					.addEventListener(
+							"click",
+							function() { //주소입력칸을 클릭하면
+								//카카오 지도 발생
+								new daum.Postcode(
+										{
+											oncomplete : function(data) { //선택시 입력값 세팅
+												document
+														.getElementById("userAddress").value = data.address; // 주소 넣기
+												document
+														.querySelector(
+																"input[name=addressDetail]")
+														.focus(); //상세입력 포커싱
+											}
+										}).open();
+							});
+		}
+	</script>
+	<script type="text/javascript">
+	var modal = document.getElementById("changePwdModal"); var btn =
+	document.getElementById("modalBtn"); var span =
+	document.getElementsByClassName("close")[0]; btn.onclick = function() {
+	modal.style.display = "block"; } span.onclick = function() {
+	modal.style.display = "none"; } function pwdCheck() { $.ajax({ url :
+	"ajaxUserOldPwdCheck.do", type : "POST", data : {"str" :
+	$("#oldPwd").val()}, dataType : "text", success : function(result) {
+	console.log(result); if (result == 'true') { alert("패스워드를 변경하시겠습니까.") }
+	else { alert("기존 패스워드를 잘못 입력하셨습니다."); $("#oldPwd").val('');
+	$("#oldPwd").focus(); }; } }); if($("#newpwd1").val() !=
+	$("#newpwd2").val()) { alert("새로 입력하신 패스워드가 일치하지 않습니다.");
+	$("#newpwd1").focus(); return false; } else { return true; } }
+
 	</script>
 </body>
 </html>

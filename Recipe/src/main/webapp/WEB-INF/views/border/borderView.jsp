@@ -11,16 +11,15 @@ input[type=date]:focus {
 	outline: none;
 }
 </style>
-</head>
+</head> 
 <body>
 
 	<section class="single-post spad" style="padding-top: 180px;">
 		<form id="frr" name="frr" method="post">
 
-			<input type="hidden" id="comSeq" name="comSeq"
-				value="${border.borderId}"> <input type="hidden"
-				id="borderId" name="borderId" value="${border.borderId}"> <input
-				type="hidden" id="comCategory" name="comCategory" value="4">
+			<input type="hidden" id="comSeq" name="comSeq"value="${border.borderId}">
+			<input type="hidden" id="borderId" name="borderId" value="${border.borderId}"> 
+			<input type="hidden" id="comCategory" name="comCategory" value="4">
 
 
 			<div class="container">
@@ -41,7 +40,7 @@ input[type=date]:focus {
 											style="border: none; background: none;" readonly="readonly" value="${border.borderTitle}"></td>
 									</tr>
 									<tr>
-										<th>내용</th>
+										<th>내용</th> 
 										<td colspan="3"><pre style="height: 150px;">${border.borderContents }</pre></td>
 									</tr>
 								</table>

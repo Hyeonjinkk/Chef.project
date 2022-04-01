@@ -58,6 +58,7 @@ import co.micol.prj.notice.command.NoticeUpdateForm;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
+import co.micol.prj.qna.command.qnaDelete;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
 import co.micol.prj.question.command.AjaxQuestionSearch;
@@ -104,7 +105,7 @@ public class FrontController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) throws ServletException { 
 //--------------------------------------		Page 처리
 		map.put("/home.do", new HomeCommand()); // 처음 들어오는 페이지
 
@@ -112,7 +113,9 @@ public class FrontController extends HttpServlet {
 
 
 		map.put("/qnaList.do", new QnaList()); // 자주듣는 질문 페이지 호출
-
+		map.put("/user.do", new UserJoin()); // 회원가입 처리
+		map.put("/user1.do", new UserJoin()); // 회원가입 처리
+		map.put("/user2.do", new UserJoin()); // 회원가입 처리
 ////-------------------------------------- -------------------------------------- 기능처리(user)
 		map.put("/userJoin.do", new UserJoin()); // 회원가입 처리
 		map.put("/ajaxUserIdCheck.do", new AjaxUserIdCheck()); // 아이디 중복체크
@@ -174,6 +177,7 @@ public class FrontController extends HttpServlet {
 ////--------------------------------------		기능처리(QnA)
 		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
 		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
+		map.put("/qnaDelete.do", new qnaDelete()); // QNA 삭제
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
 		
 //		기능처리(질문&답변)

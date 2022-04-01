@@ -13,8 +13,8 @@
 	<div class="container">
 		<div class="single-post__quote"
 			style="margin-top: 70px; margin-bottom: 55px;">
-			<h3 style="padding-top: 3px;">생활팁 갤러리</h3>
-			<span>생활팁이나 자유소통 갤러리입니다.</span>
+			<h3 style="padding-top: 3px;">소통 갤러리</h3>
+			<span>자유소통 갤러리입니다.</span>
 		</div>
 
 		<form id="fmm" method="post">
@@ -52,7 +52,7 @@
 									<tr onmouseover='this.style.cursor="pointer";'
 										onclick="questionContents(${b.questionId})">
 										<td>${b.questionId}</td>
-										<td>${b.questionWriter}</td>
+										<td>${b.userAlias}</td>
 										<td>${b.questionTitle}</td>
 										<td>${b.questionDate}</td>
 										<td>${b.questionHit}</td>

@@ -58,6 +58,7 @@ import co.micol.prj.notice.command.NoticeUpdateForm;
 import co.micol.prj.notice.command.NoticeView;
 import co.micol.prj.qna.command.AjaxQnaSearch;
 import co.micol.prj.qna.command.QnaList;
+import co.micol.prj.qna.command.qnaDelete;
 import co.micol.prj.qna.command.qnaInsert;
 import co.micol.prj.qna.command.qnaInsertForm;
 import co.micol.prj.question.command.AjaxQuestionSearch;
@@ -170,6 +171,7 @@ public class FrontController extends HttpServlet {
 ////--------------------------------------		기능처리(QnA)
 		map.put("/qnaInsertForm.do", new qnaInsertForm()); // QnA 작성폼 호출
 		map.put("/qnaInsert.do", new qnaInsert()); // QnA 등록
+		map.put("/qnaDelete.do", new qnaDelete()); // QNA 삭제
 		map.put("/ajaxQnaSearch.do", new AjaxQnaSearch()); // 검색
 		
 //		기능처리(질문&답변)

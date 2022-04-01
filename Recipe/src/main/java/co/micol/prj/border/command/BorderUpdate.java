@@ -23,6 +23,8 @@ public class BorderUpdate implements Command {
 		System.out.println(request.getParameter("borderWriter"));
 		System.out.println(request.getParameter("borderId"));
 		System.out.println(Integer.parseInt(request.getParameter("borderId")));
+		
+		
 		vo.setBorderId(Integer.parseInt(request.getParameter("borderId")));
 		vo.setBorderWriter(request.getParameter("borderWriter"));
 		vo.setBorderDate(Date.valueOf(request.getParameter("borderDate")));

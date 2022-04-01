@@ -36,7 +36,7 @@
 						<tr>
 							<th>내용</th>
 							<td colspan="3">
-								<textarea rows="10" cols="80" id="noticeContent" name="noticeContent" value="${nt.noticeContent }"></textarea>
+								<textarea rows="10" cols="80" id="noticeContent" name="noticeContent" value="${nt.noticeContent }">${nt.noticeContent }</textarea>
 							</td>
 						</tr>
 					</table>

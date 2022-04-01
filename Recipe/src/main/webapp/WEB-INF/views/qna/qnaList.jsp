@@ -19,9 +19,8 @@
 		</div>
 
 		<div>
-			<form id="fmr" method="post">
-				
-
+			<form id="fmq" method="post">
+				<input type="hidden" name="qnaNo" id="qnaNo">
 				<div>
 					<table id="contents" class="table table-hover">
 						<tbody id="qnaBody">
@@ -37,7 +36,8 @@
 									
 										<td onclick="qus(${q.qnaNo})">질문${q.qnaNo} : ${q.qnaTitle} <c:if test="${'관리자' eq userAlias}">
 										<button type="submit" onclick="qnaUpdate()">수정</button>
-										<button type="submit">삭제</button>
+										<button type="button" onclick="qnaDelete('${q.qnaNo}')">삭제</button>
+										
 									</c:if></td>
 									</tr>
 									<tr>
@@ -73,6 +73,21 @@
 			$('#qus' + n).hide();
 		}
 	 }
+	 
+   function qnaDelete(n){
+	   console.log(n);
+	   
+	   fmq.qnaNo.value = n;
+	   
+	   fmq.action = "qnaDelete.do";
+	   
+	   
+	   fmq.submit();
+	   
+	   
+		
+	}
+	 
 function qnaUpdate(){
 	
 }

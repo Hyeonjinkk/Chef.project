@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 public class QuestionVO {
 	private int questionId;
-	private String questionWriter;
+	private String userAlias;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date questionDate;
@@ -30,12 +30,7 @@ public class QuestionVO {
 	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
-	public String getQuestionWriter() {
-		return questionWriter;
-	}
-	public void setQuestionWriter(String questionWriter) {
-		this.questionWriter = questionWriter;
-	}
+	
 	public String getQuestionTitle() {
 		return questionTitle;
 	}

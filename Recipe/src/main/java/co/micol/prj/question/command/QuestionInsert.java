@@ -19,7 +19,7 @@ public class QuestionInsert implements Command {
 
 		QuestionService questionDao = new QuestionServiceImpl();
 		QuestionVO vo = new QuestionVO();
-		vo.setQuestionWriter(request.getParameter("questionWriter"));
+		vo.setUserAlias(request.getParameter("userAlias"));
 		vo.setQuestionDate(Date.valueOf(request.getParameter("questionDate")));
 		vo.setQuestionTitle(request.getParameter("questionTitle"));
 		vo.setQuestionContents(request.getParameter("questionContents"));

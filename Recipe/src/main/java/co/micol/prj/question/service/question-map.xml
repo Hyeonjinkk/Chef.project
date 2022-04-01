@@ -4,7 +4,7 @@
 
 	<resultMap type="co.micol.prj.question.service.QuestionVO" id="questionMap">
 		<id property="questionId" column="question_id"/>
-		<result property="questionWriter" column="question_writer"/>
+		<result property="userAlias" column="user_Alias"/>
 		<result property="questionDate" column="question_date"/>
 		<result property="questionTitle" column="question_title"/>
 		<result property="questionContents" column="question_contents"/>
@@ -25,11 +25,11 @@
 			SELECT CASE WHEN MAX(QUESTION_ID) IS NULL THEN 1 ELSE MAX(QUESTION_ID) + 1 END AS ID FROM QUESTION
 		</selectKey>
 		INSERT INTO QUESTION 
-		VALUES(#{questionId},#{questionWriter},#{questionDate},#{questionTitle},#{questionContents},0)
+		VALUES(#{questionId},#{questionDate},#{questionTitle},#{questionContents},0,#{userAlias})
 	</insert>
 	
 	<update id="questionUpdate" parameterType="co.micol.prj.question.service.QuestionVO" >
-		UPDATE QUESTION SET QUESTION_WRITER = #{questionWriter} ,QUESTION_DATE =#{questionDate} , QUESTION_TITLE =#{questionTitle} ,
+		UPDATE QUESTION SET USER_ALIAS = #{userAlias} ,QUESTION_DATE =#{questionDate} , QUESTION_TITLE =#{questionTitle} ,
 		QUESTION_CONTENTS = #{questionContents} WHERE QUESTION_ID = #{questionId}
 	</update>
 	<delete id="questionDelete" parameterType="co.micol.prj.question.service.QuestionVO">

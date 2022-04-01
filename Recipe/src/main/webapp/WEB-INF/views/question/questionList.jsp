@@ -52,7 +52,7 @@
 									<tr onmouseover='this.style.cursor="pointer";'
 										onclick="questionContents(${b.questionId})">
 										<td>${b.questionId}</td>
-										<td>${b.questionWriter}</td>
+										<td>${b.userAlias}</td>
 										<td>${b.questionTitle}</td>
 										<td>${b.questionDate}</td>
 										<td>${b.questionHit}</td>

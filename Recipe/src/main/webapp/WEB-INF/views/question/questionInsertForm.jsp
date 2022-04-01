@@ -16,7 +16,7 @@
 					<tr>
 						<th width="100">작성자</th>
 						<td width="150">
-							<input type="text" id="questionWriter" name="questionWriter" required="required">
+							<input type="text" id="userAlias" name="userAlias" value="${userAlias }" readonly style="border:none;">
 						</td>
 						<th width="100">작성일자</th>
 						<td width="150">

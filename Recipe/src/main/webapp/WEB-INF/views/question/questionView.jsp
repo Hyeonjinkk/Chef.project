@@ -23,7 +23,7 @@ input[type=date]:focus {
 								<table class="table table-hover">
 									<tr>
 										<th width="100">작성자</th>
-										<td width="150">${question.questionWriter}</td>
+										<td width="150">${question.userAlias}</td>
 										<th width="100">작성일자</th>
 										<th width="150">${question.questionDate}</th>
 									</tr>
@@ -40,9 +40,9 @@ input[type=date]:focus {
 							<br>
 							<div align="center">
 								<button type="button" onclick="location.href='questionList.do'">목록가기</button>
-								<c:if test="${user_no == 1}">
+								<c:if test="${question.userAlias == userAlias }">
 									<button type="submit"
-										onclick="questionUpdate(${question.questionId})">수정완료</button>
+										onclick="questionUpdate(${question.questionId})">수정</button>
 					&nbsp;&nbsp;
 					<button type="button"
 										onclick="questionDelete(${question.questionId})">삭제</button>

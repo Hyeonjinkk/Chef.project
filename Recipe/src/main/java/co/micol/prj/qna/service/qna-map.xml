@@ -31,7 +31,7 @@
 		BORDER_CONTENTS = #{qnaContents} WHERE BORDER_ID = #{qnaId}
 	</update>
 	<delete id="qnaDelete" parameterType="co.micol.prj.qna.service.QnaVO">
-		DELETE FROM BORDER WHERE BORDER_ID = #{qnaId}
+		DELETE FROM QNA WHERE QNA_NO = #{qnaNo}
 	
 	
 	</delete>

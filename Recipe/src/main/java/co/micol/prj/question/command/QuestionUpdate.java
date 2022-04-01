@@ -20,11 +20,10 @@ public class QuestionUpdate implements Command {
 		QuestionService questionDao = new QuestionServiceImpl();
 		QuestionVO vo = new QuestionVO();
 		System.out.println(request.getParameter("questionDate"));
-		System.out.println(request.getParameter("questionWriter"));
 		System.out.println(request.getParameter("questionId"));
 		System.out.println(Integer.parseInt(request.getParameter("questionId")));
 		vo.setQuestionId(Integer.parseInt(request.getParameter("questionId")));
-		vo.setQuestionWriter(request.getParameter("questionWriter"));
+		vo.setUserAlias(request.getParameter("userAlias"));
 		vo.setQuestionDate(Date.valueOf(request.getParameter("questionDate")));
 		vo.setQuestionTitle(request.getParameter("questionTitle"));
 		vo.setQuestionContents(request.getParameter("questionContents"));

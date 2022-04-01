@@ -21,7 +21,8 @@ public class NoticeUpdate implements Command {
 		vo.setUserAlias(request.getParameter("userAlias"));
 		vo.setNoticeTitle(request.getParameter("noticeTitle"));
 		vo.setNoticeContent(request.getParameter("noticeContent"));
-		
+		System.out.println(request.getParameter("userAlias"));
+		System.out.println(request.getParameter("noticecontent"));
 		int n = noticeDao.noticeUpdate(vo);
 		
 		if(n != 0) {

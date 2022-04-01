@@ -37,8 +37,7 @@
 	<update id="noticeUpdate" parameterType="co.micol.prj.notice.service.NoticeVO">
 	
 		UPDATE notice 
-		SET user_alias = #{userAlias}, notice_date = #{noticeDate}, notice_title = #{noticeTitle}, notice_content = #{noticeContent}, 
-			notice_image1 = #{ntImage1}, notice_image2 = #{ntImage2}, notice_image3 = #{ntImage3} 
+		SET user_alias = #{userAlias}, notice_date = #{noticeDate}, notice_title = #{noticeTitle}, notice_content = #{noticeContent}
 		WHERE notice_no = #{noticeNo}
 	</update>
 	

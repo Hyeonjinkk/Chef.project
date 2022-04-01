@@ -20,17 +20,7 @@
 
 		<div>
 			<form id="fmr" method="post">
-				<div align="center">
-					<select id="findKey" name="findKey"
-						style="width: 100px; border: none;">
-						<option value="전체">전체</option>
-						<option value="질문">질문</option>
-						<option value="답변">답변</option>
-					</select> <span> <input type="text" id="findVal"
-						style="height: 47px;"><input class="site-btn"
-						type="button" onclick="searchList()" value="검색">
-					</span>
-				</div>
+				
 
 				<div>
 					<table id="contents" class="table table-hover">
@@ -42,16 +32,22 @@
 							</c:if>
 							<c:if test="${not empty qnaQ }">
 								<c:forEach items="${qnaQ }" var="q">
+								
 									<tr>
-										<td onclick="qus()">질문${q.qnaNo} : ${q.qnaTitle}</td>
-									</tr>
-									<tr>
-										<td id="qus" style="none;">답변:${q.qnaContents }</td>
-									</tr>
-									<c:if test="${user_no == 1}">
+									
+										<td onclick="qus(${q.qnaNo})">질문${q.qnaNo} : ${q.qnaTitle} <c:if test="${'관리자' eq userAlias}">
 										<button type="submit" onclick="qnaUpdate()">수정</button>
 										<button type="submit">삭제</button>
-									</c:if>
+									</c:if></td>
+									</tr>
+									<tr>
+									
+										<td id="qus${q.qnaNo }" style="display:none" >답변:${q.qnaContents } <c:if test="${'관리자' eq userAlias}">
+										<button type="submit" onclick="qnaUpdate()">수정</button>
+										
+									</c:if></td>
+									</tr>
+									
 								</c:forEach>
 							</c:if>
 						</tbody>
@@ -59,11 +55,8 @@
 				</div>
 				<br>
 				<div>
-					<button type="button" onclick="location.href='qnaInsertForm.do'">QnA
-						등록</button>
-					<c:if test="${user_no == 1}">
-						<button type="button" onclick="location.href='qnaInsertForm.do'">QnA
-							등록</button>
+					<c:if test="${'관리자' eq userAlias}">
+						<div align="center" ><button type="button" onclick="location.href='qnaInsertForm.do'" class="site-btn">FAQ등록</button></div>
 					</c:if>
 				</div>
 				<input type="hidden" id="borderId" name="borderId">
@@ -73,11 +66,11 @@
 	<script type="text/javascript">
 	
 	 // html dom 이 다 로딩된 후 실행된다.
-   function qus(){
-	   if($('#qus').css('display') == 'none'){
-			$('#qus').show();
+   function qus(n){
+	   if($('#qus' + n).css('display') == 'none'){
+			$('#qus' + n).show();
 		}else{
-			$('#qus').hide();
+			$('#qus' + n).hide();
 		}
 	 }
 function qnaUpdate(){
@@ -109,26 +102,7 @@ function qnaContents(g){
 			}
 		});
 	}
-	function searchResult(data){ //json 객체를  html로 변환 후 화면에 적용함.
-		var tb = $("#qnaBody");
-		$("#qnaBody").empty();
-		$.each(data, function(index, item) {
-			console.log(item.qnaContents);
-			
-			var html = $("<li class='menu'>");
-			html.append(
-					$("<a/>").text(item.qnaTitle),
-					$("<ul class='hide'/>").text(item.qnaContents),
-					);
-			tb.append(html);
-		
-	$(document).ready(function(){
-  	  $(".menu>a").click(function(){
-  	      $(this).next("ul").toggleClass("hide");
- 	   								});
-								});
-});
-}
+	
 	function sortBorder(key){
 		$.ajax({
 			url : "ajaxSortBorder.do",

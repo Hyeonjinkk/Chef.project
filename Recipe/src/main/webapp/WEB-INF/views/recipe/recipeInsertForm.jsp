@@ -11,18 +11,22 @@ table, th, tr, td {
 
 td {
 	text-align: center;
+	width: 100%;
 }
 
 #recipeName {
 	font-size: 2em;
+	width:100%;
 }
 
 #recipeKinds {
 	font-size: 2em;
+	width:100%;
 }
 
 #recipeParts {
 	font-size: 2em;
+	width:100%;
 }
 </style>
 <link
@@ -169,9 +173,9 @@ td {
 							<div>
 								<input type="hidden" value="1" id="insertNo" name="insertNo">
 								<br>
-								<button type="button" value="+" onclick="plusInsert()"
-									id="btnClick">사진추가</button><br>
 							</div>
+								<button type="button" value="+" onclick="plusInsert()"
+									id="btnClick">사진추가</button>
 							<button type="button" onclick="insetCheck()">등록하기</button>
 							<button type="button" onclick="home()">취소하기</button>
 						</form>

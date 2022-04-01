@@ -80,8 +80,10 @@ import co.micol.prj.recipe.command.UpdateRecipeForm;
 import co.micol.prj.subscribe.command.FollowerList;
 import co.micol.prj.subscribe.command.FollowingList;
 import co.micol.prj.subscribe.command.Unfollowing;
+import co.micol.prj.user.command.AdminDeleteUser;
 import co.micol.prj.user.command.AjaxUserIdCheck;
 import co.micol.prj.user.command.AjaxUserOldPwdCheck;
+import co.micol.prj.user.command.DeleteUser;
 import co.micol.prj.user.command.UpdatePwd;
 import co.micol.prj.user.command.UpdateUserInfo;
 import co.micol.prj.user.command.UserJoin;
@@ -123,7 +125,9 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxUserOldPwdCheck.do", new AjaxUserOldPwdCheck()); // 패스워드 변경 시 패스워드 재확인
 		map.put("/updatePwd.do", new UpdatePwd()); // 패스워드 변경
 		map.put("/updateUserInfo.do", new UpdateUserInfo()); // 회원정보 변경 처리
+		map.put("/deleteUser.do", new DeleteUser()); //회원탈퇴 처리
 		map.put("/userList.do", new UserList()); //관리자용 회원리스트 호출
+		map.put("/adminDeleteUser.do", new AdminDeleteUser()); //관리자용 회원삭제 처리
 
 ////--------------------------------------	기능처리(border)			
 		map.put("/borderInsert.do", new BorderInsert()); // 공지사항 등록

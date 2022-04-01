@@ -11,7 +11,7 @@ input[type=date]:focus {
 	outline: none;
 }
 </style>
-</head>
+</head> 
 <body>
 
 	<section class="single-post spad" style="padding-top: 180px;">

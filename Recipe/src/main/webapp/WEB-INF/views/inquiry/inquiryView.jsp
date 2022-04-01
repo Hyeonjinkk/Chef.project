@@ -13,7 +13,7 @@ input[type=date]:focus {
 </style>
 </head>
 <body>
-	<section class="single-post spad" style="padding-top: 180px;">
+	<section class="single-post spad" style="padding-top: 180px;"> 
 		<form id="iqView" name="iqView" method="post">
 			<input type="hidden" name="comSeq" value="${iq.inquiryNo }">
 			<input type="hidden" name="inquiryNo" value="${iq.inquiryNo }">

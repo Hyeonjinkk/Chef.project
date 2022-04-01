@@ -15,7 +15,7 @@
 
 	<select id="selectUserList"
 		resultMap="UserMap">
-		resultType="co.micol.prj.user.service.UserVO" resultMap="UserMap">
+		
 		SELECT * FROM USERS
 	</select>
 

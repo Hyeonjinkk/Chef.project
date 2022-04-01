@@ -105,7 +105,7 @@ public class FrontController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) throws ServletException { 
 //--------------------------------------		Page 처리
 		map.put("/home.do", new HomeCommand()); // 처음 들어오는 페이지
 

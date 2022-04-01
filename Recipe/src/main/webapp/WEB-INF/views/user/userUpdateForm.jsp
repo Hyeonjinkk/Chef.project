@@ -149,6 +149,9 @@ button: hover {
 					</div>
 				</div>
 			</div>
+			</div>
+			</div>
+		
 		</div>
 
 	</div>
@@ -156,6 +159,7 @@ button: hover {
 
 
 	<!-- 패스워드 변경 모달창 -->
+	
 	<div id="changePwdModal" class="modal">
 		<form id="pwdFrm" action="updatePwd.do" onsubmit="return pwdCheck()"
 			method="post">

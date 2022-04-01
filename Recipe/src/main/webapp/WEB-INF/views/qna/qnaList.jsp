@@ -8,88 +8,71 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery-3.3.1.min.js"></script>
-<style>
-.menu a {
-	cursor: pointer;
-}
-
-.menu .hide {
-	display: none;
-}
-
-ul{
-   list-style:none;
-   padding-left:0px;
-   }
-
-</style>
 
 </head>
 <body>
-	<div align="center">
+	<div class="container">
+		<div class="single-post__quote"
+			style="margin-top: 70px; margin-bottom: 55px;">
+			<h3 style="padding-top: 3px;">자주묻는 질문</h3>
+			<span>3일내에 답변해드리겠습니다.</span>
+		</div>
 
 		<div>
-			<h1>자주듣는 질문 목록</h1>
-		</div>
-		<form id="fmr" method="post">
-			<div>
+			<form id="fmr" method="post">
+				
+
 				<div>
-					<ul>
-						<li id="qnaBody"><c:if test="${empty qnaQ }">
-								<li>
-									<p>게시글이 존재하지 않습니다.</p>
-								</li>
-							</c:if> <c:if test="${not empty qnaQ }">
+					<table id="contents" class="table table-hover">
+						<tbody id="qnaBody">
+							<c:if test="${empty qnaQ }">
+								<tr>
+									<td colspan="5">게시글이 존재하지 않습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${not empty qnaQ }">
 								<c:forEach items="${qnaQ }" var="q">
-									<div>
-										<ul>
-											<li class="menu"  ><a>질문${q.qnaNo} : ${q.qnaTitle} </a>
-												<ul class="hide">
-													<li>답변:${q.qnaContents}</li>
-												</ul></li>
-												<c:if test="${user_no == 1}"><button type="submit" onclick="qnaUpdate()" >수정</button><button type="submit" >삭제</button></c:if>
-										</ul>
-									</div>
+								
+									<tr>
+									
+										<td onclick="qus(${q.qnaNo})">질문${q.qnaNo} : ${q.qnaTitle} <c:if test="${'관리자' eq userAlias}">
+										<button type="submit" onclick="qnaUpdate()">수정</button>
+										<button type="submit">삭제</button>
+									</c:if></td>
+									</tr>
+									<tr>
+									
+										<td id="qus${q.qnaNo }" style="display:none" >답변:${q.qnaContents } <c:if test="${'관리자' eq userAlias}">
+										<button type="submit" onclick="qnaUpdate()">수정</button>
+										
+									</c:if></td>
+									</tr>
+									
 								</c:forEach>
 							</c:if>
-							</li>
-					</ul>
+						</tbody>
+					</table>
 				</div>
-			</div>
-			<div>
-				<select id="findKey" name="findKey">
-					<option value="전체">전체</option>
-					<option value="질문">질문</option>
-					<option value="답변">답변</option>
-				</select> <span> <input type="text" id="findVal">&nbsp; <input
-					type="button" onclick="searchList()" value="검색">
-				</span>
-			</div>
-			<div>
-				<table border="1">
-
-				</table>
-			</div>
-			<br>
-			<div>
-				<button type="button" onclick="location.href='qnaInsertForm.do'">QnA 등록</button>
-				<c:if test="${user_no == 1}">
-					<button type="button" onclick="location.href='qnaInsertForm.do'">QnA 등록</button>
-				</c:if>
-			</div>
-			<input type="hidden" id="borderId" name="borderId">
-		</form>
-
+				<br>
+				<div>
+					<c:if test="${'관리자' eq userAlias}">
+						<div align="center" ><button type="button" onclick="location.href='qnaInsertForm.do'" class="site-btn">FAQ등록</button></div>
+					</c:if>
+				</div>
+				<input type="hidden" id="borderId" name="borderId">
+			</form>
+		</div>
 	</div>
 	<script type="text/javascript">
 	
 	 // html dom 이 다 로딩된 후 실행된다.
-    $(document).ready(function(){
-        $(".menu>a").click(function(){
-            $(this).next("ul").toggleClass("hide");
-        });
-    });
-
+   function qus(n){
+	   if($('#qus' + n).css('display') == 'none'){
+			$('#qus' + n).show();
+		}else{
+			$('#qus' + n).hide();
+		}
+	 }
 function qnaUpdate(){
 	
 }
@@ -119,29 +102,7 @@ function qnaContents(g){
 			}
 		});
 	}
-
-	function searchResult(data){ //json 객체를  html로 변환 후 화면에 적용함.
-		var tb = $("#qnaBody");
-		$("#qnaBody").empty();
-
-		$.each(data, function(index, item) {
-			console.log(item.qnaContents);
-			
-			var html = $("<li class='menu'>");
-			html.append(
-					$("<a/>").text(item.qnaTitle),
-					$("<ul class='hide'/>").text(item.qnaContents),
-					);
-			tb.append(html);
-		
-	$(document).ready(function(){
-  	  $(".menu>a").click(function(){
-  	      $(this).next("ul").toggleClass("hide");
- 	   								});
-								});
-});
-}
-
+	
 	function sortBorder(key){
 		$.ajax({
 			url : "ajaxSortBorder.do",

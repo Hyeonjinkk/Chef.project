@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -9,126 +9,151 @@
 <style>
 input[type=date]:focus {
 	outline: none;
-	
-} 
-
+}
 </style>
 </head>
 <body>
-<div align="center">
-		<div>
-			<h1>게시물 상세보기</h1>
-		</div>
-		<div>
-			<form id="iqView" name="iqView" method="post">
-			<div>
-				<table border="1">
-					<tr>
-						<th width="100">작성자</th>
-						<td width="150">${iq.userAlias }</td>
+	<section class="single-post spad" style="padding-top: 180px;">
+		<form id="iqView" name="iqView" method="post">
+			<input type="hidden" name="comSeq" value="${iq.inquiryNo }">
+			<input type="hidden" name="inquiryNo" value="${iq.inquiryNo }">
 
-						<th width="100">작성일자</th>
-						<td width="150">${iq.inquiryDate }</td>
-					</tr>
-					<tr>
-						<th>제목</th>
-						<td colspan="3">${iq.inquiryTitle }</td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td colspan="3"><textarea rows="10" cols="80">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-12">
+						<div>
+							<div>
+								<table class="table table-hover">
+									<tr>
+										<th width="100">작성자</th>
+										<td width="150">${iq.userAlias }</td>
+
+										<th width="100">작성일자</th>
+										<td width="150">${iq.inquiryDate }</td>
+									</tr>
+									<tr>
+										<th>제목</th>
+										<td colspan="3">${iq.inquiryTitle }</td>
+									</tr>
+									<tr>
+										<th>내용</th>
+										<td colspan="3"><pre style="height: 150px;">
 							${iq.inquiryContent }
 							${iq.inquiryImage1 }
 							${iq.inquiryImage2 }
 							${iq.inquiryImage3 }
-						</textarea></td>
-					</tr>
-				</table>
-		</div>
-		<br>
-		<div>
-			<button type="button" onclick="location.href='inquiryList.do'">목록가기</button>
-			&nbsp;&nbsp;
-			<c:if test="${iq.userAlias == userAlias }">
-			<button type="button" onclick="inquiryUpdate(${iq.inquiryNo})">수정</button>
+						</pre></td>
+									</tr>
+								</table>
+							</div>
+							<br>
+							<div align="center">
+								<button type="button" onclick="location.href='inquiryList.do'">목록가기</button>
+								&nbsp;&nbsp;
+								<c:if test="${iq.userAlias == userAlias }">
+									<button type="button" onclick="inquiryUpdate(${iq.inquiryNo})">수정</button>
 			&nbsp;&nbsp;
 			<button type="button" onclick="inquiryDelete(${iq.inquiryNo})">삭제</button>
 			&nbsp;&nbsp;
 			</c:if>
-			<input type="hidden" id="inquiryNo" name="inquiryNo">
-		</div>
-		<!-- 댓글창 -->
+							</div>
+						</div>
+						<!-- 댓글창 -->
 
-	<div align="center">
-		<table id="tbl">
-			<c:forEach items="${comments}" var="c">
-				<c:if test="${c.comSeq eq iq.inquiryNo}">
-					<c:if test="${c.comCategory == '3' }">
-
-					
-                    <tr>
-                        
-                        <td width="150px">${c.comAlias}<input type="hidden" id="comNo" name="comNo" value="${c.comNo }" /></td>
-                        <td><input type="date" id="updateDate" name="updateDate" value="${c.comDate }" style="border:none;" readonly ></td>
-
-                    </tr>
-                    <tr id="asd">
-                        <td colspan="4">
-                                <!-- 기존 내용 -->
-                                <pre style="height: 50px; width: 500px;" id="beforeContents${c.comNo }">${c.comContents}</pre>
-                                <!-- 수정 버튼 클릭시 수정 text area 생성 -->
-                                <textarea style="height: 50px; width: 500px; display: none;" id="afterContents${c.comNo }" name="afterValue">
-                                </textarea></td>
-
-                        <td><c:if test="${userAlias eq c.comAlias }">
-                                <!-- 수정버튼 -->
-                                <button type="button" onclick="updateButton(${c.comNo })" id="updateBtn${c.comNo }" name="updateBtn" style="border: 0px; cursor: pointer;">수정</button>
-                                <br>
-                                <!-- 수정 버튼 클릭시 생성 -->
-                                <button type="button" onclick="cancelButton(${c.comNo })" id="cancel${c.comNo }" name="cancel" style="display: none; border: 0px; cursor: pointer;">취소</button>
-                                <!-- 삭제 버튼 -->
-                                <button type="button" onclick="deleteDo(${c.comNo })" id="deleteBtn${c.comNo }" name="deleteBtn" style="border: 0px; cursor: pointer;">삭제</button>
-                            </c:if></td>
-
-                    </tr>
-					</c:if>
-				</c:if>
-			</c:forEach>
-
-		</table>
-	</div>
+						<div class="single-post__comment">
+							<div class="widget__title">
+								<h4>Comment</h4>
+							</div>
+							<c:forEach items="${comments}" var="c">
+								<c:if test="${c.comSeq eq iq.inquiryNo}">
+									<c:if test="${c.comCategory == '3' }">
 
 
-	<!-- 댓글 등록 -->
+										<div class="single-post__comment__item">
 
-	<div align="center">
-		<table id="tbl">
-			<tr>
-				<td width="150px">작성자</td>
-				<td><b>${userAlias}</b></td>
-				<td><input type='date' id='currentDate' name="comDate" readOnly style="border:none;"
-					 /> <input type="hidden" name="comCategory"
-					value="3" /> <input type="hidden" name="comSeq"
-					value="${iq.inquiryNo}" /></td>
-			</tr>
-			<tr id="asd">
-				<td colspan="4"><textarea id="comments" name="comContents"
-						style="width: 100%;"></textarea></td>
-				<td>
-					<button type="button" onclick="insertComments()"
-						style="border: 0px; cursor: pointer;">등록</button>
-				</td>
+											<div class="single-post__comment__item__text">
 
-			</tr>
+												<h5>${c.comAlias}<input type="hidden" id="comNo"
+														name="comNo" value="${c.comNo }" />
+												</h5>
 
-		</table>
-	</div>
-		
-		
-		
+												<span> <input type="date" id="updateDate"
+													name="updateDate" value="${c.comDate }"
+													style="border: none;" readonly>
+												</span>
+
+												<!-- 기존 내용 -->
+												<pre
+													style="height: 50px; width: 500px; font-family: 'Noto Sans KR', sans-serif;"
+													id="beforeContents${c.comNo }">${c.comContents}
+										</pre>
+
+												<!-- 수정 버튼 클릭시 수정 text area 생성 -->
+												<textarea style="height: 50px; width: 500px; display: none;"
+													id="afterContents${c.comNo }" name="afterValue"></textarea>
+
+												<c:if test="${userAlias eq c.comAlias }">
+													<ul>
+														<li>
+															<button type="button" onclick="updateButton(${c.comNo })"
+																id="updateBtn${c.comNo }" name="updateBtn"
+																style="border: 0px; cursor: pointer;">수정</button>
+
+															<button type="button" onclick="cancelButton(${c.comNo })"
+																id="cancel${c.comNo }" name="cancel"
+																style="display: none; border: 0px; cursor: pointer;">취소</button>
+														</li>
+														<li>
+															<button type="button" onclick="deleteDo(${c.comNo })"
+																id="deleteBtn${c.comNo }" name="deleteBtn"
+																style="border: 0px; cursor: pointer;">삭제</button>
+														</li>
+													</ul>
+												</c:if>
+											</div>
+										</div>
+									</c:if>
+								</c:if>
+							</c:forEach>
+
+
+							<!-- 댓글 등록 -->
+
+							<div class="single-post__recipe__details">
+								<div class="single-post__recipe__details__option"
+									style="padding-left: 28px;">
+									<ul>
+										<li>
+											<h5>
+												<i class="fa fa-user-o" style="margin-right: 22px;">${userAlias }</i>
+											</h5>
+										</li>
+										<li>
+											<h5>
+												<i class="fa fa-clock-o"></i> 등록일자
+											</h5> <span><input type="date" id="currentDate"
+												name="comDate" readonly="readonly"
+												style="border: none; background: none;"></span>
+										</li>
+										<li>
+											<button type="button" onclick="insertComments()"
+												style="border: 0px; cursor: pointer; margin-left: 44em;"
+												class="site-btn">등록</button> <input type="hidden"
+											id="comCategory" name="comCategory" value="2">
+										</li>
+									</ul>
+									<div align="center" style="padding-top: 14px;">
+										<textarea id="comments" name="comContents"
+											style="width: 100%; border: -3px; border-color: antiquewhite;"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
-	</div>
-	</div>
+	</section>
 	<script type="text/javascript">
 	function inquiryUpdate(n){
 		iqView.inquiryNo.value = n;
@@ -143,7 +168,7 @@ input[type=date]:focus {
 	}
 </script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
 /* 댓글 등록 */
 function insertComments() {
@@ -253,6 +278,5 @@ function insertComments() {
 	;
 
 </script>
-
 </body>
 </html>

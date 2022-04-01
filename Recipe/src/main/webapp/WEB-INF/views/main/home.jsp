@@ -56,7 +56,7 @@
 									신분 상승 레시피 제공! 냉장고를 여는 순간 최고의 요리 를 만들게 됩니다! <br>냉장고 주인의 고민을
 									타파할 푸드 커뮤니티! <br>토크와 요리가 있는 격조 높은 레시피 사이트!
 								</p>
-								<a href="../foodeiblog-master/signin.html" class="primary-btn"
+								<a href="./myBasketList.do" class="primary-btn"
 									style="font-family: 'Noto Sans KR', sans-serif;">냉장고 열기</a>
 
 								<div style="text-align: left; padding-left: 135px;">

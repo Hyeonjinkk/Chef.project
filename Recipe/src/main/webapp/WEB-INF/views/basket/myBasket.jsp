@@ -10,22 +10,91 @@
 </head>
 <style>
 
+img {
+ max-width: 100%;
+ max-height: 100%;
+ text-align: center;
+}
+
+.empty {
+ height: 200px;
+ width: 200px;
+}
+
 span {
 	padding: 10px;
+}
+
+.content {
+	margin: 40px;	
 }
 
 #inside {
 	margin: 20px;
 }
 
+
+/* .img {
+	position: relative;
+    background-image: url(./img/basket.png);                                                               
+    height: 100vh;
+    background-size: cover;
+}
+
+.img-cover{
+   position: absolute;
+   height: 100%;
+   width: 100%;                                                                 
+   z-index:1;
+}
+
+.img .content {
+     position: absolute;
+     top:50%;
+     left:50%;
+     transform: translate(-50%, -50%);                                                                   
+     font-size:5rem;
+     color: white;
+     z-index: 2;
+     text-align: center;
+} */
+
+.deleteBtn {
+	margin: 20px;
+}
 </style>
 <body>
-	<div align="center">
-		<br><h2>나의 냉장고</h2><br>
+
+<div class="container">
+    <div class="row"  style="height: 10px;">
+      <div class="col-xs-12"></div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <!-- Sign In Section Begin -->
+        <div class="">
+          <div class="signin__warp">
+            <div class="signin__content">
+
+              <div class="signin__form">
+                <ul class="nav" role="">
 		
+		                  <li class="nav-item">
+		                    <a class="nav-link active" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="true" style="font-family: 'Do Hyeon', sans-serif;width: 640px;font-size: 30px;">나의 냉장고</a>
+		                  </li>
+		
+		          </ul>
+          
 		<c:if test="${empty basket }">
 			<br><br><br>
-				텅...
+			<div align="center">
+			<div class="empty">
+				<img src="img/empty.jpg">
+			</div>
+			</div>
 			<br><br><br>
 		</c:if>
 		
@@ -36,25 +105,35 @@ span {
 			
 
 			<form id="myBk" action="searchBkRecipe.do"  method="post">
-				<button type="submit" onclick="bkArray()">레시피 검색</button><br>
 				<br>
 				<br>
 				<br>
-				<div class="inside">
+				<div>냉장고 속 재료들로 만들 수 있는</div>
+				<button type="submit" class="site-btn" onclick="bkArray()">레시피 검색</button><br>
+				<br>
+				<br>
+				<br>
+				<div class="img">
+				<div class="content">
+				
 				<c:forEach items="${basket }" var="bk">
 
+					
 					<span><label>
 						<input type="checkbox" id="haveIn" name="ingredient" value="${bk.ingredient}">${bk.ingredient}
 						<input type="hidden" name="ingredient" value="${bk.ingredient}">
 					</label></span>
 				</c:forEach>
+				
+				</div>
+				<div class="img-cover"></div>
 				</div>
 				
 				<br>
-				
-				<a class="btn btn-default" onclick="deleteClick()">선택삭제</a>
-				<a class="btn btn-default" onclick="deleteAll()">냉장고 비우기</a>
-				
+				<div class="deleteBtn">
+				<button onclick="deleteClick()">선택삭제</button>
+				<button onclick="deleteAll()">냉장고 비우기</button>
+				</div>
 			</form>
 			
 		</c:if>
@@ -62,11 +141,18 @@ span {
 			<form id="insertBk" action="insertBasket.do" method="POST">
 				 가지고 있는 식재료를 냉장고에 담아주세요.<br>
 				<input type="text" id="insertIn" name="ingredient" required="required">&nbsp;
-				<button type="button" onclick="isInCheck()">담기</button>
+				<button type="button" class="site-btn" onclick="isInCheck()">담기</button>
 			</form>
 
 		
 	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+
 	
 	
 <script type="text/javascript">

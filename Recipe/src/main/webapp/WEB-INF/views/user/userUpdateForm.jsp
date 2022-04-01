@@ -72,14 +72,37 @@ button: hover {
 
 
 <body>
-
-
-	<div align="center">
-
-		<div>
-			<h4>${message }</h4>
+	<div class="container">
+		<div class="row" style="height: 10px;">
+			<div class="col-xs-12"></div>
 		</div>
-		<hr>
+
+
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<!-- Sign In Section Begin -->
+				<div class="">
+					<div class="signin__warp">
+						<div class="signin__content">
+
+							<div class="signin__form">
+								<ul class="nav" role="">
+
+									<li class="nav-item"><a class="nav-link active"
+										data-toggle="tab" href="#tabs-2" role="tab"
+										aria-selected="true"
+										style="font-family: 'Do Hyeon', sans-serif; width: 640px; font-size: 30px;">${message }</a>
+									</li>
+
+								</ul>
+								<div class="tab-content">
+
+									<div align="center">
+
+
+										<hr>
+									<hr>
 		<form id="userInfoFrm" action="updateUserInfo.do" method="get">
 			<input type="hidden" name="userId" value="${userId }">
 
@@ -119,6 +142,15 @@ button: hover {
 
 			<button type="submit">변경하기</button>
 		</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 
@@ -147,6 +179,50 @@ button: hover {
 		</form>
 	</div>
 
+
+	<script type="text/javascript">
+		var modal = document.getElementById("changePwdModal");
+		var btn = document.getElementById("modalBtn");
+		var span = document.getElementsByClassName("close")[0];
+
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		function pwdCheck() {
+
+			$.ajax({
+				url : "ajaxUserOldPwdCheck.do",
+				type : "POST",
+				data : {
+					"str" : $("#oldPwd").val()
+				},
+				dataType : "text",
+				success : function(result) {
+					console.log(result);
+					if (result == 'true') {
+						alert("패스워드를 변경하시겠습니까.")
+					} else {
+						alert("기존 패스워드를 잘못 입력하셨습니다.");
+						$("#oldPwd").val('');
+						$("#oldPwd").focus();
+					}
+					;
+				}
+			});
+
+			if ($("#newpwd1").val() != $("#newpwd2").val()) {
+				alert("새로 입력하신 패스워드가 일치하지 않습니다.");
+				$("#newpwd1").focus();
+				return false;
+			} else {
+				return true;
+			}
+		}
 
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>

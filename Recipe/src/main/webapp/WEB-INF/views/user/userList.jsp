@@ -14,6 +14,7 @@
 	<div><h4>회원 리스트</h4></div>
 	<br/>
 <form id="userFrm" name="userFrm" action="" method="post">
+
 	<table>
 		<thead>
 			<tr>
@@ -25,11 +26,13 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${users }" var="u">
+			
 				<tr onclick="userDetailView(${u.userId})">
 					<td>${u.userId }</td>
 					<td>${u.userName }</td>
 					<td>${u.userAlias }</td>
 					<td>${u.userAuthor }</td>
+					<td><button onclick="deleteUser('${u.userId}')">회원삭제</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -48,6 +51,16 @@
 		userFrm.action = "userDetailView.do";
 		userFrm.submit();
 	}	
+	
+	function deleteUser(n) {
+		var y = confirm("정말로 삭제하시겠습니까?");
+		
+		if(y == true) {
+			userFrm.action = "adminDeleteUser.do?userId=" + n;
+			userFrm.submit();
+			alert("삭제처리되었습니다.");
+		}
+	}
 	
 </script>
 

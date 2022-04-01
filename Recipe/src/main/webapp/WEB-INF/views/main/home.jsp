@@ -72,7 +72,7 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="sidebar__item">
-							<div class="sidebar__about__item">
+							<div class="sidebar__about__item"> 
 								<div class="sidebar__item__title">
 									<h6 style="font-family: 'Noto Sans KR', sans-serif;">최고의
 										레시피</h6>

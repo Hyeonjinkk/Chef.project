@@ -40,7 +40,7 @@ input[type=date]:focus {
 											style="border: none; background: none;" readonly="readonly" value="${border.borderTitle}"></td>
 									</tr>
 									<tr>
-										<th>내용</th>
+										<th>내용</th> 
 										<td colspan="3"><pre style="height: 150px;">${border.borderContents }</pre></td>
 									</tr>
 								</table>
